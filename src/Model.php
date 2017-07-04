@@ -1,6 +1,6 @@
 <?php
 
-namespace Incertitu\SWLRP;
+namespace Incertitude\SWLRP;
 
 abstract class Model extends Configurable {
     /** @var \PDO */
@@ -10,6 +10,9 @@ abstract class Model extends Configurable {
     public function __construct(\PDO $connection, Config $config) {
         $this->connection = $connection;
         $this->config = $config;
+    }
+    public function getMetadata(): array {
+        return $this->getConfig();
     }
     protected function getConnection(): \PDO {
         return $this->connection;

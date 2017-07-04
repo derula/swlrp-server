@@ -1,6 +1,6 @@
 <?php
 
-namespace Incertitu\SWLRP\Actions;
+namespace Incertitude\SWLRP\Actions;
 use Incertitu\SWLRP\Action;
 
 class Save extends Action {

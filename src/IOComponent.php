@@ -1,6 +1,6 @@
 <?php
 
-namespace Incertitu\SWLRP;
+namespace Incertitude\SWLRP;
 
 abstract class IOComponent {
     const MODEL_NAME = 'Profile';

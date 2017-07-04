@@ -1,5 +1,5 @@
 <?php
-use Incertitude\SWLRP;
+use Incertitude\SWLRP\Application;
 require '../vendor/autoload.php';
 $app = new Application(dirname(__DIR__), $_GET, $_POST);
 switch($_SERVER['REQUEST_URI']) {

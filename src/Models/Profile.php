@@ -1,6 +1,6 @@
 <?php
 
-namespace Incertitu\SWLRP\Views;
+namespace Incertitude\SWLRP\Views;
 use Incertitu\SWLRP\Model;
 
 class Profile extends Model {

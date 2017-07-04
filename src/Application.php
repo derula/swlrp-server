@@ -1,6 +1,6 @@
 <?php
 
-namespace Incertitu\SWLRP;
+namespace Incertitude\SWLRP;
 
 class Application {
     /** @var array */

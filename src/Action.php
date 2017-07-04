@@ -1,6 +1,6 @@
 <?php
 
-namespace Incertitu\SWLRP;
+namespace Incertitude\SWLRP;
 
 abstract class Action extends IOComponent {
     abstract public function execute();

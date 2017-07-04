@@ -1,7 +1,7 @@
 <?php
 
-namespace Incertitu\SWLRP;
-use Symphony\Component\Yaml\Yaml;
+namespace Incertitude\SWLRP;
+use Symfony\Component\Yaml\Yaml;
 
 class Config {
     /** @var array */
