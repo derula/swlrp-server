@@ -11,9 +11,9 @@ $model = new Models\Profile($pdo);
 switch($_SERVER['REQUEST_URI']) {
     case '/edit':
         if ('POST' === $_SERVER['REQUEST_METHOD']) {
-            (new Actions\Save($_POST, $model))->execute();
+            (new Actions\Save($_POST, $model, $config))->execute();
         }
-        echo (new Views\Editor($_GET, $model))->render();
+        echo (new Views\Editor($_GET, $model, $config))->render();
     case '/view':
-        echo (new Views\Viewer($_GET, $model))->render();
+        echo (new Views\Viewer($_GET, $model, $config))->render();
 }
