@@ -3,5 +3,23 @@
 namespace Incertitude\SWLRP;
 
 abstract class View extends IOComponent {
-    abstract public function render(): string;
+    public function render(): string {
+        $this->renderTemplate('layout', [
+            'title' => $this->getTitle(),
+            'content' => $this->getContent()
+        ]);
+    }
+    abstract protected function getTitle(): string;
+    abstract protected function getContent(): string;
+    protected function renderTemplate(string $name, array $tplVars=[]): string {
+        extract($tplVars);
+        ob_start();
+        try {
+            include dirname(__DIR__) . "/templates/$name.php";
+        } finally {
+            $result = ob_get_contents();
+            ob_end_flush();
+            return $result;
+        }
+    }
 }
