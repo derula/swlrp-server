@@ -7,20 +7,14 @@ abstract class IOComponent {
     private $data;
     /** @var Model */
     private $model;
-    /** @var Config */
-    private $config;
-    public function __construct(array $data, Model $model, Config $config) {
+    public function __construct(array $data, Model $model) {
         $this->data = $data;
         $this->model = $model;
-        $this->config = $config;
     }
     protected function getData($key) {
         return $this->data[$key] ?? null;
     }
     protected function getModel(): Model {
         return $this->model;
-    }
-    protected function getConfig(...$keys) {
-        return $this->config->get(...$keys);
     }
 }
