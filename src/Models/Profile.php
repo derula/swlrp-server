@@ -1,7 +1,7 @@
 <?php
 
-namespace Incertitude\SWLRP\Views;
-use Incertitu\SWLRP\Model;
+namespace Incertitude\SWLRP\Models;
+use Incertitude\SWLRP\Model;
 
 class Profile extends Model {
     const Q_LOAD = <<<'QUERY'

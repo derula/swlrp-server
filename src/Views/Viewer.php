@@ -1,7 +1,7 @@
 <?php
 
 namespace Incertitude\SWLRP\Views;
-use Incertitu\SWLRP\View;
+use Incertitude\SWLRP\View;
 
 class Viewer extends View {
     protected function getTitle(): string {

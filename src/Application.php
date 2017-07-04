@@ -25,17 +25,17 @@ class Application {
     }
     public function getModel(string $name): Model {
         if (!isset($this->models[$name])) {
-            $class = 'Models\\' . ucfirst($name);
+            $class = __NAMESPACE__ . '\\Models\\' . ucfirst($name);
             $this->models[$name] = new $class($pdo, $config);
         }
         return $this->models[$name];
     }
     public function getAction(string $name): Action {
-        $class = 'Actions\\' . ucfirst($name);
+        $class = __NAMESPACE__ . '\\Actions\\' . ucfirst($name);
         return new $class($this->post, $this->getModel($class::MODEL_NAME));
     }
     public function getView(string $name): View {
-        $class = 'Views\\' . ucfirst($name);
+        $class = __NAMESPACE__ . '\\Views\\' . ucfirst($name);
         return new $class($this->get, $this->getModel($class::MODEL_NAME));
     }
 }
