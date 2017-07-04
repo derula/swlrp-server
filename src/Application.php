@@ -13,7 +13,7 @@ class Application {
     private $pdo;
     /** @var Model[] */
     private $models = [];
-    public function __construct(string $root, array $get, array $post) {
+    public function __construct(string $root, array $get=[], array $post=[]) {
         $this->get = $get;
         $this->post = $post;
         $this->config = new Config($root . '/config/config.yml');

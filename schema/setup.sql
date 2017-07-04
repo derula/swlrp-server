@@ -12,7 +12,9 @@ CREATE TABLE `properties` (
     `id` INT(11) NOT NULL,
     `name` VARCHAR(20) NOT NULL,
     `type` ENUM('property', 'text') NOT NULL,
-    PRIMARY KEY (`id`)
+    `deleted` BIT(1) NOT NULL DEFAULT b'0',
+    PRIMARY KEY (`id`),
+    UNIQUE (`name`)
 ) ENGINE=InnoDB;
 
 CREATE TABLE `character_properties` (
