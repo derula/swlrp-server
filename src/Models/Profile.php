@@ -23,7 +23,14 @@ QUERY;
         }
         return null;
     }
-    public function save(string $name) {
-        // Implementation
+    public function save(string $name, array $data): bool {
+        $this->getConnection()->beginTransaction();
+        try {
+            // Implementation
+            $this->getConnection()->commit();
+        } catch(\Throwable $t) {
+            $this->getConnection()->rollback();
+            throw $t;
+        }
     }
 }
