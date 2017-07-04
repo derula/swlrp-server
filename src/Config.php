@@ -7,7 +7,7 @@ class Config {
     /** @var array */
     private $data;
     public function __construct(string $path) {
-        $this->data = (array)Yaml::parse($path);
+        $this->data = (array)Yaml::parse(file_get_contents($path));
     }
     public function get(...$keys) {
         $result = $this->data;

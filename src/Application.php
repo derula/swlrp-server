@@ -18,9 +18,9 @@ class Application {
         $this->post = $post;
         $this->config = new Config($root . '/config/config.yml');
         $this->pdo = new \PDO(
-            $config->get('DB', 'dsn'),
-            $config->get('DB', 'user'),
-            $config->get('DB', 'password')
+            $this->config->get('DB', 'dsn'),
+            $this->config->get('DB', 'user'),
+            $this->config->get('DB', 'password')
         );
     }
     public function getModel(string $name): Model {
