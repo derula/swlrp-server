@@ -13,6 +13,10 @@ class Config {
         $result = $this->data;
         while (!empty($keys)) {
             $key = array_shift($keys);
+            if ('*' === $key && is_array($result)) {
+                $result = array_merge_recursive(...array_values(array_filter($result, 'is_array')));
+                continue;
+            }
             if (!isset($result[$key])) {
                 return null;
             }
