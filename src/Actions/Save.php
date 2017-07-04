@@ -1,9 +1,9 @@
 <?php
 
 namespace Incertitu\SWLRP\Actions;
-use Incertitu\SWLRP\IOComponent;
+use Incertitu\SWLRP\Action;
 
-class Save extends IOComponent {
+class Save extends Action {
     public function execute() {
         // Implementation
     }

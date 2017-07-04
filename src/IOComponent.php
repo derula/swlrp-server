@@ -3,6 +3,7 @@
 namespace Incertitu\SWLRP;
 
 abstract class IOComponent {
+    const MODEL_NAME = 'Profile';
     /** @var array */
     private $data;
     /** @var Model */
