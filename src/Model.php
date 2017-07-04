@@ -2,7 +2,7 @@
 
 namespace Incertitude\SWLRP;
 
-abstract class Model extends Configurable {
+abstract class Model {
     /** @var \PDO */
     private $connection;
     /** @var Config */
