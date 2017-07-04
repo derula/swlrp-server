@@ -1,5 +1,4 @@
 DB:
+    dsn: "mysql:dbname=<dbname>;host=<host>"
     user: <user>
     password: <password>
-    host: <host>
-    db: <dbname>

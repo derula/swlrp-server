@@ -1,5 +1,10 @@
 {
     "name": "incertitude/swlrp",
+    "autoload": {
+        "psr-4": {
+            "Incertitude\\SWLRP\\": "src/"
+        }
+    },
     "require": {
         "symfony/yaml": "^3.3"
     },
