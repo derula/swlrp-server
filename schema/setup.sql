@@ -11,6 +11,7 @@ CREATE TABLE `characters` (
 CREATE TABLE `properties` (
     `id` INT(11) NOT NULL,
     `name` VARCHAR(20) NOT NULL,
+    `type` ENUM('property', 'text') NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 

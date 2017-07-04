@@ -1,4 +1,32 @@
 DB:
-    dsn: "mysql:dbname=<dbname>;host=<host>"
-    user: <user>
-    password: <password>
+  dsn: "mysql:dbname=<dbname>;host=<host>"
+  user: <user>
+  password: <password>
+Models:
+  Profile:
+    - title: Appearance
+      properties:
+      - name: eyecolor
+        title: eyes
+        autocomplete: true
+      - name: nationality
+        autocomplete: true
+      - name: height
+      - name: weight
+      - name: age
+        constraint: number
+      - name: rp_status
+        title: roleplay status
+        autocomplete: true
+      texts:
+      - name: description
+    - title: Biography
+      properties:
+      - name: home
+        autocomplete: true
+      - name: birthplace
+        autocomplete: true
+      - name: job
+        autocomplete: true
+      texts:
+      - name: history
