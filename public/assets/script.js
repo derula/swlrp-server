@@ -16,6 +16,7 @@ $(() => {
             (isText ? field.html.bind(field) : (v) => { field.attr({value: v}) })(prop.value);
             $(e).html(field)
         });
+        button.after($('<input type="submit">').button({label: 'Save'}));
         button.button('option', 'label', 'Preview');
     };
     const unwrap = (button) => {
@@ -25,6 +26,7 @@ $(() => {
             $(e).data('prop', $.extend($(e).data('prop'), {value: value}));
             field.replaceWith(value);
         });
+        button.next().remove();
         button.button('option', 'label', 'Change profile');
     };
     $('#edit').button({label: 'Change profile'}).click((e) => {
