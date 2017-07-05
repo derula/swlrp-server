@@ -12,7 +12,7 @@ try {
         case 'edit':
             $app->getSession()->assertLoggedIn();
             if ('POST' === $_SERVER['REQUEST_METHOD']) {
-                $app->getAction('Save')->execute();
+                $app->getAction('SaveProfile')->execute();
             }
             $view = $app->getView('Editor');
             break;
