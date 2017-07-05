@@ -20,7 +20,7 @@ abstract class Profile extends View {
         return $this->renderTemplate('profile', $this->getProfile());
     }
     protected function getRequestedName(): string {
-        return ucfirst($this->getData(0));
+        return ucwords($this->getData(0));
     }
     protected function getProfile(): array {
         if (!isset($this->profile)) {
@@ -42,10 +42,13 @@ abstract class Profile extends View {
             foreach (['properties', 'texts'] as $key) {
                 foreach ($profilePage[$key] as &$prop) {
                     $prop += self::PROP_DEFAULTS;
-                    $prop += ['title' => ucfirst($prop['name'])];
+                    $prop += ['title' => ucwords($prop['name'])];
                     $prop['value'] = $data['propertier'][$prop['name']] ?? '';
                 }
             }
         }
+    }
+    protected function decorate(array $prop, string $type) {
+        return $prop['value'];
     }
 }

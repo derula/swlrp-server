@@ -7,7 +7,7 @@ Models:
     - title: Appearance
       properties:
       - name: eyecolor
-        title: eyes
+        title: Eyes
         autocomplete: true
       - name: nationality
         autocomplete: true
@@ -16,7 +16,7 @@ Models:
       - name: age
         constraint: number
       - name: rp_status
-        title: roleplay status
+        title: Roleplay Status
         autocomplete: true
       texts:
       - name: description
