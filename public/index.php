@@ -1,15 +1,17 @@
 <?php
 use Incertitude\SWLRP\Application;
 require '../vendor/autoload.php';
-$app = new Application(dirname(__DIR__), $_GET, $_POST);
-switch($_SERVER['REQUEST_URI']) {
-    case '/edit':
+$get = explode('/', substr($_SERVER['REQUEST_URI'], 1));
+$route = array_shift($get);
+$app = new Application(dirname(__DIR__), $get, $_POST);
+switch($route) {
+    case 'edit':
         if ('POST' === $_SERVER['REQUEST_METHOD']) {
             $app->getAction('Save')->execute();
         }
         echo $app->getView('Editor')->render();
         break;
-    case '/view':
+    case 'view':
         echo $app->getView('Viewer')->render();
         break;
     default:

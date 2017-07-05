@@ -41,12 +41,20 @@ INSERT INTO `properties`(`name`, `type`, `deleted`)
 VALUES (:name, :type, 0)
 ON DUPLICATE KEY UPDATE `type` = VALUES(`type`), `deleted` = 0
 QUERY;
-    public function load(string $name): ?array {
+    public function load(string $name): array {
         $statement = $this->getConnection()->prepare(self::Q_LOAD);
+        $profile = [];
         if ($statement->execute([':nick' => $name])) {
-            return $statement->fetchAll();
+            while ($row = $statement->fetch()) {
+                if (isset($row['key'], $row['value'])) {
+                    $profile['properties'][$row['key']] = $row['value'];
+                }
+            }
+            if (isset($row['name'])) {
+                $profile['name'] = $row['name'];
+            }
         }
-        return null;
+        return $profile;
     }
     public function save(string $name, array $data): bool {
         $this->getConnection()->beginTransaction();

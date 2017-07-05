@@ -1,13 +1,9 @@
 <?php
 
 namespace Incertitude\SWLRP\Views;
-use Incertitude\SWLRP\View;
 
-class Viewer extends View {
-    protected function getTitle(): string {
-        // Implementation
-    }
+class Viewer extends Profile {
     protected function getContent(): string {
-        // Implementation
+        return $this->renderTemplate('profile', $this->getProfile());
     }
 }
