@@ -9,6 +9,8 @@ class Application {
     private $post;
     /** @var Config */
     private $config;
+    /** @var Session */
+    private $session;
     /** @var \PDO */
     private $pdo;
     /** @var Model[] */
@@ -31,9 +33,13 @@ class Application {
             $this->config->get('DB', 'user'),
             $this->config->get('DB', 'password')
         );
+        $this->session = new Session($this->getModel('Account'));
     }
     public function getRoute(): string {
         return $this->route;
+    }
+    public function getSession(): Session {
+        return $this->session;
     }
     public function getModel(string $name): Model {
         if (!isset($this->models[$name])) {
