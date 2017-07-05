@@ -24,7 +24,7 @@ abstract class Profile extends LayoutView {
     }
     protected function getProfile(): array {
         if (!isset($this->profile)) {
-            $this->profile = [];
+            $this->profile = ['editMode' => false];
             $data = $this->getModel()->load($this->getRequestedName());
             if (!empty($data)) {
                 $this->loadProfileData($data);

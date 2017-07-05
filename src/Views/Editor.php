@@ -4,7 +4,7 @@ namespace Incertitude\SWLRP\Views;
 
 class Editor extends Profile {
     protected function getProfile(): array {
-        return parent::getProfile() + ['editMode' => true];
+        return ['editMode' => true] + parent::getProfile();
     }
     protected function decorate(array $prop, string $type) {
         $data = htmlspecialchars(json_encode($prop));
