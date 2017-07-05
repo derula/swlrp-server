@@ -1,9 +1,10 @@
 <?php
 
 namespace Incertitude\SWLRP\Views;
-use Incertitude\SWLRP\View;
 
-class Error extends View {
+use Incertitude\SWLRP\LayoutView;
+
+class Error extends LayoutView {
     /** @var int */
     private $code = null;
     public function setCode(int $code): self {

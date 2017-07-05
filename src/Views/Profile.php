@@ -2,10 +2,10 @@
 
 namespace Incertitude\SWLRP\Views;
 
-use Incertitude\SWLRP\View;
+use Incertitude\SWLRP\LayoutView;
 use Incertitude\SWLRP\Exceptions\ProfileNotFound;
 
-abstract class Profile extends View {
+abstract class Profile extends LayoutView {
     const PROP_DEFAULTS = [
         'name' => '',
         'autocomplete' => false,

@@ -5,14 +5,7 @@ namespace Incertitude\SWLRP;
 abstract class View extends IOComponent {
     /** @var array */
     private $tmp;
-    public function render(): string {
-        return $this->renderTemplate('layout', [
-            'title' => $this->getTitle(),
-            'content' => $this->getContent()
-        ]);
-    }
-    abstract protected function getTitle(): string;
-    abstract protected function getContent(): string;
+    abstract public function render(): string;
     protected function renderTemplate(string $name, array $tplVars=[]): string {
         $this->tmp = [$name, $tplVars];
         unset($name, $tplVars);
