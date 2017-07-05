@@ -25,6 +25,11 @@ FROM `properties` AS `p`
     LEFT JOIN `character` AS `c` ON `c`.`nick` = :nick
 WHERE `deleted` = 0
 QUERY;
+    const Q_SAVE_NAME = <<<'QUERY'
+INSERT INTO `characters`(`nick`, `first`, `last`)
+VALUES (:nick, :first, :last)
+ON DUPLICATE KEY UPDATE `first` = VALUES(`first`), `last` = VALUES(`last`)
+QUERY;
     const Q_SAVE_PROPERTY = <<<'QUERY'
 INSERT INTO `character_properties`(`character_id`, `property_id`, `value`)
 VALUES (:character_id, :property_id, :value)
@@ -56,7 +61,11 @@ QUERY;
         }
         return $profile;
     }
-    public function save(string $name, array $data): bool {
+    public function saveName(string $name, string $first, string $last): bool {
+        $statement = $this->getConnection()->prepare(self::Q_SAVE_NAME);
+        return $statement->execute([':nick' => $name, ':first' => $first, ':last' => $last]);
+    }
+    public function saveProperties(string $name, array $data): bool {
         $this->getConnection()->beginTransaction();
         try {
             $statement = $this->getConnection()->prepare(self::Q_GET_IDS);
@@ -71,6 +80,7 @@ QUERY;
             $this->getConnection()->rollback();
             throw $t;
         }
+        return true;
     }
     public function refreshProperties() {
         $this->getConnection()->beginTransaction();
