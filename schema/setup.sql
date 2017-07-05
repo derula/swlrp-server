@@ -1,5 +1,5 @@
 CREATE TABLE `characters` (
-    `id` INT(11) NOT NULL,
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
     `nick` VARCHAR(40) NOT NULL,
     `first` VARCHAR(255) NOT NULL,
     `last` VARCHAR(255) NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE `characters` (
 ) ENGINE=InnoDB;
 
 CREATE TABLE `properties` (
-    `id` INT(11) NOT NULL,
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(20) NOT NULL,
     `type` ENUM('property', 'text') NOT NULL,
     `deleted` BIT(1) NOT NULL DEFAULT b'0',
