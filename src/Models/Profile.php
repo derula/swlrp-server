@@ -1,20 +1,16 @@
 <?php
 
 namespace Incertitude\SWLRP\Models;
+
 use Incertitude\SWLRP\Model;
 
 class Profile extends Model {
-    const Q_LOAD = <<<'QUERY'
+    const Q_GET_CHARACTER = <<<'QUERY'
 SELECT
-    CONCAT(`first`, ' "', `nick`, '" ', `last`) AS `name`,
-    COALESCE(`p2`.`name`, `p1`.`name`) AS `key`,
-    COALESCE(`text`, `value`) AS `value`
-FROM `characters` AS `c`
-    LEFT JOIN `character_properties` AS `cp` ON `c`.`id` = `cp`.`character_id`
-    LEFT JOIN `properties` AS `p1` ON `cp`.`property_id` = `p1`.`id`
-    LEFT JOIN `character_texts` AS `ct` ON `c`.`id` = `ct`.`character_id`
-    LEFT JOIN `properties` AS `p2` ON `ct`.`property_id` = `p2`.`id`
-WHERE `nick` = :nick AND COALESCE(`p1`.`deleted`, `p2`.`deleted`, 0) = 0
+    `id`,
+    CONCAT(`first`, ' "', `nick`, '" ', `last`) AS `name`
+FROM `characters`
+WHERE `nick` = :nick
 QUERY;
     const Q_GET_IDS = <<<'QUERY'
 SELECT
@@ -24,6 +20,15 @@ SELECT
 FROM `properties` AS `p`
     LEFT JOIN `characters` AS `c` ON `c`.`nick` = :nick
 WHERE `deleted` = 0
+QUERY;
+    const Q_LOAD_PROPERTIES = <<<'QUERY'
+SELECT `name` AS `key`, `value`
+FROM `character_properties` LEFT JOIN `properties` AS `p` ON `property_id` = `p`.`id`
+WHERE `character_id` = :character_id AND `deleted` = 0
+UNION
+SELECT `name` AS `key`, `text` AS `value`
+FROM `character_texts` LEFT JOIN `properties` AS `p` ON `property_id` = `p`.`id`
+WHERE `character_id` = :character_id AND `deleted` = 0
 QUERY;
     const Q_SUGGEST_PROPERTY_VALUES = <<<'QUERY'
 SELECT `value` FROM `character_properties` AS `cp`
@@ -52,18 +57,18 @@ VALUES (:name, :type, 0)
 ON DUPLICATE KEY UPDATE `type` = VALUES(`type`), `deleted` = 0
 QUERY;
     public function load(string $name): array {
-        $statement = $this->getConnection()->prepare(self::Q_LOAD);
-        $profile = [];
-        if ($statement->execute([':nick' => $name])) {
-            $row = $statement->fetch();
-            if (isset($row['name'])) {
-                $profile['name'] = $row['name'];
-            }
-            do {
-                if (isset($row['key'], $row['value'])) {
-                    $profile['properties'][$row['key']] = $row['value'];
-                }
-            } while ($row = $statement->fetch());
+        $statement = $this->getConnection()->prepare(self::Q_GET_CHARACTER);
+        $statement->execute([':nick' => $name]);
+        $row = $statement->fetch();
+        $statement->closeCursor();
+        if (!isset($row['name'])) {
+            return [];
+        }
+        $profile = ['name' => $row['name']];
+        $statement = $this->getConnection()->prepare(self::Q_LOAD_PROPERTIES);
+        $statement->execute([':character_id' => $row['id'] ?? 0]);
+        while ($row = $statement->fetch()) {
+            $profile['properties'][$row['key']] = $row['value'];
         }
         return $profile;
     }
