@@ -50,6 +50,7 @@ $(() => {
     $('.accordion').accordion();
     $('.tabs').tabs();
     $('input[type=submit]').button();
+    $('input[type=checkbox]').checkboxradio();
     $('input[type=password]').on('input', (e) => {
         const t = $(e.target), o = t.closest(':not(label, input)').find('[name=' + t.attr('name') + ']');
         if (o.length > 1) {
