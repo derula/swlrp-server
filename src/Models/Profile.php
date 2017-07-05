@@ -43,7 +43,7 @@ QUERY;
     const Q_SAVE_TEXT = <<<'QUERY'
 INSERT INTO `character_texts`(`character_id`, `property_id`, `text`)
 VALUES (:character_id, :property_id, :value)
-ON DUPLICATE KEY UPDATE `value` = VALUES(`text`)
+ON DUPLICATE KEY UPDATE `text` = VALUES(`text`)
 QUERY;
     const Q_DELETE_PROPS = 'UPDATE `properties` SET `deleted` = 1';
     const Q_UPDATE_PROP = <<<'QUERY'
