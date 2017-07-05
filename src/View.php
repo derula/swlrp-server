@@ -6,13 +6,11 @@ abstract class View extends IOComponent {
     /** @var array */
     private $tmp;
     public function render(): string {
-        $this->preRender();
         return $this->renderTemplate('layout', [
             'title' => $this->getTitle(),
             'content' => $this->getContent()
         ]);
     }
-    protected function preRender() {}
     abstract protected function getTitle(): string;
     abstract protected function getContent(): string;
     protected function renderTemplate(string $name, array $tplVars=[]): string {
