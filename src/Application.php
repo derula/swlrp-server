@@ -26,7 +26,7 @@ class Application {
     public function getModel(string $name): Model {
         if (!isset($this->models[$name])) {
             $class = __NAMESPACE__ . '\\Models\\' . ucfirst($name);
-            $this->models[$name] = new $class($pdo, $config);
+            $this->models[$name] = new $class($this->pdo, $this->config);
         }
         return $this->models[$name];
     }
