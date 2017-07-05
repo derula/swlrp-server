@@ -22,7 +22,7 @@ SELECT
     `p`.`id` AS `property_id`,
     `name`
 FROM `properties` AS `p`
-    LEFT JOIN `character` AS `c` ON `c`.`nick` = :nick
+    LEFT JOIN `characters` AS `c` ON `c`.`nick` = :nick
 WHERE `deleted` = 0
 QUERY;
     const Q_SAVE_NAME = <<<'QUERY'
@@ -71,7 +71,7 @@ QUERY;
         try {
             $statement = $this->getConnection()->prepare(self::Q_GET_IDS);
             $ids = [];
-            foreach ($statement->execute() ? (array)$statement->fetchAll() : [] as $prop) {
+            foreach ($statement->execute([':nick' => $name]) ? (array)$statement->fetchAll() : [] as $prop) {
                 $ids[$prop['name']] = $prop;
             }
             $this->batchSave($this->getConfig('*', 'properties'), $ids, self::Q_SAVE_PROPERTY, $data);
