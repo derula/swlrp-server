@@ -43,7 +43,7 @@ abstract class Profile extends View {
                 foreach ($profilePage[$key] as &$prop) {
                     $prop += self::PROP_DEFAULTS;
                     $prop += ['title' => ucwords($prop['name'])];
-                    $prop['value'] = $data['propertier'][$prop['name']] ?? '';
+                    $prop['value'] = $data['properties'][$prop['name']] ?? '';
                 }
             }
         }
