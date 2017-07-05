@@ -10,7 +10,7 @@ $(() => {
             if (!isText) {
                 field.attr({type: prop.contraint || 'text'});
                 if (prop['autocomplete']) {
-                    field.autocomplete({source: '/autocomplete/' + prop['name']});
+                    field.autocomplete({source: '/suggestions/' + prop['name']});
                 }
             }
             (isText ? field.html.bind(field) : (v) => { field.attr({value: v}) })(prop.value);

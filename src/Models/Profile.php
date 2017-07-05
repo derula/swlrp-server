@@ -25,6 +25,11 @@ FROM `properties` AS `p`
     LEFT JOIN `characters` AS `c` ON `c`.`nick` = :nick
 WHERE `deleted` = 0
 QUERY;
+    const Q_SUGGEST_PROPERTY_VALUES = <<<'QUERY'
+SELECT `value` FROM `character_properties` AS `cp`
+LEFT JOIN `properties` AS `p` ON `cp`.`property_id` = `p`.`id`
+WHERE `name` = :name AND `value` LIKE :term
+QUERY;
     const Q_SAVE_NAME = <<<'QUERY'
 INSERT INTO `characters`(`nick`, `first`, `last`)
 VALUES (:nick, :first, :last)
@@ -99,6 +104,14 @@ QUERY;
             $this->getConnection()->rollback();
             throw $t;
         }
+    }
+    public function suggestPropertyValues(string $name, string $term): array {
+        $statement = $this->getConnection()->prepare(self::Q_SUGGEST_PROPERTY_VALUES);
+        $term = strtr($term, ['%' => '\%', '_' => '\_']) . '%';
+        if ($statement->execute([':name' => $name, ':term' => $term])) {
+            return $statement->fetchAll();
+        }
+        return [];
     }
     private function batchSave($fields, $ids, $query, $data) {
         $statement = $this->getConnection()->prepare($query);

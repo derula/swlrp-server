@@ -14,6 +14,9 @@ try {
         case 'view':
             echo $app->getView('Viewer')->render();
             break;
+        case 'suggestions':
+            echo $app->getView('Suggestions')->render();
+            break;
         default:
             echo $app->getView('Error')->setCode(404)->render();
     }
