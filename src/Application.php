@@ -50,10 +50,10 @@ class Application {
     }
     public function getAction(string $name): Action {
         $class = __NAMESPACE__ . '\\Actions\\' . ucfirst($name);
-        return new $class($this->post, $this->getModel($class::MODEL_NAME));
+        return new $class($this->post, $this);
     }
     public function getView(string $name): View {
         $class = __NAMESPACE__ . '\\Views\\' . ucfirst($name);
-        return new $class($this->get, $this->getModel($class::MODEL_NAME));
+        return new $class($this->get, $this);
     }
 }

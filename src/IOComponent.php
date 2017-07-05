@@ -8,9 +8,9 @@ abstract class IOComponent {
     private $data;
     /** @var Model */
     private $model;
-    public function __construct(array $data, Model $model) {
+    public function __construct(array $data, Application $application) {
         $this->data = $data;
-        $this->model = $model;
+        $this->model = $application->getModel(static::MODEL_NAME);
     }
     protected function getData($key=null) {
         return isset($key) ? $this->data[$key] ?? null : $this->data;
