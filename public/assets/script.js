@@ -8,7 +8,7 @@ $(() => {
                 maxlength: isText ? 20000 : 40,
             });
             if (!isText) {
-                field.attr({type: prop.contraint || 'text'});
+                field.attr({type: prop.constraint || 'text'});
                 if (prop['autocomplete']) {
                     field.autocomplete({source: '/suggestions/' + prop['name']});
                 }
