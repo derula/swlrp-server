@@ -40,6 +40,10 @@ QUERY;
         $statement->closeCursor();
         return $result;
     }
+    public function isRegistered(string $nick): bool {
+        $data = $this->getLoginData($nick);
+        return !empty($data);
+    }
     public function createAccount(string $passwordHash): int {
         $this->getConnection()->prepare(self::Q_CREATE_ACCOUNT)
             ->execute([':pw_hash' => $passwordHash, ':s_hash' => $sessionHash]);

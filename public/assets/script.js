@@ -48,6 +48,8 @@ $(() => {
     $('#changePW').dialog({autoOpen: false, modal: true, buttons: {'Save': savePW, 'Close': function() { $(this).dialog('close') }}});
     $('#pwChanged, #pwChangeFailed').dialog({autoOpen: false, modal: true, buttons: {'OK': function() { $(this).dialog('close') }}});
     $('.accordion').accordion();
+    $('.tabs').tabs();
+    $('input[type=submit]').button();
     $('input[type=password]').on('input', (e) => {
         const t = $(e.target), o = t.closest(':not(label, input)').find('[name=' + t.attr('name') + ']');
         if (o.length > 1) {

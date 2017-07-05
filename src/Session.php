@@ -30,8 +30,7 @@ class Session {
         }
     }
     public function register(string $nick, string $first, string $last, string $password, bool $autoLogin): bool {
-        $data = $this->model->getLoginData($nick);
-        if (!empty($data)) {
+        if ($this->model->isRegistered($nick)) {
             return false;
         }
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
