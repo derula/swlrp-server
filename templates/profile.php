@@ -10,3 +10,6 @@
     <p><?=$this->decorate($prop, 'text')?></p>
     <? endforeach ?>
 <? endforeach ?>
+<? if ($editMode): ?>
+    <button id="edit">Change profile</button>
+<? endif ?>
