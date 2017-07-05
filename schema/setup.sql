@@ -1,5 +1,15 @@
+CREATE TABLE `accounts` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `email` VARCHAR(40) DEFAULT NULL,
+    `password_hash` VARCHAR(255) NOT NULL,
+    `session_hash` VARCHAR(255) DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE (`email`)
+) ENGINE=InnoDB;
+
 CREATE TABLE `characters` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `account_id` int(11) NOT NULL,
     `nick` VARCHAR(40) NOT NULL,
     `first` VARCHAR(255) NOT NULL,
     `last` VARCHAR(255) NOT NULL,

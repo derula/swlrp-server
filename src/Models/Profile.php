@@ -35,11 +35,6 @@ SELECT `value` FROM `character_properties` AS `cp`
 LEFT JOIN `properties` AS `p` ON `cp`.`property_id` = `p`.`id`
 WHERE `name` = :name AND `value` LIKE :term
 QUERY;
-    const Q_SAVE_NAME = <<<'QUERY'
-INSERT INTO `characters`(`nick`, `first`, `last`)
-VALUES (:nick, :first, :last)
-ON DUPLICATE KEY UPDATE `first` = VALUES(`first`), `last` = VALUES(`last`)
-QUERY;
     const Q_SAVE_PROPERTY = <<<'QUERY'
 INSERT INTO `character_properties`(`character_id`, `property_id`, `value`)
 VALUES (:character_id, :property_id, :value)
@@ -71,10 +66,6 @@ QUERY;
             $profile['properties'][$row['key']] = $row['value'];
         }
         return $profile;
-    }
-    public function saveName(string $name, string $first, string $last): bool {
-        $statement = $this->getConnection()->prepare(self::Q_SAVE_NAME);
-        return $statement->execute([':nick' => $name, ':first' => $first, ':last' => $last]);
     }
     public function saveProperties(string $name, array $data): bool {
         $this->getConnection()->beginTransaction();
