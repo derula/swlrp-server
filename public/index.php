@@ -8,8 +8,10 @@ switch($_SERVER['REQUEST_URI']) {
             $app->getAction('Save')->execute();
         }
         echo $app->getView('Editor')->render();
+        break;
     case '/view':
         echo $app->getView('Viewer')->render();
+        break;
     default:
         echo $app->getView('Error')->setCode(404)->render();
 }
