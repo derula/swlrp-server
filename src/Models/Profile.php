@@ -50,14 +50,15 @@ QUERY;
         $statement = $this->getConnection()->prepare(self::Q_LOAD);
         $profile = [];
         if ($statement->execute([':nick' => $name])) {
-            while ($row = $statement->fetch()) {
-                if (isset($row['key'], $row['value'])) {
-                    $profile['properties'][$row['key']] = $row['value'];
-                }
-            }
+            $row = $statement->fetch();
             if (isset($row['name'])) {
                 $profile['name'] = $row['name'];
             }
+            do {
+                if (isset($row['key'], $row['value'])) {
+                    $profile['properties'][$row['key']] = $row['value'];
+                }
+            } while ($row = $statement->fetch());
         }
         return $profile;
     }
