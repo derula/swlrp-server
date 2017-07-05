@@ -13,14 +13,19 @@ abstract class Profile extends LayoutView {
     ];
     /** @var array */
     private $profile;
+    /** @var string */
+    private $requestedName;
     protected function getTitle(): string {
         return $this->getProfile()['name'];
     }
     protected function getContent(): string {
         return $this->renderTemplate('profile', $this->getProfile());
     }
+    protected function setRequestedName(string $name) {
+        $this->requestedName = ucwords($name);
+    }
     protected function getRequestedName(): string {
-        return ucwords($this->getData(0));
+        return $this->requestedName;
     }
     protected function getProfile(): array {
         if (!isset($this->profile)) {

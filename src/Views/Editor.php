@@ -2,7 +2,13 @@
 
 namespace Incertitude\SWLRP\Views;
 
+use Incertitude\SWLRP\Application;
+
 class Editor extends Profile {
+    public function __construct(array $data, Application $application) {
+        parent::__construct($data, $application);
+        $this->setRequestedName($application->getSession()->getNickLoggedIn());
+    }
     protected function getProfile(): array {
         return ['editMode' => true] + parent::getProfile();
     }
