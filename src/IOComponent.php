@@ -12,8 +12,8 @@ abstract class IOComponent {
         $this->data = $data;
         $this->model = $model;
     }
-    protected function getData($key) {
-        return $this->data[$key] ?? null;
+    protected function getData($key=null) {
+        return isset($key) ? $this->data[$key] ?? null : $this->data;
     }
     protected function getModel(): Model {
         return $this->model;
