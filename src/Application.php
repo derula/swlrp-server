@@ -13,7 +13,16 @@ class Application {
     private $pdo;
     /** @var Model[] */
     private $models = [];
-    public function __construct(string $root, array $get=[], array $post=[]) {
+    /** @var string */
+    private $route = '';
+    public function __construct(string $root, array $server=[], array $get=[], array $post=[]) {
+        if (isset($_SERVER['REQUEST_URI'])) {
+            $uri = parse_url($_SERVER['REQUEST_URI']);
+            $uriParts = explode('/', substr($uri['path'] ?? '/', 1));
+            $this->route = array_shift($uriParts) ?: '';
+            $get = $uriParts + $get;
+            $post = $uriParts + $post;
+        }
         $this->get = $get;
         $this->post = $post;
         $this->config = new Config($root . '/config/config.yml');
@@ -22,6 +31,9 @@ class Application {
             $this->config->get('DB', 'user'),
             $this->config->get('DB', 'password')
         );
+    }
+    public function getRoute(): string {
+        return $this->route;
     }
     public function getModel(string $name): Model {
         if (!isset($this->models[$name])) {
