@@ -1,7 +1,7 @@
 <?php
 use Incertitude\SWLRP\Application;
 use Incertitude\SWLRP\Exceptions\HttpError;
-require '../vendor/autoload.php';
+require dirname(__DIR__) . '/vendor/autoload.php';
 $get = explode('/', substr($_SERVER['REQUEST_URI'], 1));
 $route = array_shift($get);
 $app = new Application(dirname(__DIR__), $get, $_POST);
