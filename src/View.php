@@ -4,7 +4,7 @@ namespace Incertitude\SWLRP;
 
 abstract class View extends IOComponent {
     public function render(): string {
-        $this->renderTemplate('layout', [
+        return $this->renderTemplate('layout', [
             'title' => $this->getTitle(),
             'content' => $this->getContent()
         ]);
@@ -18,7 +18,7 @@ abstract class View extends IOComponent {
             include dirname(__DIR__) . "/templates/$name.php";
         } finally {
             $result = ob_get_contents();
-            ob_end_flush();
+            ob_end_clean();
             return $result;
         }
     }
