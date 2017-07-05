@@ -11,13 +11,19 @@ abstract class Profile extends View {
     protected function getTitle(): string {
         return $this->getProfile()['name'];
     }
+    protected function getContent(): string {
+        return $this->renderTemplate('profile', $this->getProfile());
+    }
     protected function getProfile(): array {
         if (!isset($this->profile)) {
-            $this->profile = $this->getModel()->load($this->getData(0));
+            $this->profile = $this->getModel()->load($this->getRequestedName());
         }
         if (empty($this->profile)) {
             throw new ProfileNotFound();
         }
         return $this->profile;
+    }
+    protected function getRequestedName(): string {
+        return ucfirst($this->getData(0));
     }
 }
