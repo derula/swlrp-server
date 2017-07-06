@@ -35,7 +35,7 @@ class Session {
             $_SESSION['nick'] = $nick;
             $sessionHash = '';
             if ($autoLogin) {
-                $sessionHash = crypt("$nick.$password." . time());
+                $sessionHash = hash('sha512', "$nick.$password." . microtime());
                 setcookie('autologin', $sessionHash, (new \DateTime('+ 1 month'))->getTimestamp(), '/');
             } else {
                 setcookie('autologin', '', time() - 3600);
