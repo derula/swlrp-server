@@ -2,7 +2,6 @@
 
 namespace Incertitude\SWLRP\Actions;
 
-use Incertitude\SWLRP\Application;
 use Incertitude\SWLRP\Action;
 
 class SaveAccount extends Action {

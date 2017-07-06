@@ -25,6 +25,10 @@ try {
         case 'suggestions':
             $view = $app->getView('Suggestions');
             break;
+        case 'changepw':
+            $app->getSession()->assertLoggedIn();
+            $app->getAction('UpdatePassword')->execute();
+            exit;
         default:
             $view = $app->getView('Error')->setCode(404);
     }

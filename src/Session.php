@@ -29,20 +29,23 @@ class Session {
             throw new NotLoggedIn();
         }
     }
-    public function login(string $nick, string $password, bool $autoLogin): bool {
+    public function checkPassword(string $nick, string $password): bool {
         $data = $this->model->getLoginData($nick);
-        if (password_verify($password, $data['password_hash'] ?? '')) {
-            $_SESSION['nick'] = $nick;
-            $sessionHash = '';
-            if ($autoLogin) {
-                $sessionHash = hash('sha512', "$nick.$password." . microtime());
-                setcookie('autologin', $sessionHash, (new \DateTime('+ 1 month'))->getTimestamp(), '/');
-            } else {
-                setcookie('autologin', '', time() - 3600);
-            }
-            $this->model->setAutoLoginHash($nick, $sessionHash);
-            return true;
+        return password_verify($password, $data['password_hash'] ?? '');
+    }
+    public function login(string $nick, string $password, bool $autoLogin): bool {
+        if (!$this->checkPassword($nick, $password)) {
+            return false;
         }
-        return false;
+        $_SESSION['nick'] = $nick;
+        $sessionHash = '';
+        if ($autoLogin) {
+            $sessionHash = hash('sha512', "$nick.$password." . microtime());
+            setcookie('autologin', $sessionHash, (new \DateTime('+ 1 month'))->getTimestamp(), '/');
+        } else {
+            setcookie('autologin', '', time() - 3600);
+        }
+        $this->model->setAutoLoginHash($nick, $sessionHash);
+        return true;
     }
 }
