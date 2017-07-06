@@ -8,6 +8,9 @@ try {
     switch($app->getRoute()) {
         case 'front':
             $view = $app->getView('Front');
+            if ('POST' === $_SERVER['REQUEST_METHOD']) {
+                $app->getAction('SaveAccount')->execute();
+            }
             break;
         case 'edit':
             $app->getSession()->assertLoggedIn();
