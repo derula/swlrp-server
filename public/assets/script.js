@@ -10,12 +10,12 @@ $(() => {
             });
             if (!isText) {
                 field.attr({type: prop.constraint || 'text'});
-                if (prop['autocomplete']) {
-                    field.autocomplete({source: '/suggestions/' + prop['name']});
+                if (prop.autocomplete) {
+                    field.autocomplete({source: '/suggestions/' + prop.name});
                 }
             }
-            field.val(prop.value);
-            $(e).html(field)
+            field.val($(e).html());
+            $(e).html(field);
         });
         button.button('option', 'label', 'Preview')
             .after($('<button>').button({label: 'Change password'}).click(changePW))
@@ -24,9 +24,8 @@ $(() => {
     const unwrap = (button) => {
         $('form').children().unwrap();
         $('.editable').each((i, e) => {
-            const field = $('input, textarea', e), value = field.val();
-            $(e).data('prop', $.extend($(e).data('prop'), {value: value}));
-            field.replaceWith(value);
+            const field = $('input, textarea', e);
+            field.replaceWith(field.val());
         });
         button.button('option', 'label', 'Change profile').nextAll().remove();
     };

@@ -13,7 +13,9 @@ class Editor extends Profile {
         return ['editMode' => true] + parent::getProfile();
     }
     protected function decorate(array $prop, string $type) {
-        $data = htmlspecialchars(json_encode($prop));
-        return "<span class=\"editable $type\" data-prop=\"$data\">$prop[value]</span>";
+        $value = $prop['value'];
+        unset($prop['value'], $prop['title']);
+        $data = htmlspecialchars(json_encode(array_filter($prop)));
+        return "<span class=\"editable $type\" data-prop=\"$data\">$value</span>";
     }
 }
