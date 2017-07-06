@@ -15,6 +15,6 @@ class UpdatePassword extends Action {
         }
         $password = $this->getData('pwnew') ?: '';
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-        $this->getModel()->setPasswordHash($name, $this->getData(''));
+        $this->getModel()->setPasswordHash($name, $passwordHash);
     }
 }

@@ -35,10 +35,7 @@ $(() => {
         e.preventDefault();
     };
     const savePW = (e) => {
-        $.post('/changepw', $('#changePW').serialize())
-            .always(() => {$('#changePW').dialog('close')})
-            .done(() => {$('#pwChanged').dialog('open')})
-            .fail(() => {$('#pwChangeFailed').dialog('open')});
+        $('#changePW').find('form').submit();
         e.preventDefault();
     };
     $('#edit').button({label: 'Change profile'}).click((e) => {
@@ -48,6 +45,11 @@ $(() => {
     $('#changePW').dialog({
         autoOpen: false, modal: true, buttons: {'Save': savePW, 'Close': function() { $(this).dialog('close') }},
         close: (e, ui) => { $(e.target).find('input[type=password]').val('') }
+    }).find('form').submit((e) => {
+        $.post('/changepw', $(e.target).serialize())
+            .done(() => {$('#changePW').dialog('close');$('#pwChanged').dialog('open')})
+            .fail(() => {$('#pwChangeFailed').dialog('open')});
+        e.preventDefault();
     });
     $('#pwChanged, #pwChangeFailed').dialog({autoOpen: false, modal: true, buttons: {'OK': function() { $(this).dialog('close') }}});
     $('.accordion').accordion();
