@@ -7,10 +7,10 @@ $app = new Application(dirname(__DIR__), $_SERVER, $_GET, $_POST);
 try {
     switch($app->getRoute()) {
         case 'front':
-            $view = $app->getView('Front');
             if ('POST' === $_SERVER['REQUEST_METHOD']) {
                 $app->getAction('SaveAccount')->execute();
             }
+            $view = $app->getView('Front');
             break;
         case 'edit':
             $app->getSession()->assertLoggedIn();
