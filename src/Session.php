@@ -19,13 +19,13 @@ class Session {
         }
     }
     public function getNickLoggedIn(): string {
-        return $_SESSION['nick'];
+        return $_SESSION['nick'] ?? '';
     }
     public function isLoggedIn() {
         return isset($_SESSION['nick']);
     }
     public function assertLoggedIn() {
-        if (!$this->isLoggedIn($nick)) {
+        if (!$this->isLoggedIn()) {
             throw new NotLoggedIn();
         }
     }
@@ -33,9 +33,9 @@ class Session {
         $data = $this->model->getLoginData($nick);
         if (password_verify($password, $data['password_hash'] ?? '')) {
             $_SESSION['nick'] = $nick;
-            $sessionHash = crypt("$first.$nick.$last.$password." . time());
-            if ($autologin) {
-                setcookie($sessionHash);
+            if ($autoLogin) {
+                $sessionHash = crypt("$nick.$password." . time());
+                setcookie('autologin', $sessionHash);
             }
             return true;
         }
