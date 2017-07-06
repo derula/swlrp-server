@@ -11,8 +11,8 @@ class Session {
     public function __construct(Account $model) {
         $this->model = $model;
         session_start();
-        if (!isset($_SESSION['nick']) && isset($_COOKIES['autologin'])) {
-            $nick = $this->model->getAutoLoginNick($_COOKIES['autologin']);
+        if (!isset($_SESSION['nick']) && isset($_COOKIE['autologin'])) {
+            $nick = $this->model->getAutoLoginNick($_COOKIE['autologin']);
             if (!empty($nick)) {
                 $_SESSION['nick'] = $nick;
             }
@@ -33,10 +33,14 @@ class Session {
         $data = $this->model->getLoginData($nick);
         if (password_verify($password, $data['password_hash'] ?? '')) {
             $_SESSION['nick'] = $nick;
+            $sessionHash = '';
             if ($autoLogin) {
                 $sessionHash = crypt("$nick.$password." . time());
-                setcookie('autologin', $sessionHash);
+                setcookie('autologin', $sessionHash, (new \DateTime('+ 1 month'))->getTimestamp(), '/');
+            } else {
+                setcookie('autologin', '', time() - 3600);
             }
+            $this->model->setAutoLoginHash($nick, $sessionHash);
             return true;
         }
         return false;

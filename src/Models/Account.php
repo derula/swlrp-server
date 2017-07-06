@@ -18,9 +18,15 @@ FROM `characters` AS `c`
 INNER JOIN `accounts` AS `a` ON `c`.`account_id` = `a`.`id`
 WHERE `session_hash` = :hash
 QUERY;
+    const Q_SET_AUTOLOGIN_HASH = <<<'QUERY'
+UPDATE `accounts` AS `a`
+INNER JOIN `characters` AS `c` ON `c`.`account_id` = `a`.`id`
+SET `session_hash` = :hash
+WHERE `nick` = :nick
+QUERY;
     const Q_CREATE_ACCOUNT = <<<'QUERY'
 INSERT INTO `accounts` (`password_hash`)
-VALUES (:pw_hash)
+VALUES (:hash)
 QUERY;
     const Q_SAVE_NAME = <<<'QUERY'
 INSERT INTO `characters`(`account_id`, `nick`, `first`, `last`)
@@ -42,6 +48,10 @@ QUERY;
         $statement->closeCursor();
         return $result;
     }
+    public function setAutoLoginHash(string $nick, string $sessionHash): bool {
+        return $this->getConnection()->prepare(self::Q_SET_AUTOLOGIN_HASH)
+            ->execute([':nick' => $nick, ':hash' => $sessionHash]);
+    }
     public function isRegistered(string $nick): bool {
         $data = $this->getLoginData($nick);
         return !empty($data);
@@ -50,7 +60,7 @@ QUERY;
         $this->getConnection()->beginTransaction();
         try {
             $this->getConnection()->prepare(self::Q_CREATE_ACCOUNT)
-                ->execute([':pw_hash' => $passwordHash]);
+                ->execute([':hash' => $passwordHash]);
             $accountId = $this->getConnection()->lastInsertId();
             $statement = $this->getConnection()->prepare(self::Q_SAVE_NAME);
             $result = $statement->execute([
