@@ -19,5 +19,5 @@
     <hr />
     <button id="edit"></button>
 </footer>
-<?=$this->renderTemplate('changePW', ['name' => $this->getRequestedName()])?>
+<?=$this->renderTemplate('editorDialogs', ['name' => $this->getRequestedName()])?>
 <? endif ?>

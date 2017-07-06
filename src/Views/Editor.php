@@ -16,6 +16,6 @@ class Editor extends Profile {
         $value = $prop['value'];
         unset($prop['value'], $prop['title']);
         $data = htmlspecialchars(json_encode(array_filter($prop)));
-        return "<span class=\"editable $type\" data-prop=\"$data\">$value</span>";
+        return "<div class=\"editable $type\" data-prop=\"$data\">$value</div>";
     }
 }

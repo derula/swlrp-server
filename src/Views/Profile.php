@@ -9,7 +9,7 @@ abstract class Profile extends LayoutView {
     const PROP_DEFAULTS = [
         'name' => '',
         'autocomplete' => false,
-        'constraint' => 'none',
+        'constraint' => null,
     ];
     /** @var array */
     private $profile;

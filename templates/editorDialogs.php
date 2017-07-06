@@ -15,3 +15,8 @@
     The password for <?=$name?> could not be changed.<br />
     Please make sure to enter the old password correctly.
 </dialog>
+<dialog id="maxLength" title="Maximum length reached">
+    Oh boy! <?=$name?> sure has a detailed backstory!<br />
+    This is appreciated; however, the input length is currently limited to 20000 characters.<br />
+    Please stay under this limit!
+</dialog>
