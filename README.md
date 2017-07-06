@@ -6,6 +6,11 @@
   ```
   git clone https://github.com/derula/swlrp-server.git
   ```
+- Install dependencies:
+  ```
+  cd swlrp-server
+  composer install
+  ```
 - Create the config file:
   ```
   cd swlrp-server/config
