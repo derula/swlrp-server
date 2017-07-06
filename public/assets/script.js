@@ -45,7 +45,10 @@ $(() => {
         ($('body').children().is('form') ? unwrap : wrap)($(e.target));
         e.preventDefault();
     });
-    $('#changePW').dialog({autoOpen: false, modal: true, buttons: {'Save': savePW, 'Close': function() { $(this).dialog('close') }}});
+    $('#changePW').dialog({
+        autoOpen: false, modal: true, buttons: {'Save': savePW, 'Close': function() { $(this).dialog('close') }},
+        close: (e, ui) => { $(e.target).find('input[type=password]').val('') }
+    });
     $('#pwChanged, #pwChangeFailed').dialog({autoOpen: false, modal: true, buttons: {'OK': function() { $(this).dialog('close') }}});
     $('.accordion').accordion();
     $('.tabs').tabs();
