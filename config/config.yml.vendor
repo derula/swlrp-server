@@ -2,6 +2,8 @@ DB:
   dsn: "mysql:dbname=<dbname>;host=<host>"
   user: <user>
   password: <password>
+TinyMCE:
+  apiKey: <api-key>
 Models:
   Profile:
     - title: Appearance

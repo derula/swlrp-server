@@ -38,6 +38,9 @@ class Application {
     public function getRoute(): string {
         return $this->route;
     }
+    public function getConfig(): Config {
+        return $this->config;
+    }
     public function getSession(): Session {
         return $this->session;
     }

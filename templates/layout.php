@@ -6,7 +6,7 @@
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"
         integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
         crossorigin="anonymous"></script>
-<script src="//cloud.tinymce.com/stable/tinymce.min.js?apiKey=m1gne5col2chg4y4ell7pcr5cxxubll30wm8a32l4k3z89e4"></script>
+<script src="//cloud.tinymce.com/stable/tinymce.min.js?apiKey=<?=$mceApiKey?>"></script>
 <script src="/assets/script.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 <link rel="stylesheet" href="/assets/style.css" />
