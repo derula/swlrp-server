@@ -8,8 +8,13 @@ use Incertitude\SWLRP\Models\Account;
 class Session {
     /** @var Account */
     private $model;
-    public function __construct(Account $model) {
+    /** @var bool */
+    private $useSecureCookies;
+    public function __construct(Account $model, bool $useSecureCookies) {
         $this->model = $model;
+        $this->useSecureCookies = $useSecureCookies;
+        ini_set('session.cookie_httponly', true);
+        ini_set('session.cookie_secure', $useSecureCookies);
         session_start();
         if (!isset($_SESSION['nick']) && isset($_COOKIE['autologin'])) {
             $nick = $this->model->getAutoLoginNick($_COOKIE['autologin']);
@@ -41,7 +46,10 @@ class Session {
         $sessionHash = '';
         if ($autoLogin) {
             $sessionHash = hash('sha512', "$nick.$password." . microtime());
-            setcookie('autologin', $sessionHash, (new \DateTime('+ 1 month'))->getTimestamp(), '/');
+            setcookie(
+                'autologin', $sessionHash, (new \DateTime('+ 1 month'))->getTimestamp(),
+                '/', '', $this->useSecureCookies, true
+            );
         } else {
             setcookie('autologin', '', time() - 3600);
         }

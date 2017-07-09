@@ -33,7 +33,7 @@ class Application {
             $this->config->get('DB', 'user'),
             $this->config->get('DB', 'password')
         );
-        $this->session = new Session($this->getModel('Account'));
+        $this->session = new Session($this->getModel('Account'), !empty($_SERVER['HTTPS']));
     }
     public function getRoute(): string {
         return $this->route;
