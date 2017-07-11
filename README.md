@@ -6,7 +6,7 @@
   ```
   apt-get install composer apache2 libapache2-mod-php php7.0-mysql mysql-server-5.7
   ```
-## Setup instructions
+## Setup instructions (command-line)
 
 - Clone the repository:
   ```
@@ -16,6 +16,12 @@
   ```
   cd swlrp-server/
   composer install
+  ```
+- Create the database in the MySQL (if it doesn't already exist):
+  ```
+  mysql -u <username> -p
+  CREATE DATABASE <dbname>
+  exit
   ```
 - Create the config file in swlrp-server/config/
   ```
@@ -27,10 +33,7 @@
 - Execute schema/setup.sql in your database
   ```
   cd schema/
-  mysql -u <username> -p
-  CREATE DATABASE <dbname>
-  exit
-  mysql -u <username> -p < setup.sql
+  mysql <dbname> -u <username> -p < setup.sql
   ```
 - Run the refresh_properties script in swlrp-server/scripts/
   ```
