@@ -1,5 +1,11 @@
 # SWLRP server
 
+## Dependencies
+
+- For Ubuntu with Apache:
+  ```
+  apt-get install composer apache2 libapache2-mod-php php7.0-mysql mysql-server-5.7
+  ```
 ## Setup instructions
 
 - Clone the repository:
@@ -8,18 +14,25 @@
   ```
 - Install dependencies:
   ```
-  cd swlrp-server
+  cd swlrp-server/
   composer install
   ```
-- Create the config file:
+- Create the config file in swlrp-server/config/
   ```
-  cd swlrp-server/config
+  cd config/
   cp config.yml.vendor config.yml
   ```
 - Change the DB section of the config file according to needs
 - (Optional): change the TinyMCE api key in the config file to your own (or just delete the section)
 - Execute schema/setup.sql in your database
-- Run the refresh_properties script:
+  ```
+  cd schema/
+  mysql -u <username> -p
+  CREATE DATABASE <dbname>
+  exit
+  mysql -u <username> -p < setup.sql
+  ```
+- Run the refresh_properties script in swlrp-server/scripts/
   ```
   cd swlrp-server/scripts
   php refresh_properties.php
@@ -27,9 +40,22 @@
 
 ## Setting up the vhost
 
-Simply use the ```public``` folder as webroot.
-Also redirect all requests that would otherwise result in "file not found" back to ```public/index.php```,
+Simply use the ```swlrp-server/public``` folder as webroot.
+Also redirect all requests that would otherwise result in a "404 file not found" back to ```swlrp-server/public/index.php```,
 e.g. using ModRewrite (Apache) or try_files (nginx).
+
+- In Apache, add the following to the .conf file:
+  ```
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)? /index.php?$1 [L,NC]
+  ```
+  Also make sure to enable the rewrite mod and restart Apache:
+  ```
+  a2enmod rewrite
+  service apache2 restart
+  ```
 
 ## Changing available properties
 
