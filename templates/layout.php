@@ -8,6 +8,6 @@
         crossorigin="anonymous"></script>
 <script src="//cloud.tinymce.com/stable/tinymce.min.js?apiKey=<?=$mceApiKey?>"></script>
 <script src="/assets/script.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/dark-hive/jquery-ui.css" />
 <link rel="stylesheet" href="/assets/style.css" />
 <?=$content?>
