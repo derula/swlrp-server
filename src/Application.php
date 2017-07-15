@@ -16,8 +16,9 @@ class Application {
     /** @var Model[] */
     private $models = [];
     /** @var string */
-    private $route = '';
+    private $root = '', $route = '';
     public function __construct(string $root, array $server=[], array $get=[], array $post=[]) {
+        $this->root = $root;
         if (isset($_SERVER['REQUEST_URI'])) {
             $uri = parse_url($_SERVER['REQUEST_URI']);
             $uriParts = explode('/', substr($uri['path'] ?? '/', 1));
@@ -35,6 +36,9 @@ class Application {
         );
         $this->pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
         $this->session = new Session($this->getModel('Account'), !empty($_SERVER['HTTPS']));
+    }
+    public function getRoot(): string {
+        return $this->root;
     }
     public function getRoute(): string {
         return $this->route;
