@@ -33,6 +33,7 @@ class Application {
             $this->config->get('DB', 'user'),
             $this->config->get('DB', 'password')
         );
+        $this->pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
         $this->session = new Session($this->getModel('Account'), !empty($_SERVER['HTTPS']));
     }
     public function getRoute(): string {
