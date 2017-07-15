@@ -75,8 +75,8 @@ QUERY;
             foreach ($statement->execute([':nick' => $name]) ? (array)$statement->fetchAll() : [] as $prop) {
                 $ids[$prop['name']] = $prop;
             }
-            $this->batchSave($this->getConfig('*', 'properties'), $ids, self::Q_SAVE_PROPERTY, $data);
-            $this->batchSave($this->getConfig('*', 'texts'), $ids, self::Q_SAVE_TEXT, $data);
+            $this->batchSave(array_keys($this->getConfig('*', 'properties')), $ids, self::Q_SAVE_PROPERTY, $data);
+            $this->batchSave(array_keys($this->getConfig('*', 'texts')), $ids, self::Q_SAVE_TEXT, $data);
             $this->getConnection()->commit();
         } catch(\Throwable $t) {
             $this->getConnection()->rollback();
@@ -89,11 +89,11 @@ QUERY;
         try {
             $this->getConnection()->prepare(self::Q_DELETE_PROPS)->execute();
             $statement = $this->getConnection()->prepare(self::Q_UPDATE_PROP);
-            foreach ($this->getConfig('*', 'properties') as $prop) {
-                $statement->execute([':name' => $prop['name'], ':type' => 'property']);
+            foreach (array_keys($this->getConfig('*', 'properties')) as $name) {
+                $statement->execute([':name' => $name, ':type' => 'property']);
             }
-            foreach ($this->getConfig('*', 'texts') as $prop) {
-                $statement->execute([':name' => $prop['name'], ':type' => 'text']);
+            foreach (array_keys($this->getConfig('*', 'texts')) as $name) {
+                $statement->execute([':name' => $name, ':type' => 'text']);
             }
             $this->getConnection()->commit();
         } catch(\Throwable $t) {
@@ -111,14 +111,14 @@ QUERY;
     }
     private function batchSave($fields, $ids, $query, $data) {
         $statement = $this->getConnection()->prepare($query);
-        foreach ($fields as $prop) {
-            if (empty($data[$prop['name']]) || empty($ids[$prop['name']])) {
+        foreach ($fields as $name) {
+            if (empty($data[$name]) || empty($ids[$name])) {
                 continue;
             }
             $statement->execute([
-                ':character_id' => $ids[$prop['name']]['character_id'],
-                ':property_id' => $ids[$prop['name']]['property_id'],
-                ':value' => $data[$prop['name']]
+                ':character_id' => $ids[$name]['character_id'],
+                ':property_id' => $ids[$name]['property_id'],
+                ':value' => $data[$name]
             ]);
         }
     }

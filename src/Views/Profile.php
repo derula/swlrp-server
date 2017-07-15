@@ -47,7 +47,6 @@ abstract class Profile extends LayoutView {
             foreach (['properties', 'texts'] as $key) {
                 foreach ($profilePage[$key] as &$prop) {
                     $prop += self::PROP_DEFAULTS;
-                    $prop += ['title' => ucwords($prop['name'])];
                     $prop['value'] = $data['properties'][$prop['name']] ?? '';
                 }
             }
