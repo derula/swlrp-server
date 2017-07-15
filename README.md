@@ -66,7 +66,7 @@ In the Models/Profile section of config.yaml, you can set up which properties an
 Properties are limited to 40 characters, texts allow up to 20000 characters and rich elements.
 For each property or text, you can set certain options:
 
-- name: The name under which the property or text is stored in the database
+- name: The name under which the property or text is stored in the database (equals key if not specified)
 - title: The title of the field to be displayed to the user (only needed if different from the name)
 - autocomplete: Use past values to offer the user an autocomplete popup (properties only)
 - constraint: Limit the input field to certain types of data (properties only)
