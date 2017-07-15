@@ -5,13 +5,16 @@
             "Incertitude\\SWLRP\\": "src/"
         }
     },
-    "require": {
-        "symfony/yaml": "^3.3"
-    },
     "authors": [
         {
             "name": "derula",
             "email": "derula@uglyhorst.de"
         }
-    ]
+    ],
+    "require": {
+        "symfony/yaml": "^3.3"
+    },
+    "require-dev": {
+        "talyssonoc/php-babel-transpiler": "^0.1.0"
+    }
 }
