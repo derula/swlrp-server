@@ -1,7 +1,11 @@
-<section class="accordion">
+<section class="tabs">
+    <ul>
 <? foreach ($structure as $section): ?>
-    <h1><?=$section['title']?></h1>
-    <article>
+        <li><a href="#<?=$section['name']?>"><?=$section['title']?></a></li>
+<? endforeach ?>
+    </ul>
+<? foreach ($structure as $section): ?>
+    <article id="<?=$section['name']?>">
         <dl>
         <? foreach ($section['properties'] as $prop): ?>
             <dt><?=$prop['title']?></dt><dd><?=$this->decorate($prop, 'property')?></dd>
