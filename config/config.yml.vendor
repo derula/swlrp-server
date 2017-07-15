@@ -6,29 +6,29 @@ TinyMCE:
   apiKey: <api-key>
 Models:
   Profile:
-    - title: Appearance
+    appearance:
       properties:
-      - name: eyecolor
-        title: Eyes
-        autocomplete: true
-      - name: nationality
-        autocomplete: true
-      - name: height
-      - name: weight
-      - name: age
-        constraint: number
-      - name: rp_status
-        title: Roleplay Status
-        autocomplete: true
+        eyecolor:
+          title: Eyes
+          autocomplete: true
+        nationality:
+          autocomplete: true
+        height: {}
+        weight: {}
+        age:
+          constraint: number
+        rp_status:
+          title: Roleplay Status
+          autocomplete: true
       texts:
-      - name: description
-    - title: Biography
+        description: {}
+    biography:
       properties:
-      - name: home
-        autocomplete: true
-      - name: birthplace
-        autocomplete: true
-      - name: job
-        autocomplete: true
+        home:
+          autocomplete: true
+        birthplace:
+          autocomplete: true
+        job:
+          autocomplete: true
       texts:
-      - name: history
+        history: {}
