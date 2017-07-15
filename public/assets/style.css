@@ -1,0 +1,126 @@
+body {
+font-family: Arial,sans-serif;
+font-size: 1em;
+margin: 0;
+padding: 0;
+color: #fff;
+background-color:#000;
+}
+
+#container {
+height: 540px;
+width: 650px;
+background: transparent url('/assets/images/metal_background.gif') no-repeat fixed 0px 43px;
+}
+
+#tab_row {
+height:25px;
+width:100%;
+background-color:#000;
+}
+
+div.tab {
+	float:left;
+}
+
+.wrapper {
+height: 515px;
+width: 650px;
+padding:0 15px;
+}
+
+.column_one {
+width:430px;
+height:515px;
+float:left;
+background-image: url('/assets/images/grey_background.png');
+background-size:95% 475px;
+background-repeat:no-repeat;
+}
+
+.column_one .column_text {
+	margin: 5px 10px;
+}
+
+.column_two {
+float:right;
+width:175px;
+height:515px;
+}
+
+.character_name {
+	
+}
+
+.field_title {
+	display:none;
+	
+}
+
+.field_content {
+	font-variant:small-caps;
+	text-align:center;
+}
+
+div { display: block; }
+
+
+h1 { font-variant: small-caps;}
+
+
+h1.tab.inactive {
+	text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    width: 213px;
+    height: 25px;
+	padding-top:5px;
+    background: transparent url('/assets/images/tab_inactive.gif') no-repeat;
+	border: 1px solid rgba(215, 215, 215, .2);
+}
+
+h1.tab.active {
+	text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    width: 213px;
+    height: 25px;
+    background: transparent url('/assets/images/tab_active.gif') no-repeat;
+	border: 1px solid rgba(215, 215, 215, .5);
+}
+
+h2 {}
+
+h3  {}
+
+
+
+/*  Single Column Styles & No Profile Styles*/
+
+#container.single_column, #container.no_profile {
+	background: transparent url('/assets/images/metal_background.gif') no-repeat fixed 0px 0px;
+}
+
+#container.single_column .column_one {
+	width:600px;
+}
+
+#container.single_column .column_one .column_text, #container.no_profile .column_one .column_text {
+	margin:5px 15px;
+	width:90%;
+}
+
+#container.single_column .wrapper, #container.no_profile .wrapper {
+	padding: 25px 15px;
+}
+
+
+
+/* SWLRP Footer */
+#footer {
+	font-size:0.6em;
+	color:#b3b3b3;
+	float:left;
+	clear:both;
+	margin-top:-35px;
+}
