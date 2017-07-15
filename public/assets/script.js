@@ -41,28 +41,28 @@ $(() => {
         button.button('option', 'label', 'Change profile').nextAll().remove();
     };
     const changePW = (e) => {
-        $('#changePW').dialog('open');
         e.preventDefault();
+        $('#changePW').dialog('open');
     };
     const savePW = (e) => {
-        $('#changePW').find('form').submit();
         e.preventDefault();
+        $('#changePW').find('form').submit();
     };
     const getMceLength = () => {
         return $('body', tinymce.get(tinymce.activeEditor.id).contentDocument).html().length;
     };
     $('#edit').button({label: 'Change profile'}).click((e) => {
-        ($('body').children().is('form') ? unwrap : wrap)($(e.target));
         e.preventDefault();
+        ($('body').children().is('form') ? unwrap : wrap)($(e.target));
     });
     $('#changePW').dialog({
         autoOpen: false, modal: true, buttons: {'Save': savePW, 'Close': function() { $(this).dialog('close') }},
         close: (e, ui) => { $(e.target).find('input[type=password]').val('') }
     }).find('form').submit((e) => {
+        e.preventDefault();
         $.post('/changepw', $(e.target).serialize())
             .done(() => {$('#changePW').dialog('close');$('#pwChanged').dialog('open')})
             .fail(() => {$('#pwChangeFailed').dialog('open')});
-        e.preventDefault();
     });
     $('#pwChanged, #pwChangeFailed, #maxLength').dialog({autoOpen: false, modal: true, buttons: {'OK': function() { $(this).dialog('close') }}});
     $('.accordion').accordion();
