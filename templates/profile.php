@@ -1,27 +1,40 @@
-<section class="tabs">
-    <ul>
+<div id="container" <? if ($editMode): ?>class="editmode"<? endif ?>>
+    <div id="tabs" class="tabs">
+        <ul>
 <? foreach ($structure as $section): ?>
-        <li><a href="#<?=$section['name']?>"><?=$section['title']?></a></li>
+            <li><a href="#tabs-<?=$section['name']?>"><?=$section['title']?></a></li>
 <? endforeach ?>
-    </ul>
+        </ul>
 <? foreach ($structure as $section): ?>
-    <article id="<?=$section['name']?>">
-        <dl>
-        <? foreach ($section['properties'] as $prop): ?>
-            <dt><?=$prop['title']?></dt><dd><?=$this->decorate($prop, 'property')?></dd>
-        <? endforeach ?>
-        </dl>
-        <? foreach ($section['texts'] as $prop): ?>
-        <?=$prop['title']?>
-        <p><?=$this->decorate($prop, 'text')?></p>
-        <? endforeach ?>
-    </article>
+        <div id="tabs-<?=$section['name']?>" class="wrapper">
+            <div class="column_one">
+                <div class="column_text">
+<? foreach ($section['texts'] as $prop): ?>
+                    <div>
+                        <h3><?=$prop['title']?></h3>
+                        <p><?=$this->decorate($prop, 'text')?></p>
+                    </div>
 <? endforeach ?>
-</section>
+                </div>
+            </div>
+            <div class="column_two">
+                <div class="column_text">
+                    <div class="headshot">
+                        <img src="/assets/images/image_default.png" />
+                    </div>
+<? foreach ($section['properties'] as $prop): ?>
+                    <div class="field_title <?=$prop['name']?>"><?=$prop['title']?></div>
+                    <div class="field_content"><?=$this->decorate($prop, 'property')?></div>
+<? endforeach ?>
+                </div>
+            </div>
+        </div>
+<? endforeach ?>
+    </div>
 <? if ($editMode): ?>
-<footer>
-    <hr />
-    <button id="edit"></button>
-</footer>
+    <div id="editbuttons">
+        <button id="edit"></button>
+    </div>
 <?=$this->renderTemplate('editorDialogs', ['name' => $this->getRequestedName()])?>
 <? endif ?>
+</div>

@@ -1,0 +1,310 @@
+body {
+font-family: Arial,sans-serif;
+font-size: 1em;
+margin: 0;
+padding: 0;
+color: #fff;
+background-color:#000;
+}
+
+#container {
+min-height: 700px;
+max-height: 700px;
+min-width: 780px;
+max-width:780px;
+background: transparent url('/assets/images/metal_background_small.png') no-repeat fixed 0px 25px;
+}
+
+.wrapper {
+padding:0 15px;
+}
+
+.column_one {
+min-width:505px;
+width:505px;
+min-height:650px;
+height:650px;
+float:left;
+background-image: url('/assets/images/grey_background.png');
+background-size:100% 630px;
+background-repeat:no-repeat;
+}
+
+.column_one .column_text {
+	margin: 5px 10px 10px 10px;
+	font-size:11pt !important;
+	overflow: auto;
+}
+
+.column_two {
+float:left;
+width:225px;
+height:650px;
+text-align:center;
+}
+
+.column_two .column_text {
+	font-size:14pt !important;
+	overflow: auto;
+}
+
+.field_title {
+	display:inline;
+	font-size:12pt;
+	color: #7eadb5;
+    border-bottom: 1px #666 dotted;
+}
+
+.field_content {
+	font-variant:small-caps;
+	text-align:center;
+}
+
+div { display: block; }
+
+/*body :not(form) .column_two {
+	line-height: 2em;
+}*/
+
+.column_two {
+line-height: 1.5em;
+}
+
+
+/* Hide Column Two on Certain Tabs */
+
+div#tabs-ooc_notes .column_two {
+	display:none;
+}
+
+
+
+/* Styling for Dual Textboxes on OOC Notes */
+
+textarea#property-rp_hooks, textarea#property-ooc {
+height: 200px;
+}
+
+/* Edit Mode */
+
+#container, #container.editmode {
+	max-height:695px;
+	min-height:695px;
+	min-width: 775px;
+    max-width: 775px;
+}
+
+.editmode .column_one, .column_one {
+min-width:490px;
+width:490px;
+/*min-height:670px;
+height:670px;*/
+min-height:580px;
+height:580px;
+float:left;
+background-image: url('/assets/images/grey_background.png');
+background-size:100% 580px;
+background-repeat:no-repeat;
+overflow:auto;
+}
+
+.editmode .column_two, .column_two {
+float:left;
+width:220px;
+/*height:670px;*/
+height:580px;
+text-align:center;
+overflow:auto;
+}
+
+#editbuttons {
+    float: left;
+    clear: both;
+    margin: 20px 0px 0px 25px;
+}
+
+/* Tabs */
+
+#tabs {
+height:25px;
+width:100%;
+background-color:#000;
+}
+
+.ui-widget-content, .ui-widget.ui-widget-content {
+background: none;
+border: transparent;
+}
+
+button.ui-dialog-titlebar-close { display:none; }
+
+.ui-tabs, .ui-tabs .ui-tabs-nav { padding:0px; }
+
+.ui-tabs .ui-tabs-panel .wrapper { padding: 0 15px; }
+
+#tabs  ul li a { font-variant: small-caps; width:100%;}
+
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor { float:none; padding: 0.5em 2.5em;}
+
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited, a.ui-button, a:link.ui-button, a:visited.ui-button, .ui-button { color: #666; }
+
+li.ui-state-default.ui-state-active  > a, li.ui-state-default.ui-state-active > a:link, div#tabs > ul.ui-tabs-nav > li.ui-state-hover > a:hover  {
+color:#FFFFFF;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+	text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    width: 213px;
+    height: 25px;
+	padding-top:5px;
+    background: transparent url('/assets/images/tab_inactive.gif') no-repeat;
+	border-style: none !important;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover , .ui-state-default:hover {
+	text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    width: 213px;
+    height: 25px;
+    background: transparent url('/assets/images/tab_active.gif') no-repeat !important;
+	border-style: none !important;
+}
+
+:focus { outline: none; }
+
+
+h2 {}
+
+h3  {}
+
+
+
+/*  Single Column Styles & No Profile Styles*/
+
+#container.single_column, #container.no_profile {
+	background: transparent url('/assets/images/metal_background_small.png') no-repeat fixed 0px 0px;
+}
+
+#container.single_column .column_one {
+	width:600px;
+	height:650px;
+}
+
+#container.no_profile .column_one {
+	height:650px;
+}
+
+#container.single_column .column_one .column_text, #container.no_profile .column_one .column_text {
+	margin:5px 15px;
+	width:90%;
+	overflow:auto;
+}
+
+#container.single_column .wrapper, #container.no_profile .wrapper {
+	padding: 25px 15px;
+}
+
+
+
+/* SWLRP Footer */
+#footer {
+	font-size:0.6em;
+	color:#b3b3b3;
+	float:left;
+	clear:both;
+	margin-top:-35px;
+}
+
+
+
+/* Form Styles */
+
+input[name="password"], input[name="pwnew"] {
+    background: #FFF;
+    border: transparent;
+    color: #000;
+}
+
+.ui-widget-content, .ui-widget.ui-widget-content {
+	border:1px solid #999;
+}
+
+.column_one .ui-widget-content, .column_one .ui-widget.ui-widget-content {
+	width:90%;
+}
+
+.column_two .ui-widget-content, .column_two .ui-widget.ui-widget-content {
+	width:65%;
+}
+
+.ui-button .ui-icon.ui-checkboxradio-icon {
+	background-image: url(https://code.jquery.com/ui/1.12.1/themes/dark-hive/images/ui-icons_222222_256x240.png);
+}
+
+form textarea {
+	height:450px;
+}
+
+
+/* Larger Screen CSS, just in case */
+
+@media screen and (min-width: 800px) {
+
+#container {
+min-height: 800px;
+max-height:1000px;
+min-width: 800px;
+max-width:1000px;
+background: transparent url('/assets/images/metal_background_large.png') no-repeat fixed 0px 25px;
+}
+
+#container.editmode {
+min-height: 700px;
+max-height: 900px;
+}
+
+#container.single_column, #container.no_profile {
+	background: transparent url('/assets/images/metal_background_large.png') no-repeat fixed 0px 0px;
+}
+
+.column_one {
+min-width:700px;
+min-height:800px;
+float:left;
+background-image: url('/assets/images/grey_background.png');
+background-size:100% 700px;
+background-repeat:no-repeat;
+}
+
+.column_two {
+float:left;
+width:235px;
+height:800px;
+text-align:center;
+}
+
+body :not(form) .column_two {
+line-height: 2em;
+}
+
+body form .column_two {
+line-height: 1.5em;
+}
+
+.column_one .column_text {
+	margin: 15px 20px;
+	overflow:auto;
+}
+
+.no_profile .column_two {
+	width:205px;
+}
+
+form textarea {
+	height:500px;
+}
+
+}
