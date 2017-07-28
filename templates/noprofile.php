@@ -11,12 +11,9 @@
 		 <div class="column_two"> <!-- second column, if needed -->
 		    <div class="column_text">
 		        <div class="headshot"> <!-- Picture image.  needs some if/then logic for default. -->
-			       <img src="/assets/images/image_noprofile.gif" />
+			       <img src="/assets/images/image_noprofile.png" />
 			    </div>
 	         </div> <!-- End column_text -->
 		 </div><!-- End Column 2 -->
-     <div id="footer"> <!-- Need to programmatically include this from a single file. -->
-	    <p>SWLRP Community Roleplay Mod Beta 0.1</p>
-	</div> <!-- End footer div -->
     </div> <!-- End Wrapper div -->
 </div> <!-- End Container div -->
