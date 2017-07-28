@@ -5,7 +5,7 @@
                 <h2><?=$name?></h2>
                 <p><?=$name?> doesn't have a profile yet!</p>
                 <p>Let them know this mod exists!</p>
-                <p>/tell <?=$name?> (( Hey! If you're a roleplayer, have you seen the SWLRP mod? https://swlrp.incertitu.de ))</p>
+                <p>/tell <?=$name?> (( Hey! If you're a roleplayer, have you seen the SWLRP mod? https://profile.swlrp.com ))</p>
             </div>
         </div>
         <div class="column_two">
