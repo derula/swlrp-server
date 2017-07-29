@@ -67,4 +67,11 @@ QUERY;
         }
         return $result;
     }
+    public function setCharacterName(int $accountId, int $characterId, string $first, string $nick, string $last): bool {
+        $statement = $this->getConnection()->prepare(self::Q_SAVE_NAME);
+        return $statement->execute([
+            ':characterId' => $characterId, ':account_id' => $accountId,
+            ':first' => $first, ':nick' => $nick, ':last' => $last
+        ]);
+    }
 }

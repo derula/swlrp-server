@@ -18,6 +18,8 @@ class SaveAccount extends Action {
         if (!isset($accountId)) {
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
             $accountId = $this->getModel()->createAccount($passwordHash, $characterId, ...$names);
+        } else {
+            $this->getModel()->setCharacterName($accountId, $characterId, ...$names);
         }
         $this->getSession()->login($characterId, $password);
     }
