@@ -4,6 +4,7 @@ namespace Incertitude\SWLRP;
 
 use Incertitude\SWLRP\Exceptions\NotLoggedIn;
 use Incertitude\SWLRP\Models\Account;
+use Incertitude\SWLRP\Forwardable;
 
 class Session {
     /** @var Account */
@@ -23,9 +24,13 @@ class Session {
     public function isLoggedIn() {
         return isset($_SESSION['characterId']);
     }
-    public function assertLoggedIn() {
+    public function assertLoggedIn(IOComponent $component = null) {
         if (!$this->isLoggedIn()) {
-            throw new NotLoggedIn();
+            $ex = new NotLoggedIn();
+            if ($component instanceof Forwardable) {
+                $ex->setSuffix($component->getRequestString());
+            }
+            throw $ex;
         }
     }
     public function checkPassword(int $characterId, string $password): bool {
