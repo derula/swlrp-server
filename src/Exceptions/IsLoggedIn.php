@@ -2,6 +2,6 @@
 
 namespace Incertitude\SWLRP\Exceptions;
 
-class AutoLogin extends RedirectError {
+class IsLoggedIn extends RedirectError {
     const LOCATION = '/edit';
 }

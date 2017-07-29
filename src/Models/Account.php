@@ -12,22 +12,10 @@ FROM `accounts` AS `a`
 INNER JOIN `characters` AS `c` ON `c`.`account_id` = `a`.`id`
 WHERE `nick` = :nick
 QUERY;
-    const Q_GET_AUTOLOGIN_NICK = <<<'QUERY'
-SELECT `nick`
-FROM `characters` AS `c`
-INNER JOIN `accounts` AS `a` ON `c`.`account_id` = `a`.`id`
-WHERE `session_hash` = :hash
-QUERY;
     const Q_SET_PASSWORD_HASH = <<<'QUERY'
 UPDATE `accounts` AS `a`
 INNER JOIN `characters` AS `c` ON `c`.`account_id` = `a`.`id`
 SET `password_hash` = :hash
-WHERE `nick` = :nick
-QUERY;
-    const Q_SET_AUTOLOGIN_HASH = <<<'QUERY'
-UPDATE `accounts` AS `a`
-INNER JOIN `characters` AS `c` ON `c`.`account_id` = `a`.`id`
-SET `session_hash` = :hash
 WHERE `nick` = :nick
 QUERY;
     const Q_CREATE_ACCOUNT = <<<'QUERY'
@@ -49,17 +37,6 @@ QUERY;
     }
     public function setPasswordHash(string $nick, string $sessionHash): bool {
         return $this->getConnection()->prepare(self::Q_SET_PASSWORD_HASH)
-            ->execute([':nick' => $nick, ':hash' => $sessionHash]);
-    }
-    public function getAutoLoginNick(string $sessionHash): string {
-        $statement = $this->getConnection()->prepare(self::Q_GET_AUTOLOGIN_NICK);
-        $statement->execute([':hash' => $sessionHash]);
-        $result = $statement->fetch()['nick'] ?? '';
-        $statement->closeCursor();
-        return $result;
-    }
-    public function setAutoLoginHash(string $nick, string $sessionHash): bool {
-        return $this->getConnection()->prepare(self::Q_SET_AUTOLOGIN_HASH)
             ->execute([':nick' => $nick, ':hash' => $sessionHash]);
     }
     public function isRegistered(string $nick): bool {

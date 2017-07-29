@@ -16,6 +16,6 @@ class SaveAccount extends Action {
                 $name, $passwordHash, ucwords($this->getData(1)) ?: '', ucwords($this->getData(2)) ?: ''
             );
         }
-        $this->getSession()->login($name, $password, (bool)$this->getData('autologin'));
+        $this->getSession()->login($name, $password);
     }
 }

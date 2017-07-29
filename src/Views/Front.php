@@ -5,7 +5,7 @@ namespace Incertitude\SWLRP\Views;
 use Incertitude\SWLRP\Application;
 use Incertitude\SWLRP\LayoutView;
 use Incertitude\SWLRP\Session;
-use Incertitude\SWLRP\Exceptions\AutoLogin;
+use Incertitude\SWLRP\Exceptions\IsLoggedIn;
 
 class Front extends LayoutView {
     const MODEL_NAME = 'Account';
@@ -30,7 +30,7 @@ class Front extends LayoutView {
         } elseif (!$this->session->isLoggedIn($this->getData(0))) {
             $this->state = $this->getModel()->isRegistered($nick) ? self::STATE_LOGIN : self::STATE_REGISTER;
         } else {
-            throw new AutoLogin();
+            throw new IsLoggedIn();
         }
     }
     protected function getTitle(): string {
