@@ -13,11 +13,11 @@ try {
             $view = $app->getView('Front');
             break;
         case 'edit':
-            $app->getSession()->assertLoggedIn();
+            $view = $app->getView('Editor');
+            $app->getSession()->assertLoggedIn($view);
             if ('POST' === $_SERVER['REQUEST_METHOD']) {
                 $app->getAction('SaveProfile')->execute();
             }
-            $view = $app->getView('Editor');
             break;
         case 'view':
             $view = $app->getView('Viewer');
