@@ -28,11 +28,14 @@ abstract class Model {
         array_unshift($keys, 'Models', (new \ReflectionClass($this))->getShortName());
         return $this->config->get(...$keys);
     }
-    private function populateData(&$data) {
+    private function populateData(&$data, $level = 0) {
         foreach ($data as $key => &$value) {
             if (is_array($value)) {
-                $this->populateData($value);
-                if (!is_numeric($key) && !in_array($key, ['texts', 'properties'])) {
+                if (0 === $level) {
+                    $value += ['texts' => [], 'properties' => []];
+                }
+                $this->populateData($value, $level + 1);
+                if (!is_numeric($key) && 1 !== $level) {
                     $value += [
                         'name' => $key,
                         'title' => ucwords($key),
