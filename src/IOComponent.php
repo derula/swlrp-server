@@ -15,6 +15,13 @@ abstract class IOComponent {
     protected function getData($key=null) {
         return isset($key) ? $this->data[$key] ?? null : $this->data;
     }
+    protected function getNameData(): array {
+        $names = [];
+        foreach (['first', 'nick', 'last'] as $type) {
+            $names[$type] = ucwords($this->getData($type) ?: '');
+        }
+        return $names;
+    }
     protected function getModel(): Model {
         return $this->model;
     }

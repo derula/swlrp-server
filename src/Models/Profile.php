@@ -8,9 +8,10 @@ class Profile extends Model {
     const Q_GET_CHARACTER = <<<'QUERY'
 SELECT
     `id`,
+    `nick`,
     CONCAT(`first`, ' "', `nick`, '" ', `last`) AS `name`
 FROM `characters`
-WHERE `nick` = :nick
+WHERE `id` = :id
 QUERY;
     const Q_GET_IDS = <<<'QUERY'
 SELECT
@@ -18,7 +19,7 @@ SELECT
     `p`.`id` AS `property_id`,
     `name`
 FROM `properties` AS `p`
-    LEFT JOIN `characters` AS `c` ON `c`.`nick` = :nick
+    LEFT JOIN `characters` AS `c` ON `c`.`id` = :id
 WHERE `deleted` = 0
 QUERY;
     const Q_LOAD_PROPERTIES = <<<'QUERY'
@@ -51,15 +52,15 @@ INSERT INTO `properties`(`name`, `type`, `deleted`)
 VALUES (:name, :type, 0)
 ON DUPLICATE KEY UPDATE `type` = VALUES(`type`), `deleted` = 0
 QUERY;
-    public function load(string $name): array {
+    public function load(int $id): array {
         $statement = $this->getConnection()->prepare(self::Q_GET_CHARACTER);
-        $statement->execute([':nick' => $name]);
+        $statement->execute([':id' => $id]);
         $row = $statement->fetch();
         $statement->closeCursor();
         if (!isset($row['name'])) {
             return [];
         }
-        $profile = ['name' => $row['name']];
+        $profile = $row;
         $statement = $this->getConnection()->prepare(self::Q_LOAD_PROPERTIES);
         $statement->execute([':character_id' => $row['id'] ?? 0]);
         while ($row = $statement->fetch()) {
@@ -67,12 +68,12 @@ QUERY;
         }
         return $profile;
     }
-    public function saveProperties(string $name, array $data): bool {
+    public function saveProperties(int $id, array $data): bool {
         $this->getConnection()->beginTransaction();
         try {
             $statement = $this->getConnection()->prepare(self::Q_GET_IDS);
             $ids = [];
-            foreach ($statement->execute([':nick' => $name]) ? (array)$statement->fetchAll() : [] as $prop) {
+            foreach ($statement->execute([':id' => $id]) ? (array)$statement->fetchAll() : [] as $prop) {
                 $ids[$prop['name']] = $prop;
             }
             $this->batchSave(array_keys($this->getConfig('*', 'properties')), $ids, self::Q_SAVE_PROPERTY, $data);

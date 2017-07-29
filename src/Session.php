@@ -16,44 +16,27 @@ class Session {
         ini_set('session.cookie_httponly', true);
         ini_set('session.cookie_secure', $useSecureCookies);
         session_start();
-        if (!isset($_SESSION['nick']) && isset($_COOKIE['autologin'])) {
-            $nick = $this->model->getAutoLoginNick($_COOKIE['autologin']);
-            if (!empty($nick)) {
-                $_SESSION['nick'] = $nick;
-            }
-        }
     }
-    public function getNickLoggedIn(): string {
-        return $_SESSION['nick'] ?? '';
+    public function getCharacterId(): int {
+        return $_SESSION['characterId'] ?? 0;
     }
     public function isLoggedIn() {
-        return isset($_SESSION['nick']);
+        return isset($_SESSION['characterId']);
     }
     public function assertLoggedIn() {
         if (!$this->isLoggedIn()) {
             throw new NotLoggedIn();
         }
     }
-    public function checkPassword(string $nick, string $password): bool {
-        $data = $this->model->getLoginData($nick);
+    public function checkPassword(int $characterId, string $password): bool {
+        $data = $this->model->getLoginData($characterId);
         return password_verify($password, $data['password_hash'] ?? '');
     }
-    public function login(string $nick, string $password, bool $autoLogin): bool {
-        if (!$this->checkPassword($nick, $password)) {
+    public function login(int $characterId, string $password): bool {
+        if (!$this->checkPassword($characterId, $password)) {
             return false;
         }
-        $_SESSION['nick'] = $nick;
-        $sessionHash = '';
-        if ($autoLogin) {
-            $sessionHash = hash('sha512', "$nick.$password." . microtime());
-            setcookie(
-                'autologin', $sessionHash, (new \DateTime('+ 1 month'))->getTimestamp(),
-                '/', '', $this->useSecureCookies, true
-            );
-        } else {
-            setcookie('autologin', '', time() - 3600);
-        }
-        $this->model->setAutoLoginHash($nick, $sessionHash);
+        $_SESSION['characterId'] = $characterId;
         return true;
     }
 }

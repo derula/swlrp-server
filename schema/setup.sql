@@ -8,14 +8,13 @@ CREATE TABLE `accounts` (
 ) ENGINE=InnoDB;
 
 CREATE TABLE `characters` (
-    `id` INT(11) NOT NULL AUTO_INCREMENT,
-    `account_id` int(11) NOT NULL,
-    `nick` VARCHAR(40) NOT NULL,
+    `id` INT(11) NOT NULL,
+    `account_id` INT(11) NOT NULL,
     `first` VARCHAR(255) NOT NULL,
+    `nick` VARCHAR(255) NOT NULL,
     `last` VARCHAR(255) NOT NULL,
     `first_write` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (`id`),
-    UNIQUE (`nick`)
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
 CREATE TABLE `properties` (
