@@ -13,24 +13,24 @@ abstract class Profile extends LayoutView {
     ];
     /** @var array */
     private $profile;
-    /** @var string */
-    private $requestedName;
+    /** @var int */
+    private $requestedId;
     protected function getTitle(): string {
         return $this->getProfile()['name'];
     }
     protected function getContent(): string {
         return $this->renderTemplate('profile', $this->getProfile());
     }
-    protected function setRequestedName(string $name) {
-        $this->requestedName = ucwords($name);
+    protected function setRequestedId(int $id) {
+        $this->requestedId = $id;
     }
-    protected function getRequestedName(): string {
-        return $this->requestedName;
+    protected function getRequestedId(): int {
+        return $this->requestedId;
     }
     protected function getProfile(): array {
         if (!isset($this->profile)) {
             $this->profile = [];
-            $data = $this->getModel()->load($this->getRequestedName());
+            $data = $this->getModel()->load($this->getRequestedId());
             if (!empty($data)) {
                 $this->loadProfileData($data);
             }
@@ -41,6 +41,7 @@ abstract class Profile extends LayoutView {
         return $this->profile;
     }
     protected function loadProfileData(array $data) {
+        $this->profile['nick'] = $data['nick'];
         $this->profile['name'] = $data['name'];
         $this->profile['structure'] = $this->getModel()->getMetadata();
         foreach ($this->profile['structure'] as &$profilePage) {

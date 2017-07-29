@@ -8,7 +8,7 @@ use Incertitude\SWLRP\Exceptions\ProfileNotFound;
 class Viewer extends Profile {
     public function __construct(array $data, Application $application) {
         parent::__construct($data, $application);
-        $this->setRequestedName($this->getData(0));
+        $this->setRequestedId($this->getData(0));
     }
     protected function getTitle(): string {
         try {
@@ -25,7 +25,7 @@ class Viewer extends Profile {
         }
     }
     private function getFallbackName(\Exception $ex): string {
-        $name = $this->getRequestedName();
+        $name = $this->getData('nick');
         if (empty($name)) {
             throw $ex;
         }

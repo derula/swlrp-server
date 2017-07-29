@@ -3,12 +3,16 @@
 namespace Incertitude\SWLRP\Actions;
 
 use Incertitude\SWLRP\Action;
+use Incertitude\SWLRP\Models\Profile;
 
+/**
+ * @method Profile getModel()
+ */
 class SaveProfile extends Action {
     public function execute() {
-        $name = $this->getSession()->getNickLoggedIn();
+        $id = $this->getSession()->getCharacterId();
         $this->getModel()->saveProperties(
-            $name,
+            $id,
             $this->getData()
         );
     }
