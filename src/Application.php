@@ -26,8 +26,8 @@ class Application {
             $get = $uriParts + $get;
             $post = $uriParts + $post;
         }
-        $this->get = $get;
-        $this->post = $post;
+        $this->get = array_map('urldecode', $get);
+        $this->post = array_map('urldecode', $post);
         $this->config = new Config($root . '/config/config.yml');
         $this->pdo = new \PDO(
             $this->config->get('DB', 'dsn'),
