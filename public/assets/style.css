@@ -33,7 +33,6 @@ background-repeat:no-repeat;
 .column_one .column_text {
 	margin: 5px 10px 10px 10px;
 	font-size:11pt !important;
-	overflow: auto;
 }
 
 .column_two {
@@ -45,7 +44,6 @@ text-align:center;
 
 .column_two .column_text {
 	font-size:14pt !important;
-	overflow: auto;
 }
 
 .field_title {
@@ -78,13 +76,6 @@ div#tabs-ooc_notes .column_two {
 }
 
 
-
-/* Styling for Dual Textboxes on OOC Notes */
-
-textarea#property-rp_hooks, textarea#property-ooc {
-height: 200px;
-}
-
 /* Edit Mode */
 
 #container, #container.editmode {
@@ -105,7 +96,7 @@ float:left;
 background-image: url('/assets/images/grey_background.png');
 background-size:100% 580px;
 background-repeat:no-repeat;
-overflow:auto;
+overflow-y:auto;
 }
 
 .editmode .column_two, .column_two {
@@ -114,7 +105,7 @@ width:220px;
 /*height:670px;*/
 height:580px;
 text-align:center;
-overflow:auto;
+overflow-y:auto;
 }
 
 #editbuttons {
@@ -200,7 +191,6 @@ h3  {}
 #container.single_column .column_one .column_text, #container.no_profile .column_one .column_text {
 	margin:5px 15px;
 	width:90%;
-	overflow:auto;
 }
 
 #container.single_column .wrapper, #container.no_profile .wrapper {
@@ -241,12 +231,21 @@ input[name="password"], input[name="pwnew"] {
 }
 
 .ui-button .ui-icon.ui-checkboxradio-icon {
-	background-image: url(https://code.jquery.com/ui/1.12.1/themes/dark-hive/images/ui-icons_222222_256x240.png);
+	background-image: url(/components/jquery-ui/themes/dark-hive/images/ui-icons_222222_256x240.png);
 }
 
-form textarea {
-	height:450px;
+.sceditor-container iframe {
+	width: 440px !important;
+	height:400px !important;
 }
+
+/* Styling for Dual Textboxes on OOC Notes */
+
+#tabs-ooc_notes iframe {
+	height: 121px !important;
+}
+
+
 
 
 /* Larger Screen CSS, just in case */
@@ -296,15 +295,10 @@ line-height: 1.5em;
 
 .column_one .column_text {
 	margin: 15px 20px;
-	overflow:auto;
 }
 
 .no_profile .column_two {
 	width:205px;
-}
-
-form textarea {
-	height:500px;
 }
 
 }
