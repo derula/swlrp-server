@@ -9,11 +9,8 @@ use Incertitude\SWLRP\Forwardable;
 class Session {
     /** @var Account */
     private $model;
-    /** @var bool */
-    private $useSecureCookies;
     public function __construct(Account $model, bool $useSecureCookies) {
         $this->model = $model;
-        $this->useSecureCookies = $useSecureCookies;
         ini_set('session.cookie_httponly', true);
         ini_set('session.cookie_secure', $useSecureCookies);
         session_start();
