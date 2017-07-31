@@ -11,8 +11,14 @@
             "email": "derula@uglyhorst.de"
         }
     ],
+    "config": {
+        "component-dir": "public/components"
+    },
     "require": {
-        "symfony/yaml": "^3.3"
+        "symfony/yaml": "^3.3",
+        "sceditor/sceditor": "^1.5",
+        "robloach/component-installer": "^0.2.3",
+        "components/jqueryui": "^1.12"
     },
     "require-dev": {
         "talyssonoc/php-babel-transpiler": "^0.1.0"
