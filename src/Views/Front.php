@@ -31,7 +31,7 @@ class Front extends LayoutView {
         $characterId = $this->getData(0) ?: $this->session->getCharacterId();
         if (empty($characterId)) {
             $this->state = self::STATE_NOT_LOGGED_IN;
-        } elseif (!$this->session->isLoggedIn($this->getData(0))) {
+        } elseif (!$this->session->isLoggedIn()) {
             $this->state = $this->getModel()->isRegistered($characterId) ? self::STATE_LOGIN : self::STATE_REGISTER;
         } else {
             throw new IsLoggedIn();
