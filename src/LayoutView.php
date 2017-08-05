@@ -10,7 +10,6 @@ abstract class LayoutView extends View {
     public function __construct(array $data, Application $application) {
         parent::__construct($data, $application);
         $this->root = $application->getRoot();
-        $this->mceApiKey = $application->getConfig()->get('TinyMCE', 'apiKey');
     }
     public function fileExists(string $fileName): bool {
         return file_exists($this->root . DIRECTORY_SEPARATOR . $fileName);
@@ -22,10 +21,13 @@ abstract class LayoutView extends View {
         return $this->renderTemplate('layout', [
             'title' => $this->getTitle(),
             'content' => $this->getContent(),
-            'mceApiKey' => $this->mceApiKey,
+            'dialogs' => $this->getDialogs(),
             'useCompatJs' => $this->assetExists('script.compat.js'),
         ]);
     }
     abstract protected function getTitle(): string;
     abstract protected function getContent(): string;
+    protected function getDialogs(): string {
+        return '';
+    }
 }

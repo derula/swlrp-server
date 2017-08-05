@@ -113,7 +113,7 @@ QUERY;
     private function batchSave($fields, $ids, $query, $data) {
         $statement = $this->getConnection()->prepare($query);
         foreach ($fields as $name) {
-            if (empty($data[$name]) || empty($ids[$name])) {
+            if (!isset($data[$name]) || empty($ids[$name])) {
                 continue;
             }
             $statement->execute([

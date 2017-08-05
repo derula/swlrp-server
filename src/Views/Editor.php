@@ -20,6 +20,9 @@ class Editor extends Profile implements Forwardable {
     protected function getProfile(): array {
         return ['editMode' => true] + parent::getProfile();
     }
+    protected function getDialogs(): string {
+        return $this->renderTemplate('editorDialogs', ['name' => $this->getProfile()['nick']]);
+    }
     protected function decorate(array $prop, string $type) {
         $value = $prop['value'];
         unset($prop['value'], $prop['title']);

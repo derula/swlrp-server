@@ -1,6 +1,6 @@
 $(() => {
     const wrap = (button) => {
-        $('body').wrapInner('<form method="POST">');
+        $('#main').wrapInner('<form method="POST">');
         $('.editable').each((i, e) => {
             const prop = $(e).data('prop'), isText = $(e).is('._text');
             const field = $(isText ? '<textarea>' : '<input>').attr({
@@ -63,7 +63,7 @@ $(() => {
     };
     $('#edit').button({label: 'Change profile'}).click((e) => {
         e.preventDefault();
-        ($('body').children().is('form') ? unwrap : wrap)($(e.target));
+        ($('#main').children().is('form') ? unwrap : wrap)($(e.target));
     });
     $('#changePW').dialog({
         autoOpen: false, modal: true, buttons: {'Save': savePW, 'Close': function() { $(this).dialog('close') }},

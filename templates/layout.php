@@ -7,4 +7,5 @@
 <link rel="stylesheet" href="/components/jquery-ui/themes/dark-hive/jquery-ui.css" />
 <link rel="stylesheet" href="/components/sceditor/minified/themes/monocons.min.css" />
 <link rel="stylesheet" href="/assets/style.css" />
-<?=$content?>
+<section id="main"><?=$content?></section>
+<?=$dialogs?>
