@@ -21,9 +21,13 @@ abstract class LayoutView extends View {
         return $this->renderTemplate('layout', [
             'title' => $this->getTitle(),
             'content' => $this->getContent(),
+            'dialogs' => $this->getDialogs(),
             'useCompatJs' => $this->assetExists('script.compat.js'),
         ]);
     }
     abstract protected function getTitle(): string;
     abstract protected function getContent(): string;
+    protected function getDialogs(): string {
+        return '';
+    }
 }
