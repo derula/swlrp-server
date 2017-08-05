@@ -24,6 +24,6 @@ class Editor extends Profile implements Forwardable {
         $value = $prop['value'];
         unset($prop['value'], $prop['title']);
         $data = htmlspecialchars(json_encode(array_filter($prop)));
-        return "<div class=\"editable $type\" data-prop=\"$data\">$value</div>";
+        return "<div class=\"editable _$type\" data-prop=\"$data\">$value</div>";
     }
 }

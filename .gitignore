@@ -1,3 +1,4 @@
 /public/assets/*.compat.js
+/public/components
 /config/*.yml
 /vendor/
