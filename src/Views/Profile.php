@@ -40,21 +40,26 @@ abstract class Profile extends LayoutView {
         }
         return $this->profile;
     }
-    protected function loadProfileData(array $data) {
+    protected function &iterateMetaData(): \Generator {
+        foreach ($this->getModel()->getMetadata() as &$section) {
+            foreach (['properties', 'texts'] as $key) {
+                foreach ($section[$key] as &$prop) {
+                    yield $key => $prop;
+                }
+            }
+        }
+    }
+    private function loadProfileData(array $data) {
         $this->profile['nick'] = htmlspecialchars($data['nick']);
         $this->profile['name'] = htmlspecialchars($data['name']);
         $this->profile['structure'] = $this->getModel()->getMetadata();
-        foreach ($this->profile['structure'] as &$profilePage) {
-            foreach (['properties', 'texts'] as $key) {
-                foreach ($profilePage[$key] as &$prop) {
-                    $prop += self::PROP_DEFAULTS;
-                    $value = $data['properties'][$prop['name']] ?? '';
-                    if ('properties' === $key) {
-                        $value = htmlspecialchars($value);
-                    }
-                    $prop['value'] = $value;
-                }
+        foreach($this->iterateMetaData() as $key => &$prop) {
+            $prop += self::PROP_DEFAULTS;
+            $value = $data['properties'][$prop['name']] ?? '';
+            if ('properties' === $key) {
+                $value = htmlspecialchars($value);
             }
+            $prop['value'] = $value;
         }
         $this->profile['editMode'] = false;
     }
