@@ -42,7 +42,11 @@ $(() => {
         $('.editable').each((i, e) => {
             const prop = $(e).data('prop');
             const field = $('input, textarea', e);
-            field.replaceWith($(field.val().substr(0, 20000)));
+            let val = field.val();
+            if ($(e).is('._text')) {
+                val = $.parseHTML(val.substr(0, 20000));
+            }
+            field.replaceWith(val);
         });
         button.button('option', 'label', 'Change profile').nextAll().remove();
     };
