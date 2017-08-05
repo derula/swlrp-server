@@ -40,15 +40,6 @@ abstract class Profile extends LayoutView {
         }
         return $this->profile;
     }
-    protected function &iterateMetaData(): \Generator {
-        foreach ($this->getModel()->getMetadata() as &$section) {
-            foreach (['properties', 'texts'] as $key) {
-                foreach ($section[$key] as &$prop) {
-                    yield $key => $prop;
-                }
-            }
-        }
-    }
     private function loadProfileData(array $data) {
         $this->profile['nick'] = htmlspecialchars($data['nick']);
         $this->profile['name'] = htmlspecialchars($data['name']);
