@@ -43,8 +43,7 @@ abstract class Profile extends LayoutView {
     private function loadProfileData(array $data) {
         $this->profile['nick'] = htmlspecialchars($data['nick']);
         $this->profile['name'] = htmlspecialchars($data['name']);
-        $this->profile['structure'] = $this->getModel()->getMetadata();
-        foreach($this->iterateMetaData() as $key => &$prop) {
+        foreach($this->iterateMetaData($this->profile['structure']) as $key => &$prop) {
             $prop += self::PROP_DEFAULTS;
             $value = $data['properties'][$prop['name']] ?? '';
             if ('properties' === $key) {

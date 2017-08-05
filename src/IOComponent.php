@@ -25,8 +25,9 @@ abstract class IOComponent {
     protected function getModel(): Model {
         return $this->model;
     }
-    protected function &iterateMetaData(): \Generator {
-        foreach ($this->getModel()->getMetadata() as &$section) {
+    protected function &iterateMetaData(array &$output=null): \Generator {
+        $output = $this->getModel()->getMetadata();
+        foreach ($output as &$section) {
             foreach (['properties', 'texts'] as $key) {
                 foreach ($section[$key] as &$prop) {
                     yield $key => $prop;
