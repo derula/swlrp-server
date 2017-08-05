@@ -23,6 +23,10 @@ $(() => {
             emoticonsRoot: '/components/sceditor/',
             width: '100%',
             resizeEnabled: false,
+            toolbar: 'bold,italic,underline,strike,subscript,superscript|' +
+                'left,center,right,justify|font,size,color,removeformat|' +
+                'bulletlist,orderedlist,table,code,quote,horizontalrule|' +
+                'image,email,link,unlink|emoticon,date,time,rtl'
         });
         button.button('option', 'label', 'Preview')
             .after($('<button>').button({label: 'Change password'}).click(changePW))
