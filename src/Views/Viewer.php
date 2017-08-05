@@ -29,6 +29,6 @@ class Viewer extends Profile {
         if (empty($name)) {
             throw $ex;
         }
-        return $name;
+        return htmlspecialchars($name);
     }
 }

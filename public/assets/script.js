@@ -9,13 +9,15 @@ $(() => {
                 name: prop.name,
                 maxlength: isText ? 50000 : 40,
             });
+            let val = $(e).html();
             if (!isText) {
                 field.attr({type: prop.constraint || 'text'});
                 if (prop.autocomplete) {
                     field.autocomplete({source: '/suggestions/' + prop.name});
                 }
+                val = $('<div>').html(val).text();
             }
-            field.val($(e).html());
+            field.val(val);
             $(e).html(field);
         });
         $('textarea', '.editable._text').sceditor({
@@ -44,6 +46,9 @@ $(() => {
             const prop = $(e).data('prop');
             const field = $('input, textarea', e);
             let val = field.val();
+            if (!$(e).is('._text')) {
+                val = $('<div>').text(val).html();
+            }
             field.replaceWith(val);
         });
         button.button('option', 'label', 'Change profile').nextAll().remove();

@@ -41,6 +41,7 @@ class Front extends LayoutView {
         return self::STATES[$this->state][0];
     }
     protected function getContent(): string {
-        return $this->renderTemplate(self::STATES[$this->state][1], ['names' => $this->getNameData()]);
+        $names = array_map('htmlspecialchars', $this->getNameData());
+        return $this->renderTemplate(self::STATES[$this->state][1], ['names' => $names]);
     }
 }
