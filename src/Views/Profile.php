@@ -41,14 +41,18 @@ abstract class Profile extends LayoutView {
         return $this->profile;
     }
     protected function loadProfileData(array $data) {
-        $this->profile['nick'] = $data['nick'];
-        $this->profile['name'] = $data['name'];
+        $this->profile['nick'] = htmlspecialchars($data['nick']);
+        $this->profile['name'] = htmlspecialchars($data['name']);
         $this->profile['structure'] = $this->getModel()->getMetadata();
         foreach ($this->profile['structure'] as &$profilePage) {
             foreach (['properties', 'texts'] as $key) {
                 foreach ($profilePage[$key] as &$prop) {
                     $prop += self::PROP_DEFAULTS;
-                    $prop['value'] = $data['properties'][$prop['name']] ?? '';
+                    $value = $data['properties'][$prop['name']] ?? '';
+                    if ('properties' === $key) {
+                        $value = htmlspecialchars($value);
+                    }
+                    $prop['value'] = $value;
                 }
             }
         }
