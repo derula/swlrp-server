@@ -35,6 +35,6 @@
     <div id="editbuttons">
         <button id="edit"></button>
     </div>
-<?=$this->renderTemplate('editorDialogs', ['name' => $this->getProfile()['nick']])?>
+<?=$this->renderTemplate('editorDialogs', ['name' => $nick])?>
 <? endif ?>
 </div>
