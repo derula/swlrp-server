@@ -234,14 +234,14 @@ input[name="password"], input[name="pwnew"] {
 	background-image: url(/components/jquery-ui/themes/dark-hive/images/ui-icons_222222_256x240.png);
 }
 
-.sceditor-container iframe {
+.sceditor-container iframe, .sceditor-container textarea {
 	width: 440px !important;
 	height:400px !important;
 }
 
 /* Styling for Dual Textboxes on OOC Notes */
 
-#tabs-ooc_notes iframe {
+#tabs-ooc_notes .sceditor-container iframe, #tabs-ooc_notes .sceditor-container textarea {
 	height: 121px !important;
 }
 
