@@ -7,7 +7,7 @@ $(() => {
                 id: 'property-' + prop.name,
                 class: 'ui-widget-content ui-corner-all',
                 name: prop.name,
-                maxlength: isText ? 20000 : 40,
+                maxlength: isText ? 50000 : 40,
             });
             if (!isText) {
                 field.attr({type: prop.constraint || 'text'});
@@ -36,6 +36,7 @@ $(() => {
         $('form').children().unwrap();
         $('> textarea', '.editable._text').each((i, e) => {
             const instance = $(e).sceditor('instance');
+            instance.val($('<div>').html($.parseHTML(instance.val().substr(0, 50000))).html());
             instance.updateOriginal();
             instance.destroy();
         });
@@ -43,9 +44,6 @@ $(() => {
             const prop = $(e).data('prop');
             const field = $('input, textarea', e);
             let val = field.val();
-            if ($(e).is('._text')) {
-                val = $.parseHTML(val.substr(0, 20000));
-            }
             field.replaceWith(val);
         });
         button.button('option', 'label', 'Change profile').nextAll().remove();
