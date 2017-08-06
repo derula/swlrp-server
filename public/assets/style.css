@@ -114,6 +114,11 @@ overflow-y:auto;
     margin: 20px 0px 0px 25px;
 }
 
+#portrait {
+    max-width: 200px;
+    max-height: 200px;
+}
+
 /* Tabs */
 
 #tabs {
