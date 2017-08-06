@@ -9,7 +9,7 @@ use Incertitude\SWLRP\Models\Profile;
  * @method Profile getModel()
  */
 class SaveProfile extends Action {
-    const MAX_LENGTH = ['properties' => 40, 'texts' => 40000];
+    const MAX_LENGTH = ['properties' => 40, 'texts' => 50000];
     public function execute() {
         $data = $this->getData();
         $saveData = [];
