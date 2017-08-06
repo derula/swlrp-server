@@ -1,4 +1,5 @@
 $(() => {
+    const defaultPortrait = '/assets/images/image_default.png';
     const wrap = (button) => {
         $('#main').wrapInner('<form method="POST">');
         $('.editable').each((i, e) => {
@@ -33,7 +34,11 @@ $(() => {
         const portrait = $('#portrait');
         portrait.wrap(
             $('<a>', {href: '#'}).click((e) => {
-                $('#changePortrait').dialog('open').find('input').val(portrait.attr('src'));
+                let oldVal = portrait.attr('src');
+                if (oldVal === defaultPortrait) {
+                    oldVal = '';
+                }
+                $('#changePortrait').dialog('open').find('input').val(oldVal);
             })
         ).after(
             $('<input>', {type: 'hidden', name: 'portrait', value: portrait.attr('src')})
@@ -69,7 +74,7 @@ $(() => {
     const Save = () => { $('#changePW').find('form').submit(); };
     const Apply = () => {
         const url = $('#changePortrait').find('input').val();
-        const src = url || '/assets/images/image_default.png';
+        const src = url || defaultPortrait;
         $('#portrait').attr({src}).next().val(url);
         $('#changePortrait').dialog('close');
     };
