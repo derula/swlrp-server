@@ -13,6 +13,7 @@ CREATE TABLE `characters` (
     `first` VARCHAR(255) NOT NULL,
     `nick` VARCHAR(255) NOT NULL,
     `last` VARCHAR(255) NOT NULL,
+    `portrait` VARCHAR(255) NULL,
     `first_write` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
