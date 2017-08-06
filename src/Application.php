@@ -26,8 +26,8 @@ class Application {
             $get = $uriParts + $get;
             $post = $uriParts + $post;
         }
-        $this->get = array_map('urldecode', $get);
-        $this->post = array_map('urldecode', $post);
+        $this->get = array_map([$this, 'cleanInputData'], $get);
+        $this->post = array_map([$this, 'cleanInputData'], $post);
         $this->config = new Config($root . '/config/config.yml');
         $this->pdo = new \PDO(
             $this->config->get('DB', 'dsn'),
@@ -63,5 +63,8 @@ class Application {
     public function getView(string $name): View {
         $class = __NAMESPACE__ . '\\Views\\' . ucfirst($name);
         return new $class($this->get, $this);
+    }
+    private function cleanInputData(string $data) {
+        return trim(urldecode($data));
     }
 }

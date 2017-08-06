@@ -3,6 +3,7 @@
 namespace Incertitude\SWLRP\Views;
 
 use Incertitude\SWLRP\LayoutView;
+use Incertitude\SWLRP\Application;
 use Incertitude\SWLRP\Exceptions\ProfileNotFound;
 
 abstract class Profile extends LayoutView {
@@ -15,14 +16,15 @@ abstract class Profile extends LayoutView {
     private $profile;
     /** @var int */
     private $requestedId;
+    public function __construct(array $data, Application $application) {
+        parent::__construct($data, $application);
+        $this->requestedId = (int)$this->getData(0) ?: $application->getSession()->getCharacterId();
+    }
     protected function getTitle(): string {
         return $this->getProfile()['name'];
     }
     protected function getContent(): string {
         return $this->renderTemplate('profile', $this->getProfile());
-    }
-    protected function setRequestedId(int $id) {
-        $this->requestedId = $id;
     }
     protected function getRequestedId(): int {
         return $this->requestedId;

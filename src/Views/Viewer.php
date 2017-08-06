@@ -2,14 +2,9 @@
 
 namespace Incertitude\SWLRP\Views;
 
-use Incertitude\SWLRP\Application;
 use Incertitude\SWLRP\Exceptions\ProfileNotFound;
 
 class Viewer extends Profile {
-    public function __construct(array $data, Application $application) {
-        parent::__construct($data, $application);
-        $this->setRequestedId($this->getData(0));
-    }
     protected function getTitle(): string {
         try {
             return parent::getTitle();
