@@ -73,7 +73,7 @@ $(() => {
     };
     const Save = () => { $('#changePW').find('form').submit(); };
     const Apply = () => {
-        const url = $('#changePortrait').find('input').val();
+        const url = $('#changePortrait').find('input').val().trim();
         const src = url || defaultPortrait;
         $('#portrait').attr({src}).next().val(url);
         $('#changePortrait').dialog('close');
