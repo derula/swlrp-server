@@ -6,9 +6,8 @@ use Incertitude\SWLRP\Application;
 use Incertitude\SWLRP\Forwardable;
 
 class Editor extends Profile implements Forwardable {
-    public function __construct(array $data, Application $application) {
-        parent::__construct($data, $application);
-        $this->setRequestedId($application->getSession()->getCharacterId());
+    public function isAccessible(int $characterId): bool {
+        return $characterId === $this->getRequestedId();
     }
     public function getRequestString(): string {
         $id = $this->getData(0);

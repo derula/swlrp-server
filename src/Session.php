@@ -18,13 +18,21 @@ class Session {
     public function getCharacterId(): int {
         return $_SESSION['characterId'] ?? 0;
     }
-    public function isLoggedIn() {
-        return isset($_SESSION['characterId']);
+    public function isLoggedIn(int $characterId = null): bool {
+        if (!isset($_SESSION['characterId'])) {
+            return false;
+        }
+        if (isset($characterId)) {
+            return $_SESSION['characterId'] === $characterId;
+        }
+        return true;
     }
     public function assertLoggedIn(IOComponent $component = null) {
-        if (!$this->isLoggedIn()) {
+        $isForwardable = ($component instanceof Forwardable);
+        $isAccessible = $isForwardable ? $component->isAccessible($this->getCharacterId()) : $this->isLoggedIn();
+        if (!$isAccessible) {
             $ex = new NotLoggedIn();
-            if ($component instanceof Forwardable) {
+            if ($isForwardable) {
                 $ex->setSuffix($component->getRequestString());
             }
             throw $ex;
