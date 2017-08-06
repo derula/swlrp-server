@@ -9,7 +9,8 @@ class Profile extends Model {
 SELECT
     `id`,
     `nick`,
-    CONCAT(`first`, ' "', `nick`, '" ', `last`) AS `name`
+    CONCAT(`first`, ' "', `nick`, '" ', `last`) AS `name`,
+    `portrait`
 FROM `characters`
 WHERE `id` = :id
 QUERY;
@@ -35,6 +36,11 @@ QUERY;
 SELECT `value` FROM `character_properties` AS `cp`
 LEFT JOIN `properties` AS `p` ON `cp`.`property_id` = `p`.`id`
 WHERE `name` = :name AND `value` LIKE :term
+QUERY;
+    const Q_SAVE_PORTRAIT = <<<'QUERY'
+UPDATE `characters`
+SET `portrait` = :portrait
+WHERE `id` = :id
 QUERY;
     const Q_SAVE_PROPERTY = <<<'QUERY'
 INSERT INTO `character_properties`(`character_id`, `property_id`, `value`)
@@ -68,9 +74,12 @@ QUERY;
         }
         return $profile;
     }
-    public function saveProperties(int $id, array $data): bool {
+    public function saveProperties(int $id, string $portrait, array $data): bool {
         $this->getConnection()->beginTransaction();
         try {
+            $this
+                ->getConnection()->prepare(self::Q_SAVE_PORTRAIT)
+                ->execute([':id' => $id, ':portrait' => $portrait]);
             $statement = $this->getConnection()->prepare(self::Q_GET_IDS);
             $ids = [];
             foreach ($statement->execute([':id' => $id]) ? (array)$statement->fetchAll() : [] as $prop) {

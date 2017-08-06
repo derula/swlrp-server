@@ -32,6 +32,6 @@ class SaveProfile extends Action {
             $saveData[$name] = $value;
         }
         $id = $this->getSession()->getCharacterId();
-        $this->getModel()->saveProperties($id, $saveData);
+        $this->getModel()->saveProperties($id, $this->getData('portrait'), $saveData);
     }
 }
