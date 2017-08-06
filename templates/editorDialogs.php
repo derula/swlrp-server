@@ -15,8 +15,9 @@
     The password for <?=$name?> could not be changed.<br />
     Please make sure to enter the old password correctly.
 </dialog>
-<dialog id="maxLength" title="Maximum length reached">
-    Oh boy! <?=$name?> sure has a detailed backstory!<br />
-    This is appreciated; however, the input length is currently limited to 20000 characters.<br />
-    Please stay under this limit!
+<dialog id="changePortrait" title="Change character portrait">
+    <label>
+        Here, you can provide a URL for an image to be used as your character portrait.<br />
+        <input type="text" maxlength="255" class="ui-widget-content ui-corner-all" />
+    </label>
 </dialog>

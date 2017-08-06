@@ -30,12 +30,21 @@ $(() => {
                 'bulletlist,orderedlist,table,code,quote,horizontalrule|' +
                 'image,email,link,unlink|emoticon,date,time,rtl'
         });
+        const portrait = $('#portrait');
+        portrait.wrap(
+            $('<a>', {href: '#'}).click((e) => {
+                $('#changePortrait').dialog('open').find('input').val(portrait.attr('src'));
+            })
+        ).after(
+            $('<input>', {type: 'hidden', name: 'portrait', value: portrait.attr('src')})
+        );
         button.button('option', 'label', 'Preview')
-            .after($('<button>').button({label: 'Change password'}).click(changePW))
-            .after($('<input type="submit">').button({label: 'Save'}));
+            .after($('<button>').button({label: 'Change password'}).click(Change))
+            .after($('<input>', {type: 'submit'}).button({label: 'Save'}));
     };
     const unwrap = (button) => {
-        $('form').children().unwrap();
+        $('#portrait').siblings().remove().addBack().unwrap();
+        $('form', '#main').children().unwrap();
         $('> textarea', '.editable._text').each((i, e) => {
             const instance = $(e).sceditor('instance');
             instance.val($('<div>').html($.parseHTML(instance.val().substr(0, 50000))).html());
@@ -53,20 +62,26 @@ $(() => {
         });
         button.button('option', 'label', 'Change profile').nextAll().remove();
     };
-    const changePW = (e) => {
+    const Change = (e) => {
         e.preventDefault();
         $('#changePW').dialog('open');
     };
-    const savePW = (e) => {
-        e.preventDefault();
-        $('#changePW').find('form').submit();
+    const Save = () => { $('#changePW').find('form').submit(); };
+    const Apply = () => {
+        const url = $('#changePortrait').find('input').val();
+        const src = url || '/assets/images/image_default.png';
+        $('#portrait').attr({src}).next().val(url);
+        $('#changePortrait').dialog('close');
     };
+    const Close = function() { $(this).dialog('close'); };
+    const OK = Close;
     $('#edit').button({label: 'Change profile'}).click((e) => {
         e.preventDefault();
         ($('#main').children().is('form') ? unwrap : wrap)($(e.target));
     });
+    $('#changePortrait').dialog({autoOpen: false, modal: true, buttons: {Apply, Close}});
     $('#changePW').dialog({
-        autoOpen: false, modal: true, buttons: {'Save': savePW, 'Close': function() { $(this).dialog('close') }},
+        autoOpen: false, modal: true, buttons: {Save, Close},
         close: (e, ui) => { $(e.target).find('input[type=password]').val('') }
     }).find('form').submit((e) => {
         e.preventDefault();
@@ -74,7 +89,7 @@ $(() => {
             .done(() => {$('#changePW').dialog('close');$('#pwChanged').dialog('open')})
             .fail(() => {$('#pwChangeFailed').dialog('open')});
     });
-    $('#pwChanged, #pwChangeFailed, #maxLength').dialog({autoOpen: false, modal: true, buttons: {'OK': function() { $(this).dialog('close') }}});
+    $('#pwChanged, #pwChangeFailed').dialog({autoOpen: false, modal: true, buttons: {OK}});
     $('.accordion').accordion();
     $('.tabs').tabs();
     $('input[type=submit]').button();
