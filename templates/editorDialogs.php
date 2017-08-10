@@ -1,6 +1,6 @@
 <dialog id="changePW" title="Change password">
     <form>
-        To change the password for <?=$name?>, please provide your current password as well as the desired new password.<br />
+        Enter the fields below to change the password for<?=$name?>.<br />
         <input name="name" type="hidden" value="<?=$name?>" /><br />
         <label>Old password: <input name="password" type="password" class="ui-widget-content ui-corner-all" /></label><br />
         <label>New password: <input name="pwnew" type="password" class="ui-widget-content ui-corner-all" /></label><br />
@@ -16,8 +16,8 @@
     Please make sure to enter the old password correctly.
 </dialog>
 <dialog id="changePortrait" title="Change character portrait">
-    <label>
-        Here, you can provide a URL for an image to be used as your character portrait.<br />
+    <label>	    Please enter the URL for your character portrait. Recommended size: 200x200.  Images larger than this will be resized to fit.
+	<br />
         <input type="text" maxlength="255" class="ui-widget-content ui-corner-all" />
     </label>
 </dialog>
