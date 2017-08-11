@@ -22,7 +22,7 @@ $(() => {
             $(e).html(field);
         });
         $('textarea', '.editable._text').sceditor({
-            style: '/components/sceditor/minified/jquery.sceditor.default.min.css',
+            style: '/assets/sceditor.min.css',
             emoticonsRoot: '/components/sceditor/',
             width: '100%',
             resizeEnabled: false,
