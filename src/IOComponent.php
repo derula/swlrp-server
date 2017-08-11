@@ -15,6 +15,9 @@ abstract class IOComponent {
     protected function getData($key=null) {
         return isset($key) ? $this->data[$key] ?? null : $this->data;
     }
+    protected function getIntData($key, int $fallback=0): int {
+        return (int)($this->getData($key) ?? $fallback);
+    }
     protected function getNameData(): array {
         $names = [];
         foreach (['first', 'nick', 'last'] as $type) {
