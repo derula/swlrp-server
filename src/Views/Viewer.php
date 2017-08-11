@@ -16,7 +16,11 @@ class Viewer extends Profile {
         try {
             return parent::getContent();
         } catch (ProfileNotFound $ex) {
-            return $this->renderTemplate('noprofile', ['name' => $this->getFallbackName($ex)]);
+            $url = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . '/';
+            return $this->renderTemplate('noprofile', [
+                'name' => $this->getFallbackName($ex),
+                'serverUrl' => htmlspecialchars($url),
+            ]);
         }
     }
     private function getFallbackName(\Exception $ex): string {
