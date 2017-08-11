@@ -11,7 +11,7 @@ use Incertitude\SWLRP\Models\Account;
 class SaveAccount extends Action {
     const MODEL_NAME = 'Account';
     public function execute() {
-        $characterId = (int)$this->getData(0);
+        $characterId = $this->getIntData(0);
         $names = array_values($this->getNameData());
         $accountId = $this->getModel()->getLoginData($characterId)['account_id'] ?? null;
         $password = $this->getData('password');

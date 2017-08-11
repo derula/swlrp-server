@@ -18,7 +18,7 @@ abstract class Profile extends LayoutView {
     private $requestedId;
     public function __construct(array $data, Application $application) {
         parent::__construct($data, $application);
-        $this->requestedId = (int)$this->getData(0) ?: $application->getSession()->getCharacterId();
+        $this->requestedId = $this->getIntData(0, $application->getSession()->getCharacterId());
     }
     protected function getTitle(): string {
         return $this->getProfile()['name'];

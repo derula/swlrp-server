@@ -28,7 +28,7 @@ class Front extends LayoutView {
     public function __construct(array $data, Application $application) {
         parent::__construct($data, $application);
         $this->session = $application->getSession();
-        $characterId = $this->getData(0) ?: $this->session->getCharacterId();
+        $characterId = $this->getIntData(0, $this->session->getCharacterId());
         if (empty($characterId)) {
             $this->state = self::STATE_NOT_LOGGED_IN;
         } elseif (!$this->session->isLoggedIn($characterId)) {
