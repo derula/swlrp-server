@@ -217,10 +217,16 @@ h3  {}
 
 /* Form Styles */
 
-input[name="password"], input[name="pwnew"] {
+input[name="password"], input[name="pwnew"], dialog#changePortrait input {
     background: #FFF;
     border: transparent;
     color: #000;
+}
+
+.ui-dialog { background-color:#333 !important; }
+
+.ui-dialog-content {
+font-size: 0.8em;
 }
 
 .ui-widget-content, .ui-widget.ui-widget-content {
@@ -239,10 +245,71 @@ input[name="password"], input[name="pwnew"] {
 	background-image: url(/components/jquery-ui/themes/dark-hive/images/ui-icons_222222_256x240.png);
 }
 
+
+/* SCE Editor */
+
 .sceditor-container iframe, .sceditor-container textarea {
 	width: 440px !important;
 	height:400px !important;
 }
+
+div.sceditor-toolbar {
+border-bottom:none;
+background:transparent;
+}
+
+.sceditor-container, .sceditor-container iframe, .sceditor-container textarea {
+	color:#ffffff !important;
+	background-color:transparent !important;
+}
+
+/* See also default.min.css for SCEEditor; some styles could not be overwritten */
+
+
+/* Code and Blockquote */
+
+
+blockquote {
+  background: #333;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  color:#fff;
+}
+
+blockquote::before {
+  color: #ccc;
+  content: "\201C";
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote::after {
+  color: #ccc;
+  content: "\A \201D";
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: 0.4em;
+  float:right;
+  white-space:pre;
+}
+
+blockquote p {
+  display: inline;
+}
+
+
+code {
+font-family: Courier, 'New Courier', monospace;
+padding:10px;
+background-color: #000000;
+color: limegreen;
+white-space: pre-wrap;
+word-wrap: break-word;
+}
+
 
 /* Styling for Dual Textboxes on OOC Notes */
 
