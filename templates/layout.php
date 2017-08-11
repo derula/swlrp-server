@@ -6,6 +6,6 @@
 <script src="/assets/script<?=$useCompatJs?'.compat':''?>.js"></script>
 <link rel="stylesheet" href="/components/jquery-ui/themes/dark-hive/jquery-ui.css" />
 <link rel="stylesheet" href="/components/sceditor/minified/themes/monocons.min.css" />
-<link rel="stylesheet" href="/assets/style.css" />
+<link rel="stylesheet" href="/assets/mod.css" />
 <section id="main"><?=$content?></section>
 <?=$dialogs?>
