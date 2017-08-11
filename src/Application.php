@@ -21,7 +21,7 @@ class Application {
         $this->root = $root;
         if (isset($_SERVER['REQUEST_URI'])) {
             $uri = parse_url($_SERVER['REQUEST_URI']);
-            $uriParts = explode('/', substr($uri['path'] ?? '/', 1));
+            $uriParts = array_filter(explode('/', substr($uri['path'] ?? '/', 1)));
             $this->route = array_shift($uriParts) ?: '';
             $get = $uriParts + $get;
             $post = $uriParts + $post;
