@@ -1,4 +1,4 @@
-# SWLRP server
+# SWLRP Roleplay Profile Add-On - Server
 
 ## Dependencies
 

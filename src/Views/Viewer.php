@@ -9,7 +9,7 @@ class Viewer extends Profile {
         try {
             return parent::getTitle();
         } catch (ProfileNotFound $ex) {
-            return $this->getFallbackName($ex) . ' isn\'t using SWLRP!';
+            return $this->getFallbackName($ex) . ' isn\'t using the SWLRP Roleplay Profile Add-On!';
         }
     }
     protected function getContent(): string {
