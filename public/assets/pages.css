@@ -1,0 +1,50 @@
+body {
+	background-color:#000;
+	color:#fff;
+	font-size:10pt;
+	line-height:1.5em;
+}
+
+body > h1 {
+    background: transparent url(/assets/images/swlrpmod_homelogo.png) no-repeat;
+    width: 455px;
+    height: 145px;
+    color: transparent;
+}
+
+p:not(:last-child) { margin-bottom:2em; }
+
+li:not(:last-child) { margin-bottom:15px; }
+
+.ui-accordion .ui-accordion-content {
+height: auto !important;
+}
+
+.Monday {
+	background: transparent url(/assets/images/Monday.jpg) center fixed no-repeat;
+}
+
+.Tuesday {
+	background: transparent url(/assets/images/Tuesday.jpg) center fixed no-repeat;
+}
+
+.Wednesday {
+	background: transparent url(/assets/images/Wednesday.jpg) center no-repeat;
+}
+
+.Thursday {
+	background: transparent url(/assets/images/Thursday.jpg) center no-repeat;
+}
+
+.Friday {
+	background: transparent url(/assets/images/Friday.jpg) center no-repeat;
+}
+
+.Saturday {
+	background: transparent url(/assets/images/Saturday.jpg) center no-repeat;
+}
+
+.Sunday {
+	background: transparent url(/assets/images/Sunday.jpg) center no-repeat;
+}
+
