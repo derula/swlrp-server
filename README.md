@@ -29,7 +29,6 @@
   cp config.yml.vendor config.yml
   ```
 - Change the DB section of the config file according to needs
-- (Optional): change the TinyMCE api key in the config file to your own (or just delete the section)
 - Execute schema/setup.sql in your database
   ```
   cd schema/
