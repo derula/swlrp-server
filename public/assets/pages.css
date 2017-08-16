@@ -6,7 +6,7 @@ body {
     line-height:1.5em;
 }
 
-h1 {
+header {
     background: url(/assets/images/swlrpmod_homelogo.png);
     width: 455px;
     height: 145px;
@@ -30,6 +30,13 @@ pre { overflow:auto; }
 em {
     text-decoration: underline;
     font-style: normal;
+}
+
+footer {
+    margin-top: 10px;
+    font-size: smaller;
+    color: silver;
+    text-align: center;
 }
 
 .Monday { background-image: url(/assets/images/Monday.jpg); }

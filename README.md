@@ -90,3 +90,10 @@ This means:
   - Install a recent version of [V8Js](https://github.com/talyssonoc/react-laravel/blob/master/install_v8js.md).
   - Install composer dev dependencies to get php-babel-transpiler.
   - Run the ```transpile_js``` script.
+
+## Legal note
+
+For the homepage, the repository contains some loading screens that are Copyright Material of Funcom Oslo AS. We have
+written permission from Funcom's legal department to use these on
+[the project's current "official" installation](http://profile.swlrp.com). However, if you want to launch a fork
+website, you may need to ask for permission separately.
