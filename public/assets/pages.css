@@ -1,0 +1,49 @@
+body {
+    background:center fixed;
+    background-size:cover;
+    color:#fff;
+    font-size:10pt;
+    line-height:1.5em;
+}
+
+header {
+    background: url(/assets/images/swlrpmod_homelogo.png);
+    width: 455px;
+    height: 145px;
+    font-size: 0;
+}
+
+p:not(:last-child) { margin-bottom:2em; }
+
+li:not(:last-child), dt { margin-bottom:15px; }
+
+dd { margin-left:0; }
+
+dd:not(:last-child) {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: solid 2px silver;
+}
+
+pre { overflow:auto; }
+
+em {
+    text-decoration: underline;
+    font-style: normal;
+}
+
+footer {
+    margin-top: 10px;
+    font-size: smaller;
+    color: silver;
+    text-align: center;
+}
+
+.Monday { background-image: url(/assets/images/Monday.jpg); }
+.Tuesday { background-image:  url(/assets/images/Tuesday.jpg); }
+.Wednesday { background-image: url(/assets/images/Wednesday.jpg); }
+.Thursday { background-image: url(/assets/images/Thursday.jpg); }
+.Friday { background-image: url(/assets/images/Friday.jpg); }
+.Saturday { background-image: url(/assets/images/Saturday.jpg); }
+.Sunday { background-image: url(/assets/images/Sunday.jpg); }
+
