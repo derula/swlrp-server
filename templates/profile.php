@@ -20,7 +20,7 @@
             <div class="column_two">
                 <div class="column_text">
                     <div class="headshot">
-                        <img id="portrait" src="<?=$portrait ?: '/assets/images/image_default.png'?>" />
+                        <img class="portrait" src="<?=$portrait ?: '/assets/images/image_default.png'?>" />
                     </div>
 <? foreach ($section['properties'] as $prop): ?>
                     <div class="field_title <?=$prop['name']?>"><?=$prop['title']?></div>

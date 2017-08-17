@@ -31,7 +31,7 @@ $(() => {
                 'bulletlist,orderedlist,table,code,quote,horizontalrule|' +
                 'image,email,link,unlink|emoticon,date,time,rtl'
         });
-        const portrait = $('#portrait');
+        const portrait = $('.portrait');
         portrait.wrap(
             $('<a>', {href: '#'}).click((e) => {
                 let oldVal = portrait.attr('src');
@@ -48,7 +48,7 @@ $(() => {
             .after($('<input>', {type: 'submit'}).button({label: 'Save'}));
     };
     const unwrap = (button) => {
-        $('#portrait').siblings().remove().addBack().unwrap();
+        $('.portrait').siblings().remove().addBack().unwrap();
         $('form', '#main').children().unwrap();
         $('> textarea', '.editable._text').each((i, e) => {
             const instance = $(e).sceditor('instance');
@@ -75,7 +75,7 @@ $(() => {
     const Apply = () => {
         const url = $('#changePortrait').find('input').val().trim();
         const src = url || defaultPortrait;
-        $('#portrait').attr({src}).next().val(url);
+        $('.portrait').attr({src}).next().val(url);
         $('#changePortrait').dialog('close');
     };
     const Close = function() { $(this).dialog('close'); };
