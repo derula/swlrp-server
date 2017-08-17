@@ -15,8 +15,8 @@
     The password for <?=$name?> could not be changed.<br />
     Please make sure to enter the old password correctly.
 </dialog>
-<dialog id="changePortrait" title="Change character portrait">
-    <label>	    Please enter the URL for your character portrait. Recommended size: 200x200.  Images larger than this will be resized to fit.
+<dialog id="changePortrait" title="Change portrait">
+    <label>Please enter the URL for your character portrait. Recommended size: 200x200.  Images larger than this will be resized to fit.
 	<br />
         <input type="text" maxlength="255" class="ui-widget-content ui-corner-all" />
     </label>
