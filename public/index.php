@@ -31,6 +31,9 @@ try {
             $app->getSession()->assertLoggedIn();
             $app->getAction('UpdatePassword')->execute();
             exit;
+        case 'download':
+            $app->getAction('Download')->execute();
+            exit;
         case '':
             $app->getAction('ShowHomepage')->execute();
             exit;

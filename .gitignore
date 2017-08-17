@@ -1,5 +1,6 @@
 /public/assets/*.compat.js
 /public/components
+/public/downloads
 /config/*.yml
 /vendor/
 *.old
