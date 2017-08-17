@@ -2,6 +2,7 @@
 use Incertitude\SWLRP\Application;
 use Incertitude\SWLRP\Exceptions\HttpError;
 use Incertitude\SWLRP\Exceptions\RedirectError;
+use Incertitude\SWLRP\Exceptions\GetNewestFile;
 use Incertitude\SWLRP\Exceptions\ShowHomepage;
 require dirname(__DIR__) . '/vendor/autoload.php';
 $app = new Application(dirname(__DIR__), $_SERVER, $_GET, $_POST);
@@ -30,8 +31,12 @@ try {
             $app->getSession()->assertLoggedIn();
             $app->getAction('UpdatePassword')->execute();
             exit;
+        case 'download':
+            $app->getAction('Download')->execute();
+            exit;
         case '':
-            throw new ShowHomepage();
+            $app->getAction('ShowHomepage')->execute();
+            exit;
         default:
             $view = $app->getView('Error')->setCode(404);
     }
