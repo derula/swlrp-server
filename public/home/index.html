@@ -4,14 +4,27 @@
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
         integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.js"
+        integrity="sha256-Bccy5g19sAkVrles3ZHA4T4iPhNY9+1le3UL6cbTpao=" crossorigin="anonymous"></script>
 <script src="/assets/script.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/dark-hive/jquery-ui.css"
       integrity="sha256-430fmdsHlbyhcsmK+R+9wspVgGJBgjkWM5tuB2XC03U=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.css"
+      integrity="sha256-UK1EiopXIL+KVhfbFa8xrmAWPeBjMVdvYMYkTAEv/HI=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.min.css"
+      integrity="sha256-4hqlsNP9KM6+2eA8VUT0kk4RsMRTeS7QGHIM+MZ5sLY=" crossorigin="anonymous" />
 <link rel="stylesheet" href="/assets/pages.css" />
 <script>
     $(() => {
         $("body").addClass($.datepicker.formatDate('DD', new Date()));
-        $('.accordion').accordion({collapsible: true, heightStyle: 'content', active: false});
+        $('.accordion').accordion({
+            collapsible: true, heightStyle: 'content', active: false,
+            activate: (e, ui) => {
+                if (ui.newPanel.is('.slick')) {
+                    ui.newPanel.find('ul').slick({adaptiveHeight:true});
+                }
+            }
+        });
     });
 </script>
 
@@ -91,10 +104,12 @@
 
 
     <h3>Screenshots</h3>
-    <article>
-        <p>
-            Screenshots will be coming soon!
-        </p>
+    <article class="slick">
+        <ul>
+            <li><img alt="Example1" src="assets/images/nothing.jpg" /></li>
+            <li><img alt="Example2" src="assets/images/nothing.jpg" /></li>
+            <li><img alt="Example3" src="assets/images/nothing.jpg" /></li>
+        </ul>
     </article>
 
 
