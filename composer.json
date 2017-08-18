@@ -16,9 +16,6 @@
     },
     "require": {
         "symfony/yaml": "^3.3",
-        "sceditor/sceditor": "^1.5",
-        "robloach/component-installer": "^0.2.3",
-        "components/jqueryui": "^1.12",
         "ezyang/htmlpurifier": "^4.9"
     },
     "require-dev": {
