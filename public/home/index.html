@@ -2,12 +2,12 @@
 <title>SWLRP Roleplay Profile Add-On - Version 1.0</title>
 <script src="/components/jquery/jquery.min.js"></script>
 <script src="/components/jquery-ui/jquery-ui.min.js"></script>
-<script src="/assets/script.js"></script>
 <link rel="stylesheet" href="/components/jquery-ui/themes/dark-hive/jquery-ui.css" />
 <link rel="stylesheet" href="/assets/pages.css" />
 <script>
     $(() => {
         $("body").addClass($.datepicker.formatDate('DD', new Date()));
+        $('.accordion').accordion({collapsible: true, heightStyle: 'content', active: false});
     });
 </script>
 
@@ -31,8 +31,8 @@
             You can download the add-on <a href="/download">here</a>. The current version is 1.0.
         </p>
     </article>
-    
-    
+
+
     <h3>Installing the Add-On - Steam</h3>
     <article>
         <ol>
@@ -175,7 +175,7 @@
                 Q: I'm a Flash / PHP / other developer -- how can I help and contribute?
             </dt>
             <dd>
-                A: You can view, clone, log issues, and contribute to the backend webserver (PHP) at the SWLRP-Server GitHub, at <a href="https://github.com/derula/swlrp-server" target="_blank">https://github.com/derula/swlrp-server</a>.  This is only for the webserver backend.   On the Flash side, if you want to see, clone, or contribute to the in-game Flash portion of the mod, you can contribute at Samera's GitHub at <a href="https://github.com/samera999/SWLRP-Flash" target="_blank">https://github.com/samera999/SWLRP-Flash</a>.  
+                A: You can view, clone, log issues, and contribute to the backend webserver (PHP) at the SWLRP-Server GitHub, at <a href="https://github.com/derula/swlrp-server" target="_blank">https://github.com/derula/swlrp-server</a>.  This is only for the webserver backend.   On the Flash side, if you want to see, clone, or contribute to the in-game Flash portion of the mod, you can contribute at Samera's GitHub at <a href="https://github.com/samera999/SWLRP-Flash" target="_blank">https://github.com/samera999/SWLRP-Flash</a>.
             </dd>
             <dt>
                 Current Known Issues (v 1.0)
