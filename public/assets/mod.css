@@ -43,7 +43,7 @@ text-align:center;
 }
 
 .column_two .column_text {
-	font-size:14pt !important;
+	font-size:10pt;
 }
 
 .field_title {
@@ -60,20 +60,16 @@ text-align:center;
 
 div { display: block; }
 
-/*body :not(form) .column_two {
-	line-height: 2em;
-}*/
-
 .column_two {
 line-height: 1.5em;
 }
 
 
-/* Hide Column Two on Certain Tabs */
+/* Special Styling for OOC Notes Tab */
 
-div#tabs-ooc_notes .column_two {
-	display:none;
-}
+div#tabs-ooc_notes .column_one { width:700px; }
+
+div#tabs-ooc_notes .column_two { display:none; }
 
 
 /* Edit Mode */
@@ -88,8 +84,6 @@ div#tabs-ooc_notes .column_two {
 .editmode .column_one, .column_one {
 min-width:490px;
 width:490px;
-/*min-height:670px;
-height:670px;*/
 min-height:580px;
 height:580px;
 float:left;
@@ -102,7 +96,6 @@ overflow-y:auto;
 .editmode .column_two, .column_two {
 float:left;
 width:220px;
-/*height:670px;*/
 height:580px;
 text-align:center;
 overflow-y:auto;
@@ -170,12 +163,6 @@ color:#FFFFFF;
 }
 
 :focus { outline: none; }
-
-
-h2 {}
-
-h3  {}
-
 
 
 /*  Single Column Styles & No Profile Styles*/
@@ -315,62 +302,4 @@ word-wrap: break-word;
 
 #tabs-ooc_notes .sceditor-container iframe, #tabs-ooc_notes .sceditor-container textarea {
 	height: 121px !important;
-}
-
-
-
-
-/* Larger Screen CSS, just in case */
-
-@media screen and (min-width: 800px) {
-
-#container {
-min-height: 800px;
-max-height:1000px;
-min-width: 800px;
-max-width:1000px;
-background: transparent url('/assets/images/metal_background_large.png') no-repeat fixed 0px 25px;
-}
-
-#container.editmode {
-min-height: 700px;
-max-height: 900px;
-}
-
-#container.single_column, #container.no_profile {
-	background: transparent url('/assets/images/metal_background_large.png') no-repeat fixed 0px 0px;
-}
-
-.column_one {
-min-width:700px;
-min-height:800px;
-float:left;
-background-image: url('/assets/images/grey_background.png');
-background-size:100% 700px;
-background-repeat:no-repeat;
-}
-
-.column_two {
-float:left;
-width:235px;
-height:800px;
-text-align:center;
-}
-
-body :not(form) .column_two {
-line-height: 2em;
-}
-
-body form .column_two {
-line-height: 1.5em;
-}
-
-.column_one .column_text {
-	margin: 15px 20px;
-}
-
-.no_profile .column_two {
-	width:205px;
-}
-
 }
