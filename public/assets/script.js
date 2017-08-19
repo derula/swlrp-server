@@ -65,7 +65,7 @@ $(() => {
             }
             field.replaceWith(val);
         });
-        button.button('option', 'label', 'Change profile').nextAll().remove();
+        button.button('option', 'label', 'Exit preview').nextAll().remove();
     };
     const Change = (e) => {
         e.preventDefault();
