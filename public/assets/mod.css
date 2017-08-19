@@ -236,7 +236,7 @@ font-size: 0.8em;
 /* SCE Editor */
 
 .sceditor-container iframe, .sceditor-container textarea {
-	width: 95% !important;
+	width: 440px !important;
 	height:400px !important;
 }
 
