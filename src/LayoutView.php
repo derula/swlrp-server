@@ -15,8 +15,10 @@ abstract class LayoutView extends View {
     public function assetUrl(string $fileName): string {
         $filePath = $this->assetsPath . DIRECTORY_SEPARATOR . $fileName;
         if ('script.js' === $fileName) {
-            $compatPath = $this->assetsPath . DIRECTORY_SEPARATOR . 'script.compat.js';
+            $compatName = 'script.compat.js';
+            $compatPath = $this->assetsPath . DIRECTORY_SEPARATOR . $compatName;
             if (file_exists($compatPath)) {
+                $fileName = $compatName;
                 $filePath = $compatPath;
             }
         }
