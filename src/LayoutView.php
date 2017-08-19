@@ -6,23 +6,28 @@ use Incertitude\SWLRP\Application;
 
 abstract class LayoutView extends View {
     /** @var string */
-    private $root, $mceApiKey;
+    private $root, $assetsPath;
     public function __construct(array $data, Application $application) {
         parent::__construct($data, $application);
         $this->root = $application->getRoot();
+        $this->assetsPath = $assetPath = join(DIRECTORY_SEPARATOR, [$this->root, 'public', 'assets']);
     }
-    public function fileExists(string $fileName): bool {
-        return file_exists($this->root . DIRECTORY_SEPARATOR . $fileName);
-    }
-    public function assetExists(string $fileName): bool {
-        return $this->fileExists(join(DIRECTORY_SEPARATOR, ['public', 'assets', $fileName]));
+    public function assetUrl(string $fileName): string {
+        $filePath = $this->assetsPath . DIRECTORY_SEPARATOR . $fileName;
+        if ('script.js' === $fileName) {
+            $compatPath = $this->assetsPath . DIRECTORY_SEPARATOR . 'script.compat.js';
+            if (file_exists($compatPath)) {
+                $filePath = $compatPath;
+            }
+        }
+        $mtime = file_exists($filePath) ? filemtime($filePath) : 0;
+        return '/assets/' . $fileName . '?' . $mtime;
     }
     public function render(): string {
         return $this->renderTemplate('layout', [
             'title' => $this->getTitle(),
             'content' => $this->getContent(),
             'dialogs' => $this->getDialogs(),
-            'useCompatJs' => $this->assetExists('script.compat.js'),
         ]);
     }
     abstract protected function getTitle(): string;
