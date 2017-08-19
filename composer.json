@@ -1,5 +1,6 @@
 {
     "name": "incertitude/swlrp",
+    "description": "A PHP-based character profile database, aimed to be used for roleplaying profiles in the game Secret World Legends.",
     "autoload": {
         "psr-4": {
             "Incertitude\\SWLRP\\": "src/"
