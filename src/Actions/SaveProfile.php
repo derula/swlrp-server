@@ -10,15 +10,14 @@ use Incertitude\SWLRP\Models\Profile;
  */
 class SaveProfile extends Action {
     const MAX_LENGTH = ['properties' => 40, 'texts' => 50000];
+    const ALLOWED_STYLES = ['direction: rtl;', 'text-align: center;', 'text-align: right;', 'text-align: justify;'];
     public function execute() {
         $data = $this->getData();
         $saveData = [];
         $hpConfig = \HTMLPurifier_Config::createDefault();
         $hpConfig->set('HTML.Doctype', 'HTML 4.01 Transitional');
         $attrDef = $hpConfig->getHTMLDefinition(true);
-        $attrDef->addAttribute(
-            'p', 'style', new \HTMLPurifier_AttrDef_Enum(['direction: rtl;'])
-        );
+        $attrDef->addAttribute('p', 'style', new \HTMLPurifier_AttrDef_Enum(self::ALLOWED_STYLES));
         $hp = new \HTMLPurifier($hpConfig);
         foreach ($this->iterateMetaData() as $type => $prop) {
             $name = $prop['name'];
