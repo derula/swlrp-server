@@ -236,7 +236,7 @@ font-size: 0.8em;
 /* SCE Editor */
 
 .sceditor-container iframe, .sceditor-container textarea {
-	width: 440px !important;
+	width: 460px !important;
 	height:400px !important;
 }
 
@@ -301,5 +301,6 @@ word-wrap: break-word;
 /* Styling for Dual Textboxes on OOC Notes */
 
 #tabs-ooc_notes .sceditor-container iframe, #tabs-ooc_notes .sceditor-container textarea {
+	width: 670px !important;
 	height: 121px !important;
 }
