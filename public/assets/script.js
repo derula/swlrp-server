@@ -95,7 +95,6 @@ $(() => {
             .fail(() => {$('#pwChangeFailed').dialog('open')});
     });
     $('#pwChanged, #pwChangeFailed').dialog({autoOpen: false, modal: true, buttons: {OK}});
-    $('.accordion').accordion({collapsible: true, heightStyle: 'content', active: false});
     $('.tabs').tabs();
     $('input[type=submit]').button();
     $('input[type=checkbox]').checkboxradio();
