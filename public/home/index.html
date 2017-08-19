@@ -1,13 +1,31 @@
 <!DOCTYPE html>
+<meta charset="utf-8" />
 <title>SWLRP Roleplay Profile Add-On - Version 1.0</title>
-<script src="/components/jquery/jquery.min.js"></script>
-<script src="/components/jquery-ui/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.js"
+        integrity="sha256-Bccy5g19sAkVrles3ZHA4T4iPhNY9+1le3UL6cbTpao=" crossorigin="anonymous"></script>
 <script src="/assets/script.js"></script>
-<link rel="stylesheet" href="/components/jquery-ui/themes/dark-hive/jquery-ui.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/dark-hive/jquery-ui.css"
+      integrity="sha256-430fmdsHlbyhcsmK+R+9wspVgGJBgjkWM5tuB2XC03U=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.css"
+      integrity="sha256-UK1EiopXIL+KVhfbFa8xrmAWPeBjMVdvYMYkTAEv/HI=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.min.css"
+      integrity="sha256-4hqlsNP9KM6+2eA8VUT0kk4RsMRTeS7QGHIM+MZ5sLY=" crossorigin="anonymous" />
 <link rel="stylesheet" href="/assets/pages.css" />
 <script>
     $(() => {
         $("body").addClass($.datepicker.formatDate('DD', new Date()));
+        $('.accordion').accordion({
+            collapsible: true, heightStyle: 'content', active: false,
+            activate: (e, ui) => {
+                if (ui.newPanel.is('.slick')) {
+                    ui.newPanel.find('ul').slick({adaptiveHeight:true});
+                }
+            }
+        });
     });
 </script>
 
@@ -20,8 +38,9 @@
     <article>
         <p>
             The SWLRP Roleplay Profile Add-On allows you to create and view rich, detailed character sheets for
-            roleplaying within <a href="http://www.secretworldlegends.com" target="_blank"><em>Secret World Legends</em></a>. You can add a picture, in-character information and background, and
-            out-of-character notes to express yourself and your character in as much detail as desired.
+            roleplaying within <a href="http://www.secretworldlegends.com" target="_blank"><em>Secret World Legends</em></a>.
+            You can add a picture, in-character information and background, and out-of-character notes to express
+            yourself and your character in as much detail as desired.
         </p>
     </article>
 
@@ -31,8 +50,8 @@
             You can download the add-on <a href="/download">here</a>. The current version is 1.0.
         </p>
     </article>
-    
-    
+
+
     <h3>Installing the Add-On - Steam</h3>
     <article>
         <ol>
@@ -86,10 +105,15 @@
 
 
     <h3>Screenshots</h3>
-    <article>
-        <p>
-            Screenshots will be coming soon!
-        </p>
+    <article class="slick">
+        <ul>
+            <li><img alt="Appearance Tab" src="/home/screenshot_appearance_tab.png" /></li>
+            <li><img alt="Appearance Tab (Edit Mode)" src="/home/screenshot_edit_appearance.jpg" /></li>
+            <li><img alt="OOC Tab" src="/home/screenshot_ooc_tab.png" /></li>
+            <li><img alt="OOC Tab (Edit Mode)" src="/home/screenshot_edit_ooc.jpg" /></li>
+            <li><img alt="'No Profile' Window" src="/home/screenshot_no_profile_window.jpg" /></li>
+            <li><img alt="Friendly Menu Option" src="/home/screenshot_friendly_menu.jpg" /></li>
+        </ul>
     </article>
 
 
@@ -98,8 +122,8 @@
         <p>
             After you download and install the add-on (see the 'Installing the Add-On' sections), log into the game. You
             should see a red 'RP' button at the top of your screen. If you click on the 'RP' button while you do
-            <em>not</em> have someone else targeted (that is, highlighted in a green circle), it will open the screen to register a
-            password or login.
+            <em>not</em> have someone else targeted (that is, highlighted in a green circle), it will open the screen to
+            register a password or login.
         </p>
         <p>
             If you've never used the add-on before on this character, create a password. This is a safety feature to
@@ -157,25 +181,38 @@
                 Q: Does the SWLRP Add-On link to / copy my old TSWRP profile?
             </dt>
             <dd>
-                A: It does not.  The TSWRP mod profiles and the SWLRP Add-On profiles are completely separate.  However, you should be                    able to copy and paste your TSWRP profile directly into your SWLRP Add-On profile.  This will require either having                    both mods installed at the same time (not recommended) or copying your profile from the TSWRP web interface                            (http://www.tswrp.co/character/YourCharacterName).
+                A: It does not. The TSWRP mod profiles and the SWLRP Add-On profiles are completely separate. However,
+                you should be able to copy and paste your TSWRP profile directly into your SWLRP Add-On profile. This
+                will require either having both mods installed at the same time (not recommended) or copying your
+                profile from the TSWRP web interface (http://www.tswrp.co/character/YourCharacterName).
             </dd>
             <dt>
                 Q: Does the SWLRP Add-On link to / copy my SWLRP Wiki profile?
             </dt>
             <dd>
-                A: It does not.  They are separate systems, and you cannot easily copy-paste the <em>format</em> from the <a href="http://wiki.swlrp.com" target="_blank">SWLRP Wiki</a> into the mod.  Text will work just fine, though!  What you can do is add a link to your SWLRP Add-On profile that points to your Wiki page, if you want people to be able to view it.
+                A: It does not. They are separate systems, and you cannot easily copy-paste the <em>format</em> from the
+                <a href="http://wiki.swlrp.com" target="_blank">SWLRP Wiki</a> into the mod. Text will work just fine,
+                though! What you can do is add a link to your SWLRP Add-On profile that points to your Wiki page, if you
+                want people to be able to view it.
             </dd>
             <dt>
                 Q: Where can I leave feedback or report problems?
             </dt>
             <dd>
-                A: There is a forum thread over on the SWLRP website:  <a href="http://www.swlrp.com/forum/m/43796106/viewthread/30814312-swlrp-roleplay-profile-addon/page/1" target="_blank">SWLRP Roleplay Profile Add-On</a>.  You can leave feedback, ask questions, and report problems over there.  Note that you will need to register with the website in order to post!  (You don't need an account in order to read.)
+                A: There is a forum thread over on the SWLRP website:
+                <a href="http://www.swlrp.com/forum/m/43796106/viewthread/30814312-swlrp-roleplay-profile-addon/page/1" target="_blank">SWLRP Roleplay Profile Add-On</a>.
+                You can leave feedback, ask questions, and report problems over there. Note that you will need to
+                register with the website in order to post! (You don't need an account in order to read.)
             </dd>
             <dt>
                 Q: I'm a Flash / PHP / other developer -- how can I help and contribute?
             </dt>
             <dd>
-                A: You can view, clone, log issues, and contribute to the backend webserver (PHP) at the SWLRP-Server GitHub, at <a href="https://github.com/derula/swlrp-server" target="_blank">https://github.com/derula/swlrp-server</a>.  This is only for the webserver backend.   On the Flash side, if you want to see, clone, or contribute to the in-game Flash portion of the mod, you can contribute at Samera's GitHub at <a href="https://github.com/samera999/SWLRP-Flash" target="_blank">https://github.com/samera999/SWLRP-Flash</a>.  
+                A: You can view, clone, log issues, and contribute to the backend webserver (PHP) at the SWLRP-Server
+                GitHub, at <a href="https://github.com/derula/swlrp-server" target="_blank">https://github.com/derula/swlrp-server</a>.
+                This is only for the webserver backend.   On the Flash side, if you want to see, clone, or contribute to
+                the in-game Flash portion of the mod, you can contribute at Samera's GitHub at
+                <a href="https://github.com/samera999/SWLRP-Flash" target="_blank">https://github.com/samera999/SWLRP-Flash</a>.
             </dd>
             <dt>
                 Current Known Issues (v 1.0)

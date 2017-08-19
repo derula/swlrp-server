@@ -17,6 +17,29 @@ p:not(:last-child) { margin-bottom:2em; }
 
 li:not(:last-child), dt { margin-bottom:15px; }
 
+.slick {
+    overflow: hidden !important;
+}
+
+.slick ul {
+    padding-left: 0;
+}
+
+.slick li {
+    list-style: none;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.slick li > img {
+    max-width: 100%;
+    display: inline-block;
+}
+
+.slick > ul > li:not(:first-child) {
+    display: none;
+}
+
 dd { margin-left:0; }
 
 dd:not(:last-child) {
