@@ -23,7 +23,7 @@ abstract class LayoutView extends View {
             }
         }
         $mtime = file_exists($filePath) ? filemtime($filePath) : 0;
-        return '/assets/' . $fileName . '?' . $mtime;
+        return '/assets/' . $fileName . '#' . $mtime;
     }
     public function render(): string {
         return $this->renderTemplate('layout', [
