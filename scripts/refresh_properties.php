@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 use Incertitude\SWLRP\Application;
 require dirname(__DIR__) . '/vendor/autoload.php';
