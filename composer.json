@@ -17,7 +17,8 @@
     },
     "require": {
         "symfony/yaml": "^3.3",
-        "ezyang/htmlpurifier": "^4.9"
+        "ezyang/htmlpurifier": "^4.9",
+        "ircmaxell/random-lib": "^1.2"
     },
     "require-dev": {
         "talyssonoc/php-babel-transpiler": "^0.1.0"
