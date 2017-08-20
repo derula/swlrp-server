@@ -4,6 +4,8 @@ namespace Incertitude\SWLRP\Models;
 
 use Incertitude\SWLRP\Model;
 use Incertitude\SWLRP\Exceptions\RegistrationFailed;
+use RandomLib\Factory as RNGFactory;
+use RandomLib\Generator as RNG;
 
 class Account extends Model {
     const Q_GET_LOGIN_DATA = <<<'QUERY'
@@ -17,6 +19,10 @@ UPDATE `accounts` AS `a`
 INNER JOIN `characters` AS `c` ON `c`.`account_id` = `a`.`id`
 SET `password_hash` = :hash
 WHERE `c`.`id` = :characterId
+QUERY;
+    const Q_GET_CHARACTER_ID = <<<'QUERY'
+SELECT `id` FROM `characters`
+WHERE `first` = :first AND `nick` = :nick AND `last` = :last
 QUERY;
     const Q_CREATE_ACCOUNT = <<<'QUERY'
 INSERT INTO `accounts` (`password_hash`)
@@ -41,6 +47,19 @@ QUERY;
     public function setPasswordHash(int $characterId, string $sessionHash): bool {
         return $this->getConnection()->prepare(self::Q_SET_PASSWORD_HASH)
             ->execute([':characterId' => $characterId, ':hash' => $sessionHash]);
+    }
+    public function resetPassword(string $first, string $nick, string $last): string {
+        $statement = $this->getConnection()->prepare(self::Q_GET_CHARACTER_ID);
+        if ($statement->execute([':first' => $first, ':nick' => $nick, ':last' => $last])) {
+            $characterId = $statement->fetchColumn();
+        }
+        if (empty($characterId)) {
+            throw new \InvalidArgumentException('Character not found.');
+        }
+        $password = (new RNGFactory())->getHighStrengthGenerator()
+            ->generateString(24, RNG::EASY_TO_READ | RNG::CHAR_ALNUM | RNG::CHAR_SYMBOLS);
+        $this->setPasswordHash($characterId, password_hash($password, PASSWORD_DEFAULT));
+        return $password;
     }
     public function isRegistered(int $characterId): bool {
         $data = $this->getLoginData($characterId);
