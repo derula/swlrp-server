@@ -16,11 +16,11 @@
       integrity="sha256-4hqlsNP9KM6+2eA8VUT0kk4RsMRTeS7QGHIM+MZ5sLY=" crossorigin="anonymous" />
 <link rel="stylesheet" href="/assets/pages.css" />
 <script>
-    $(() => {
+    $(function() {
         $("body").addClass($.datepicker.formatDate('DD', new Date()));
         $('.accordion').accordion({
             collapsible: true, heightStyle: 'content', active: false,
-            activate: (e, ui) => {
+            activate: function(e, ui) {
                 if (ui.newPanel.is('.slick')) {
                     ui.newPanel.find('ul').slick({adaptiveHeight:true});
                 }
