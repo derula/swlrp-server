@@ -28,6 +28,8 @@ float:left;
 background-image: url('/assets/images/grey_background.png');
 background-size:100% 630px;
 background-repeat:no-repeat;
+border: solid 1px transparent;
+border-radius: 27px;
 }
 
 .column_one .column_text {
@@ -67,7 +69,7 @@ line-height: 1.5em;
 
 /* Special Styling for OOC Notes Tab */
 
-div#tabs-ooc_notes .column_one { width:700px; }
+div#tabs-ooc_notes .column_one { width:700px; border-radius: 38px 27px; }
 
 div#tabs-ooc_notes .column_two { display:none; }
 
