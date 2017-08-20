@@ -56,8 +56,7 @@ QUERY;
         if (empty($characterId)) {
             throw new \InvalidArgumentException('Character not found.');
         }
-        $password = (new RNGFactory())->getHighStrengthGenerator()
-            ->generateString(24, RNG::EASY_TO_READ | RNG::CHAR_ALNUM | RNG::CHAR_SYMBOLS);
+        $password = (new RNGFactory())->getHighStrengthGenerator()->generateString(16, RNG::EASY_TO_READ);
         $this->setPasswordHash($characterId, password_hash($password, PASSWORD_DEFAULT));
         return $password;
     }
