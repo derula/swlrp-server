@@ -1,10 +1,11 @@
 body {
-font-family: Arial,sans-serif;
-font-size: 1em;
+font-family: Verdana,Arial,Helvetica,sans-serif;
+font-size: 3px;
 margin: 0;
 padding: 0;
 color: #fff;
 background-color:#000;
+-webkit-font-smoothing: subpixel-antialiased;
 }
 
 #container {
@@ -97,7 +98,7 @@ overflow-y:auto;
 
 .editmode .column_two, .column_two {
 float:left;
-width:220px;
+width:265px;
 height:580px;
 text-align:center;
 overflow-y:auto;
@@ -210,6 +211,7 @@ input[name="password"], input[name="pwnew"], dialog#changePortrait input {
     background: #FFF;
     border: transparent;
     color: #000;
+    padding-left:10px;
 }
 
 .ui-dialog { background-color:#333 !important; }
