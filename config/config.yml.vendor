@@ -6,27 +6,32 @@ Models:
   Profile:
     appearance:
       properties:
-        eyecolor:
-          title: Eyes
-          autocomplete: true
-        nationality:
-          autocomplete: true
-        height: {}
-        weight: {}
-        age:
-          constraint: number
+        hair-eyes:
+          title: Hair / Eyes
+        height-weight:
+          title: Height / Weight
+        age: {}
+        nationality: {}
+        job: {}
         rp_status:
           title: Roleplay Status
-          autocomplete: true
       texts:
         description: {}
     biography:
       properties:
-        home:
-          autocomplete: true
-        birthplace:
-          autocomplete: true
-        job:
-          autocomplete: true
+        birthplace: {}
+        residence: {}
+        faction: {}
+        species:
+          title: Species
+        race:
+          title: Ethnicity
       texts:
         history: {}
+    ooc_notes:
+      title: OOC Notes
+      texts:
+        ooc:
+          title: Out of Character Notes
+        rp_hooks:
+          title: RP Hooks
