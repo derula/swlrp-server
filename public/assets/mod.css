@@ -132,6 +132,13 @@ button.ui-dialog-titlebar-close { display:none; }
 
 .ui-tabs, .ui-tabs .ui-tabs-nav { padding:0px; }
 
+.ui-tabs .ui-tabs-panel {     
+    display: block;
+    border-width: 0;
+    padding: 1em 0em 1.4em 1em;
+    background: none;
+}
+
 .ui-tabs .ui-tabs-panel .wrapper { padding: 0 15px; }
 
 #tabs  ul li a { font-variant: small-caps; width:100%;}
