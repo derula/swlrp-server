@@ -23,7 +23,7 @@ $(() => {
         });
         $('textarea', '.editable._text').sceditor({
             style: '/assets/sceditor.min.css',
-            emoticonsRoot: '/components/sceditor/',
+            emoticonsRoot: '/assets/images/',
             width: '100%',
             resizeEnabled: false,
             toolbar: 'bold,italic,underline,strike,subscript,superscript|' +
