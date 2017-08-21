@@ -96,3 +96,6 @@ For the homepage, the repository contains some loading screens that are Copyrigh
 written permission from Funcom's legal department to use these on
 [the project's current "official" installation](http://profile.swlrp.com). However, if you want to launch a fork
 website, you may need to ask for permission separately.
+
+The emoticons are "Copyright (C) 2001-Infinity, Oscar Gruno &amp; Andy Fedosjeenko," and free to use if credited.
+(See also /public/assets/images/emoticons/credits.txt)
