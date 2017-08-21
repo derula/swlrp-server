@@ -1,6 +1,6 @@
 body {
-font-family: Verdana,Arial,Helvetica,sans-serif;
-font-size: 3px;
+font-family: Arial,sans-serif;
+font-size: 13px;
 margin: 0;
 padding: 0;
 color: #fff;
@@ -35,7 +35,7 @@ border-radius: 27px;
 
 .column_one .column_text {
 	margin: 5px 10px 10px 10px;
-	font-size:11pt !important;
+	font-size:1.2em !important;
 }
 
 .column_two {
@@ -47,13 +47,9 @@ background: rgba(0,0,0,0.3);
 border-radius: 25px;
 }
 
-.column_two .column_text {
-	font-size:10pt;
-}
-
 .field_title {
 	display:inline;
-	font-size:12pt;
+	font-size:1.1em;
 	color: #7eadb5;
     border-bottom: 1px #666 dotted;
 }
@@ -61,6 +57,7 @@ border-radius: 25px;
 .field_content {
 	font-variant:small-caps;
 	text-align:center;
+	font-size:1.1em;
 }
 
 div { display: block; }
@@ -156,10 +153,10 @@ color:#FFFFFF;
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
 	text-align: center;
     font-family: Arial, sans-serif;
-    font-size: 1em;
+    font-size: 1.3em;
     width: 213px;
     height: 25px;
-	padding-top:5px;
+	padding-top:2px;
     background: transparent url('/assets/images/tab_inactive.gif') no-repeat;
 	border-style: none !important;
 }
@@ -167,7 +164,7 @@ color:#FFFFFF;
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover , .ui-state-default:hover {
 	text-align: center;
     font-family: Arial, sans-serif;
-    font-size: 1em;
+    font-size: 1.3em;
     width: 213px;
     height: 25px;
     background: transparent url('/assets/images/tab_active.gif') no-repeat !important;
