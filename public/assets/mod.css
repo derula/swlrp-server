@@ -1,10 +1,11 @@
 body {
 font-family: Arial,sans-serif;
-font-size: 1em;
+font-size: 13px;
 margin: 0;
 padding: 0;
 color: #fff;
 background-color:#000;
+-webkit-font-smoothing: subpixel-antialiased;
 }
 
 #container {
@@ -34,7 +35,7 @@ border-radius: 27px;
 
 .column_one .column_text {
 	margin: 5px 10px 10px 10px;
-	font-size:11pt !important;
+	font-size:1.2em !important;
 }
 
 .column_two {
@@ -42,15 +43,13 @@ float:left;
 width:225px;
 height:650px;
 text-align:center;
-}
-
-.column_two .column_text {
-	font-size:10pt;
+background: rgba(0,0,0,0.3);
+border-radius: 25px;
 }
 
 .field_title {
 	display:inline;
-	font-size:12pt;
+	font-size:1.1em;
 	color: #7eadb5;
     border-bottom: 1px #666 dotted;
 }
@@ -58,6 +57,7 @@ text-align:center;
 .field_content {
 	font-variant:small-caps;
 	text-align:center;
+	font-size:1.1em;
 }
 
 div { display: block; }
@@ -97,7 +97,7 @@ overflow-y:auto;
 
 .editmode .column_two, .column_two {
 float:left;
-width:220px;
+width:265px;
 height:580px;
 text-align:center;
 overflow-y:auto;
@@ -131,6 +131,13 @@ button.ui-dialog-titlebar-close { display:none; }
 
 .ui-tabs, .ui-tabs .ui-tabs-nav { padding:0px; }
 
+.ui-tabs .ui-tabs-panel {     
+    display: block;
+    border-width: 0;
+    padding: 1em 0em 1.4em 1em;
+    background: none;
+}
+
 .ui-tabs .ui-tabs-panel .wrapper { padding: 0 15px; }
 
 #tabs  ul li a { font-variant: small-caps; width:100%;}
@@ -146,10 +153,10 @@ color:#FFFFFF;
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
 	text-align: center;
     font-family: Arial, sans-serif;
-    font-size: 1em;
+    font-size: 1.3em;
     width: 213px;
     height: 25px;
-	padding-top:5px;
+	padding-top:2px;
     background: transparent url('/assets/images/tab_inactive.gif') no-repeat;
 	border-style: none !important;
 }
@@ -157,7 +164,7 @@ color:#FFFFFF;
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover , .ui-state-default:hover {
 	text-align: center;
     font-family: Arial, sans-serif;
-    font-size: 1em;
+    font-size: 1.3em;
     width: 213px;
     height: 25px;
     background: transparent url('/assets/images/tab_active.gif') no-repeat !important;
@@ -210,6 +217,7 @@ input[name="password"], input[name="pwnew"], dialog#changePortrait input {
     background: #FFF;
     border: transparent;
     color: #000;
+    padding-left:10px;
 }
 
 .ui-dialog { background-color:#333 !important; }
