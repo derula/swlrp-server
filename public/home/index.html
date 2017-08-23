@@ -47,7 +47,11 @@
     <h3>Download</h3>
     <article>
         <p>
-            You can download the add-on <a href="/download">here</a>. The current version is 1.0.
+            You can download the add-on <a href="/download">here</a>. The current version is 1.0.1.
+        </p>
+        <p>
+            This version fixes a mod conflict between the SWLRP Add-On and the Custom Mission Log mod, as well as minor CSS
+            fixes for appearance and legibility.
         </p>
     </article>
 
@@ -100,6 +104,11 @@
             If the add-on is installed correctly, you should see a red "RP" button on your top toolbar. You can move
             this button to your desired location by clicking the SWL 'lock' icon in the upper right corner, dragging the
             RP button to a new location, and then click the 'lock' icon again to save the location.
+        </p>
+        <p>
+            NOTE: If you upgraded your TSW client to SWL (rather than downloading SWL separately), you may need to unzip
+            the mod to your TSW install location instead! For a 'normal' TSW installation, this is:
+            <pre>C:\Program Files (x86)\Funcom\The Secret World\Data\Gui\Customized\Flash</pre> 
         </p>
     </article>
 
@@ -196,6 +205,14 @@
                 want people to be able to view it.
             </dd>
             <dt>
+                Q: How secure are the passwords?
+            </dt>
+            <dd>
+                A: The passwords are salted and hashed using a standard PHP function, which you can read more about
+                <a href="http://php.net/manual/en/function.password-hash.php" target="_blank">in the PHP manual</a>.
+                None of the mod creators can see or retrieve your passwords!
+            </dd>
+            <dt>
                 Q: Where can I leave feedback or report problems?
             </dt>
             <dd>
@@ -215,10 +232,18 @@
                 <a href="https://github.com/samera999/SWLRP-Flash" target="_blank">https://github.com/samera999/SWLRP-Flash</a>.
             </dd>
             <dt>
-                Current Known Issues (v 1.0)
+                Current Known Issues (v 1.0.1)
             </dt>
             <dd>
-                There are no current known issues.
+                <ul>
+                    <li>
+                        There is currently no easy way to view profiles in a web browser outside of the game. We are
+                        exploring ways to do this.
+                    </li>
+                    <li>
+                        The in-game browser text is not antialiased and looks 'jagged', especially at small sizes.
+                    </li>
+                </ul>
             </dd>
         </dl>
     </article>
