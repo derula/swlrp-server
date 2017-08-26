@@ -94,7 +94,7 @@ $(() => {
             .done(() => {$('#changePW').dialog('close');$('#pwChanged').dialog('open')})
             .fail(() => {$('#pwChangeFailed').dialog('open')});
     });
-    $('#pwChanged, #pwChangeFailed').dialog({autoOpen: false, modal: true, buttons: {OK}});
+    $('#pwChanged, #pwChangeFailed, #openLink').dialog({autoOpen: false, modal: true, buttons: {OK}});
     $('.tabs').tabs();
     $('input[type=submit]').button();
     $('input[type=checkbox]').checkboxradio();
@@ -104,5 +104,13 @@ $(() => {
             const v = o.first().val() !== o.last().val() ? 'Passwords must match.' : '';
             o.last()[0].setCustomValidity(v);
         }
+    });
+    $('article').on('click', 'a', (e) => {
+        e.preventDefault();
+        const dialog = $('#openLink'), href = $(e.target).attr('href');
+        dialog.find('a').attr('href', href);
+        const input = dialog.find('input');
+        dialog.dialog('open');
+        input.val(href).select().focus();
     });
 });
