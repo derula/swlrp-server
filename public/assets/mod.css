@@ -131,7 +131,7 @@ button.ui-dialog-titlebar-close { display:none; }
 
 .ui-tabs, .ui-tabs .ui-tabs-nav { padding:0px; }
 
-.ui-tabs .ui-tabs-panel {     
+.ui-tabs .ui-tabs-panel {
     display: block;
     border-width: 0;
     padding: 1em 0em 1.4em 1em;
@@ -213,7 +213,7 @@ color:#FFFFFF;
 
 /* Form Styles */
 
-input[name="password"], input[name="pwnew"], dialog#changePortrait input {
+input[type="password"], dialog input[type="text"] {
     background: #FFF;
     border: transparent;
     color: #000;
