@@ -12,8 +12,13 @@ abstract class Profile extends LayoutView {
         'autocomplete' => false,
         'constraint' => null,
     ];
+    const EDIT_MODE_DISABLED = 'disabled';
+    const EDIT_MODE_REQUESTED = 'requested';
+    const EDIT_MODE_ENABLED = 'enabled';
     /** @var array */
     private $profile;
+    /** @var string */
+    private $editMode = self::EDIT_MODE_DISABLED;
     /** @var int */
     private $requestedId;
     public function __construct(array $data, Application $application) {
@@ -26,6 +31,13 @@ abstract class Profile extends LayoutView {
             return $id . '?' . http_build_query($this->getNameData());
         }
         return '';
+    }
+    public function setEditMode(string $editMode): self {
+        $this->editMode = $editMode;
+        return $this;
+    }
+    protected function getEditMode(): string {
+        return $this->editMode;
     }
     protected function getTitle(): string {
         return $this->getProfile()['name'];
@@ -61,7 +73,6 @@ abstract class Profile extends LayoutView {
             }
             $prop['value'] = $value;
         }
-        $this->profile['editMode'] = false;
     }
     protected function decorate(array $prop, string $type) {
         return $prop['value'];

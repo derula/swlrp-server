@@ -1,4 +1,4 @@
-<div id="container" <? if ($editMode): ?>class="editmode"<? endif ?>>
+<div id="container" <? if (static::EDIT_MODE_ENABLED === $this->getEditMode()): ?>class="editmode"<? endif ?>>
     <div id="tabs" class="tabs">
         <ul>
 <? foreach ($structure as $section): ?>
@@ -31,9 +31,11 @@
         </div>
 <? endforeach ?>
     </div>
-<? if ($editMode): ?>
     <div id="editbuttons">
+<? if (static::EDIT_MODE_ENABLED === $this->getEditMode()): ?>
         <button id="edit"></button>
-    </div>
+<? elseif (static::EDIT_MODE_REQUESTED === $this->getEditMode()): ?>
+        <button class="link" data-href="/front/<?=htmlspecialchars($this->getRequestString())?>">Log in</a>
 <? endif ?>
+    </div>
 </div>
