@@ -16,8 +16,9 @@
     Please make sure to enter the old password correctly.
 </dialog>
 <dialog id="changePortrait" title="Change portrait">
-    <label>Please enter the URL for your character portrait. Recommended size: 200x200.  Images larger than this will be resized to fit.
-	<br />
+    <label>
+        Please enter the URL for your character portrait. Recommended size: 200x200.
+        Images larger than this will be resized to fit.<br />
         <input type="text" maxlength="255" class="ui-widget-content ui-corner-all" />
     </label>
 </dialog>
