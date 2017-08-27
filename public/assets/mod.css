@@ -61,9 +61,9 @@ div { display: block; }
 
 .column_two { line-height: 1.5em; }
 
- .ui-widget-content a { color: #26b3f7; }
- .ui-widget-content a:visited { color: #da6dc8; }
- .ui-widget-content a:hover { color: #ffffff; }  
+.ui-widget-content a:not(.ui-tabs-anchor) { color: #26b3f7 }
+.ui-widget-content a:not(.ui-tabs-anchor):visited { color: #da6dc8 }
+.ui-widget-content a:not(.ui-tabs-anchor):hover { color: #ffffff }   
 
 
 /* Special Styling for OOC Notes Tab */
@@ -197,7 +197,7 @@ li.ui-state-default.ui-state-active  > a, li.ui-state-default.ui-state-active > 
 }
 
 #container.single_column .wrapper, #container.no_profile .wrapper {
-	padding: 25px 15px;
+	padding: 25px 0px 25px 15px;
 }
 
 
