@@ -1,5 +1,6 @@
 <?php
 use Incertitude\SWLRP\Application;
+use Incertitude\SWLRP\Forwardable;
 use Incertitude\SWLRP\Exceptions\HttpError;
 use Incertitude\SWLRP\Exceptions\RedirectError;
 use Incertitude\SWLRP\Exceptions\GetNewestFile;
@@ -16,8 +17,8 @@ try {
             break;
         case 'edit':
             $view = $app->getView('Editor');
-            $app->getSession()->assertLoggedIn($view);
             if ('POST' === $_SERVER['REQUEST_METHOD']) {
+                $app->getSession()->assertLoggedIn();
                 $app->getAction('SaveProfile')->execute();
             }
             break;
@@ -39,6 +40,9 @@ try {
             exit;
         default:
             $view = $app->getView('Error')->setCode(404);
+    }
+    if ($view instanceof Forwardable && !$view->isAccessible()) {
+        $view->forward();
     }
     echo $view->render();
 } catch(RedirectError $ex) {

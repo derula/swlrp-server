@@ -10,7 +10,8 @@ abstract class RedirectError extends HttpError {
     public function getLocation() {
         return rtrim(static::LOCATION, '/') . '/' . ltrim($this->suffix, '/');
     }
-    public function setSuffix(string $suffix) {
+    public function setSuffix(string $suffix): self {
         $this->suffix = $suffix;
+        return $this;
     }
 }

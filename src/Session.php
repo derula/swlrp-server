@@ -27,15 +27,9 @@ class Session {
         }
         return true;
     }
-    public function assertLoggedIn(IOComponent $component = null) {
-        $isForwardable = ($component instanceof Forwardable);
-        $isAccessible = $isForwardable ? $component->isAccessible($this->getCharacterId()) : $this->isLoggedIn();
-        if (!$isAccessible) {
-            $ex = new NotLoggedIn();
-            if ($isForwardable) {
-                $ex->setSuffix($component->getRequestString());
-            }
-            throw $ex;
+    public function assertLoggedIn() {
+        if (!$this->isLoggedIn()) {
+            throw new NotLoggedIn();
         }
     }
     public function checkPassword(int $characterId, string $password): bool {

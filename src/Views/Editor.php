@@ -4,17 +4,14 @@ namespace Incertitude\SWLRP\Views;
 
 use Incertitude\SWLRP\Application;
 use Incertitude\SWLRP\Forwardable;
+use Incertitude\SWLRP\Exceptions\NotLoggedIn;
 
 class Editor extends Profile implements Forwardable {
     public function isAccessible(int $characterId): bool {
         return $characterId === $this->getRequestedId();
     }
-    public function getRequestString(): string {
-        $id = $this->getData(0);
-        if (!empty($id)) {
-            return $id . '?' . http_build_query($this->getNameData());
-        }
-        return '';
+    public function forward() {
+        throw (new NotLoggedIn())->setSuffix($this->getRequestString());
     }
     protected function getProfile(): array {
         return ['editMode' => true] + parent::getProfile();

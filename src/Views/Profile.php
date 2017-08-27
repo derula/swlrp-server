@@ -20,6 +20,13 @@ abstract class Profile extends LayoutView {
         parent::__construct($data, $application);
         $this->requestedId = $this->getIntData(0, $application->getSession()->getCharacterId());
     }
+    public function getRequestString(): string {
+        $id = $this->requestedId;
+        if (!empty($id)) {
+            return $id . '?' . http_build_query($this->getNameData());
+        }
+        return '';
+    }
     protected function getTitle(): string {
         return $this->getProfile()['name'];
     }
