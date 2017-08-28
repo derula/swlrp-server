@@ -45,6 +45,9 @@ abstract class Profile extends LayoutView {
     protected function getContent(): string {
         return $this->renderTemplate('profile', $this->getProfile());
     }
+    protected function getDialogs(): string {
+        return $this->renderTemplate('dialogs/profile');
+    }
     protected function getRequestedId(): int {
         return $this->requestedId;
     }

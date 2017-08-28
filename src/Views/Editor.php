@@ -28,7 +28,9 @@ class Editor extends Profile implements Forwardable {
         throw (new NotLoggedIn())->setSuffix($this->getRequestString());
     }
     protected function getDialogs(): string {
-        return $this->renderTemplate('editorDialogs', ['name' => $this->getProfile()['nick']]);
+        return parent::getDialogs() . $this->renderTemplate(
+            'dialogs/editor', ['name' => $this->getProfile()['nick']]
+        );
     }
     protected function decorate(array $prop, string $type) {
         $value = $prop['value'];

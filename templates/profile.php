@@ -12,7 +12,7 @@
 <? foreach ($section['texts'] as $prop): ?>
                     <div>
                         <h3><?=$prop['title']?></h3>
-                        <p><?=$this->decorate($prop, 'text')?></p>
+                        <article><?=$this->decorate($prop, 'text')?></article>
                     </div>
 <? endforeach ?>
                 </div>
