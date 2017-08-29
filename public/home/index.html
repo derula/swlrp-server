@@ -7,7 +7,8 @@
         integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.js"
         integrity="sha256-Bccy5g19sAkVrles3ZHA4T4iPhNY9+1le3UL6cbTpao=" crossorigin="anonymous"></script>
-<script src="/assets/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.4.0/markdown-it.min.js"
+        integrity="sha256-6YhPRj11jVWKrz5aBXa9FqGrmmCoZwNiCtIe1lhgm+M=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/dark-hive/jquery-ui.css"
       integrity="sha256-430fmdsHlbyhcsmK+R+9wspVgGJBgjkWM5tuB2XC03U=" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.min.css"
@@ -15,19 +16,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.min.css"
       integrity="sha256-4hqlsNP9KM6+2eA8VUT0kk4RsMRTeS7QGHIM+MZ5sLY=" crossorigin="anonymous" />
 <link rel="stylesheet" href="/assets/pages.css" />
-<script>
-    $(function() {
-        $("body").addClass($.datepicker.formatDate('DD', new Date()));
-        $('.accordion').accordion({
-            collapsible: true, heightStyle: 'content', active: false,
-            activate: function(e, ui) {
-                if (ui.newPanel.is('.slick')) {
-                    ui.newPanel.find('ul').slick({adaptiveHeight:true});
-                }
-            }
-        });
-    });
-</script>
+<script src=/assets/home.js></script>
 
 <header>
     <h1>SWLRP Roleplay Profile Add-On</h1>
@@ -47,12 +36,13 @@
     <h3>Download</h3>
     <article>
         <p>
-            You can download the add-on <a href="/download">here</a>. The current version is 1.0.2.
+            You can download the add-on <a href="/download">here</a>. The current version is
+            <span id="version">unknown</span>.
         </p>
         <p>
-            This version fixes a mod conflict between the SWLRP Add-On and the Custom Mission Log mod, as well as minor CSS
-            fixes for appearance and legibility.
+            Most recent changes:
         </p>
+        <dl id="changelog"></dl>
     </article>
 
 
