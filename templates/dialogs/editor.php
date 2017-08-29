@@ -1,6 +1,6 @@
 <dialog id="changePW" title="Change password">
     <form>
-        Enter the fields below to change the password for<?=$name?>.<br />
+        Enter the fields below to change the password for <?=$name?>.<br />
         <input name="name" type="hidden" value="<?=$name?>" /><br />
         <label>Old password: <input name="password" type="password" class="ui-widget-content ui-corner-all" /></label><br />
         <label>New password: <input name="pwnew" type="password" class="ui-widget-content ui-corner-all" /></label><br />
