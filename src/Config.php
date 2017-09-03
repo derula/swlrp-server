@@ -2,6 +2,7 @@
 
 namespace Incertitude\SWLRP;
 use Symfony\Component\Yaml\Yaml;
+use Incertitude\SWLRP\Exceptions\ConfigKeyMissing;
 
 class Config {
     /** @var array */
@@ -10,6 +11,21 @@ class Config {
         $this->data = (array)Yaml::parse(file_get_contents($path));
     }
     public function get(...$keys) {
+        try {
+            return $this->find($keys);
+        } catch (ConfigKeyMissing $ex) {
+            return null;
+        }
+    }
+    public function exists(...$keys) {
+        try {
+            $this->find($keys);
+            return true;
+        } catch (ConfigKeyMissing $ex) {
+            return false;
+        }
+    }
+    private function find(array $keys) {
         $result = $this->data;
         while (!empty($keys)) {
             $key = array_shift($keys);
@@ -18,7 +34,7 @@ class Config {
                 continue;
             }
             if (!isset($result[$key])) {
-                return null;
+                throw new ConfigKeyMissing();
             }
             $result = $result[$key];
         }
