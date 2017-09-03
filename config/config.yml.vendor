@@ -2,6 +2,35 @@ DB:
   dsn: "mysql:dbname=<dbname>;host=<host>"
   user: <user>
   password: <password>
+Deployment:
+  default: staging
+  staging:
+    remote:
+      url: <url>
+      user: <user>
+      #path: .
+      #port: 22
+      #fingerprint:
+      #  format: <sha1 or md5 (default)>
+      #  value: <fingerprint (recommended)>
+    #php:
+    #  binary: <if different from 'which php'>
+    #composer:
+    #  binary: <if different from 'composer'>
+  live:
+    remote:
+      url: <url>
+      user: <user>
+      #path: .
+      #port: 22
+      #fingerprint:
+      #  format: <sha1 or md5 (default)>
+      #  value: <fingerprint (recommended)>
+    #php:
+    #  binary: <if different from 'which php'>
+    composer:
+      #binary: <if different from 'composer'>
+      args: --no-dev -a
 Models:
   Profile:
     appearance:
