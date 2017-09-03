@@ -32,7 +32,7 @@ abstract class Profile extends LayoutView {
         }
         return '';
     }
-    public function setEditMode(string $editMode): self {
+    protected function setEditMode(string $editMode): self {
         $this->editMode = $editMode;
         return $this;
     }
