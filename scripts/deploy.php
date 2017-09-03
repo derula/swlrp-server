@@ -86,4 +86,4 @@ foreach (glob($baseDir . '/public/assets/*.compat.js') as $file) {
 }
 $phpBinary = $config->get('Deployment', $environment, 'php', 'binary') ?? '';
 $runner($phpBinary . ' scripts/refresh_properties.php');
-$runner('exit', true);
+ssh2_exec($ssh, 'exit');
