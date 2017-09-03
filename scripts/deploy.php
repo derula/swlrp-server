@@ -17,15 +17,17 @@ function get_remote_runner($ssh, $dir) {
         fclose($stream);
         preg_match('/#(-?\d+)#\Z/', $output, $status);
         $output = trim(preg_replace("/#$status[1]#\Z/", '', $output));
-        if ('0' !== $status[1]) {
-            die("Couldn't execute '$command' on the server. Deployment canceled.\n");
-        }
-        if ($return) {
+        $isError = ('0' !== $status[1]);
+        if (!$return) {
+            echo $output;
+            if (!empty($output)) {
+                echo "\n";
+            }
+        } elseif (!$isError) {
             return $output;
         }
-        echo $output;
-        if (!empty($output)) {
-            echo "\n";
+        if ($isError) {
+            die("Couldn't execute '$command' on the server. Deployment canceled.\n");
         }
     };
 }
