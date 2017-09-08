@@ -32,7 +32,8 @@ class Application {
         $this->pdo = new \PDO(
             $this->config->get('DB', 'dsn'),
             $this->config->get('DB', 'user'),
-            $this->config->get('DB', 'password')
+            $this->config->get('DB', 'password'),
+            [\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4']
         );
         $this->pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
         $this->session = new Session($this->getModel('Account'), !empty($_SERVER['HTTPS']));
