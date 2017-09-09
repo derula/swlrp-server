@@ -114,7 +114,7 @@ $(() => {
         dialog.dialog('open');
         input.val(href).select().focus();
     });
-    const current = new RegExp('[\?&]clientVer=([^&#]*)').exec(window.location.href)[1] || null;
+    const current = (new RegExp('[\?&]clientVer=([^&#]*)').exec(window.location.href) || [])[1];
     if (current) {
         $.getJSON('https://api.github.com/repos/samera999/SWLRP-Flash/releases?per_page=1').then(data => {
             const latest = data[0] ? data[0].tag_name : null;
