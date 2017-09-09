@@ -20,14 +20,14 @@ class Application {
     public function __construct(string $root, array $server=[], array $get=[], array $post=[]) {
         $this->root = $root;
         if (isset($_SERVER['REQUEST_URI'])) {
-            $uri = parse_url($_SERVER['REQUEST_URI']);
+            $uri = parse_url(urldecode($_SERVER['REQUEST_URI']));
             $uriParts = array_filter(explode('/', substr($uri['path'] ?? '/', 1)));
             $this->route = array_shift($uriParts) ?: '';
             $get = $uriParts + $get;
             $post = $uriParts + $post;
         }
-        $this->get = array_map([$this, 'cleanInputData'], $get);
-        $this->post = array_map([$this, 'cleanInputData'], $post);
+        $this->get = array_map('trim', $get);
+        $this->post = array_map('trim', $post);
         $this->config = new Config($root . '/config/config.yml');
         $this->pdo = new \PDO(
             $this->config->get('DB', 'dsn'),
@@ -63,8 +63,5 @@ class Application {
     public function getView(string $name): View {
         $class = __NAMESPACE__ . '\\Views\\' . ucfirst($name);
         return new $class($this->get, $this);
-    }
-    private function cleanInputData(string $data) {
-        return trim(urldecode($data));
     }
 }
