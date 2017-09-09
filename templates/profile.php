@@ -1,41 +1,34 @@
-<div id="container" <? if (static::EDIT_MODE_ENABLED === $this->getEditMode()): ?>class="editmode"<? endif ?>>
-    <div id="tabs" class="tabs">
+<div class="tabs<? if (static::EDIT_MODE_DISABLED !== $this->getEditMode()): ?> editmode<? endif ?>">
+    <nav>
         <ul>
 <? foreach ($structure as $section): ?>
-            <li><a href="#tabs-<?=$section['name']?>"><?=$section['title']?></a></li>
+            <li><a href="#tab-<?=$section['name']?>"><?=$section['title']?></a></li>
 <? endforeach ?>
         </ul>
+    </nav>
 <? foreach ($structure as $section): ?>
-        <div id="tabs-<?=$section['name']?>" class="wrapper">
-            <div class="column_one">
-                <div class="column_text">
-<? foreach ($section['texts'] as $prop): ?>
-                    <div>
-                        <h3><?=$prop['title']?></h3>
-                        <article><?=$this->decorate($prop, 'text')?></article>
-                    </div>
-<? endforeach ?>
-                </div>
-            </div>
-            <div class="column_two">
-                <div class="column_text">
-                    <div class="headshot">
-                        <img class="portrait" src="<?=$portrait ?: '/assets/images/image_default.png'?>" />
-                    </div>
+    <div id="tab-<?=$section['name']?>">
+<? if (!empty($section['properties'])): ?>
+        <aside>
+            <img class="portrait" src="<?=$portrait ?: '/assets/images/image_default.png'?>" />
 <? foreach ($section['properties'] as $prop): ?>
-                    <div class="field_title <?=$prop['name']?>"><?=$prop['title']?></div>
-                    <div class="field_content"><?=$this->decorate($prop, 'property')?></div>
+            <div class="property" title="<?=$prop['title']?>"><?=$this->decorate($prop, 'property')?></div>
 <? endforeach ?>
-                </div>
-            </div>
-        </div>
-<? endforeach ?>
-    </div>
-    <div id="editbuttons">
-<? if (static::EDIT_MODE_ENABLED === $this->getEditMode()): ?>
-        <button id="edit"></button>
-<? elseif (static::EDIT_MODE_REQUESTED === $this->getEditMode()): ?>
-        <button class="link" data-href="/front/<?=htmlspecialchars($this->getRequestString())?>">Log in</a>
+        </aside>
 <? endif ?>
+        <section>
+<? foreach ($section['texts'] as $prop): ?>
+            <h3><?=$prop['title']?></h3>
+            <article><?=$this->decorate($prop, 'text')?></article>
+<? endforeach ?>
+        </section>
     </div>
+<? endforeach ?>
+</div>
+<div id="editbuttons">
+<? if (static::EDIT_MODE_ENABLED === $this->getEditMode()): ?>
+    <button id="edit"></button>
+<? elseif (static::EDIT_MODE_REQUESTED === $this->getEditMode()): ?>
+    <button class="link" data-href="/front/<?=htmlspecialchars($this->getRequestString())?>">Log in</a>
+<? endif ?>
 </div>

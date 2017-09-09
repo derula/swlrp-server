@@ -12,5 +12,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sceditor/1.5.2/themes/monocons.min.css"
       integrity="sha256-6DjgI077lS1q2rG+PzkxbKV4tMrOkhNla9DD5NF1hy8=" crossorigin="anonymous" />
 <link rel="stylesheet" href="<?=$this->assetUrl('mod.css')?>" />
-<section id="main"><?=$content?></section>
+<main><?=$content?></main>
 <?=$dialogs?>

@@ -1,7 +1,7 @@
 $(() => {
     const defaultPortrait = '/assets/images/image_default.png';
     const wrap = (button) => {
-        $('#main').wrapInner('<form method="POST">');
+        $('main').wrapInner('<form method="POST">');
         $('.editable').each((i, e) => {
             const prop = $(e).data('prop'), isText = $(e).is('._text');
             const field = $(isText ? '<textarea>' : '<input>').attr({
@@ -49,7 +49,7 @@ $(() => {
     };
     const unwrap = (button) => {
         $('.portrait').siblings().remove().addBack().unwrap();
-        $('form', '#main').children().unwrap();
+        $('form', 'main').children().unwrap();
         $('> textarea', '.editable._text').each((i, e) => {
             const instance = $(e).sceditor('instance');
             instance.val($('<div>').html($.parseHTML(instance.val().substr(0, 50000))).html());
@@ -82,7 +82,7 @@ $(() => {
     const OK = Close;
     $('#edit').button({label: 'Change profile'}).click((e) => {
         e.preventDefault();
-        ($('#main').children().is('form') ? unwrap : wrap)($(e.target));
+        ($('main').children().is('form') ? unwrap : wrap)($(e.target));
     });
     $('#changePortrait').dialog({autoOpen: false, modal: true, buttons: {Apply, Close}});
     $('#changePW').dialog({
