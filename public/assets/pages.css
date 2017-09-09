@@ -48,6 +48,16 @@ dd:not(:last-child) {
     border-bottom: solid 2px silver;
 }
 
+time {
+    float: right;
+}
+
+#changelog {
+    max-height: 70vh;
+    overflow: auto;
+    padding-right: 15px;
+}
+
 pre { overflow:auto; }
 
 em {
