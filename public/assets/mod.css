@@ -63,8 +63,20 @@ div { display: block; }
 
 .ui-widget-content a:not(.ui-tabs-anchor) { color: #26b3f7 }
 .ui-widget-content a:not(.ui-tabs-anchor):visited { color: #da6dc8 }
-.ui-widget-content a:not(.ui-tabs-anchor):hover { color: #ffffff }   
+.ui-widget-content a:not(.ui-tabs-anchor):hover { color: #ffffff }
 
+/* Version notice */
+
+aside {
+	position: fixed;
+	z-index: 1;
+	text-align: center;
+	transition: top 1s;
+	left: 0;
+	right: 0;
+	top: -2.5em;
+	background-color: gray;
+}
 
 /* Special Styling for OOC Notes Tab */
 
@@ -130,7 +142,7 @@ button.ui-dialog-titlebar-close { display:none; }
 
 .ui-tabs, .ui-tabs .ui-tabs-nav { padding:0px; }
 
-.ui-tabs .ui-tabs-panel {     
+.ui-tabs .ui-tabs-panel {
 	display: block;
 	border-width: 0;
 	padding: 1em 0em 1.4em 1em;
@@ -168,7 +180,7 @@ li.ui-state-default.ui-state-active  > a, li.ui-state-default.ui-state-active > 
 	border-style: none !important;
 }
 
-.ui-dialog .ui-dialog-buttonpane button, .ui-dialog .ui-dialog-buttonpane button:active { 
+.ui-dialog .ui-dialog-buttonpane button, .ui-dialog .ui-dialog-buttonpane button:active {
 	font-family: Arial, sans-serif;
 	font-size: 1em;
 }
