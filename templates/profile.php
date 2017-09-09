@@ -12,7 +12,7 @@
         <aside>
             <img class="portrait" src="<?=$portrait ?: '/assets/images/image_default.png'?>" />
 <? foreach ($section['properties'] as $prop): ?>
-            <div class="property" title="<?=$prop['title']?>"><?=$this->decorate($prop, 'property')?></div>
+            <?=$this->decorate($prop, 'property')?>
 <? endforeach ?>
         </aside>
 <? endif ?>

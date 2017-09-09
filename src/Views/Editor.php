@@ -32,10 +32,8 @@ class Editor extends Profile implements Forwardable {
             'dialogs/editor', ['name' => $this->getProfile()['nick']]
         );
     }
-    protected function decorate(array $prop, string $type) {
-        $value = $prop['value'];
-        unset($prop['value'], $prop['title']);
-        $data = htmlspecialchars(json_encode(array_filter($prop)));
-        return "<div class=\"editable _$type\" data-prop=\"$data\">$value</div>";
+    protected function decorate(array $prop, string $type): string {
+        $attributes = ['data-prop' => json_encode(array_filter($prop))];
+        return $this->doDecorate($prop, "editable $type", $attributes);
     }
 }

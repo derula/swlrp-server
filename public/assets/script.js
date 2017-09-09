@@ -3,7 +3,7 @@ $(() => {
     const wrap = (button) => {
         $('main').wrapInner('<form method="POST">');
         $('.editable').each((i, e) => {
-            const prop = $(e).data('prop'), isText = $(e).is('._text');
+            const prop = $(e).data('prop'), isText = $(e).is('.text');
             const field = $(isText ? '<textarea>' : '<input>').attr({
                 id: 'property-' + prop.name,
                 class: 'ui-widget-content ui-corner-all',
@@ -21,7 +21,7 @@ $(() => {
             field.val(val);
             $(e).html(field);
         });
-        $('textarea', '.editable._text').sceditor({
+        $('.editable.text').toggleClass('text _text').find('textarea').sceditor({
             style: '/assets/sceditor.min.css',
             emoticonsRoot: '/assets/images/',
             width: '100%',
@@ -55,12 +55,12 @@ $(() => {
             instance.val($('<div>').html($.parseHTML(instance.val().substr(0, 50000))).html());
             instance.updateOriginal();
             instance.destroy();
-        });
+        }).parent().toggleClass('text _text');
         $('.editable').each((i, e) => {
             const prop = $(e).data('prop');
             const field = $('input, textarea', e);
             let val = field.val();
-            if (!$(e).is('._text')) {
+            if (!$(e).is('.text')) {
                 val = $('<div>').text(val).html();
             }
             field.replaceWith(val);
