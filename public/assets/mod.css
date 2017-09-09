@@ -23,7 +23,9 @@ body {
 	min-height:650px;
 	height:650px;
 	float:left;
-	background-image: url('/assets/images/grey_background.png');
+	background-image: -webkit-linear-gradient(top, #6e6e6f, #181818);
+	background-image: -moz-linear-gradient(top, #6e6e6f, #181818);
+	background-image: linear-gradient(to bottom, #6e6e6f, #181818);
 	background-size:100% 630px;
 	background-repeat:no-repeat;
 	border: solid 1px transparent;
@@ -68,7 +70,7 @@ div { display: block; }
 
 /* Special Styling for OOC Notes Tab */
 
-div#tabs-ooc_notes .column_one { width:700px; border-radius: 38px 27px; }
+div#tabs-ooc_notes .column_one { width:700px; }
 
 div#tabs-ooc_notes .column_two { display:none; }
 
@@ -88,7 +90,6 @@ div#tabs-ooc_notes .column_two { display:none; }
 	min-height:580px;
 	height:580px;
 	float:left;
-	background-image: url('/assets/images/grey_background.png');
 	background-size:100% 580px;
 	background-repeat:no-repeat;
 	overflow-y:auto;
