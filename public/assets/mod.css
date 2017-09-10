@@ -9,8 +9,13 @@ body {
 	color: white;
 }
 
-main {
-	height: 100%;
+main, section, aside, article {
+	display: block;
+}
+
+main, .ui-tabs-panel {
+	/* Evil Ninja magic, don't remove! (I'm serious...) */
+	overflow: hidden;
 }
 
 section {
@@ -28,6 +33,7 @@ aside + section {
 
 aside {
 	float: right;
+	margin: 15px 0;
 	width: 250px;
 	text-align: center;
 	background: rgba(0,0,0,0.3);
@@ -36,17 +42,15 @@ aside {
 
 section, aside {
 	height: 670px;
-	background-clip: padding-box;
-	border: solid 1px transparent;
 	padding: 0 10px;
 }
 
-.tabs section, .tabs aside {
-	height: 645px;
+.ui-tabs section, .ui-tabs aside {
+	height: 640px;
 }
 
 .editmode section, .editmode aside {
-	height: 580px;
+	height: 590px;
 }
 
 .property:not(:empty):before {
