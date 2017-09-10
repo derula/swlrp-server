@@ -1,30 +1,28 @@
-<div class="tabs<? if (static::EDIT_MODE_DISABLED !== $this->getEditMode()): ?> editmode<? endif ?>">
-    <nav>
-        <ul>
+<nav class="tabs">
+    <ul>
 <? foreach ($structure as $section): ?>
-            <li><a href="#tab-<?=$section['name']?>"><?=$section['title']?></a></li>
+        <li><a href="#tab-<?=$section['name']?>"><?=$section['title']?></a></li>
 <? endforeach ?>
-        </ul>
-    </nav>
+    </ul>
+</nav>
 <? foreach ($structure as $section): ?>
-    <div id="tab-<?=$section['name']?>">
+<div id="tab-<?=$section['name']?>" <? if (static::EDIT_MODE_DISABLED !== $this->getEditMode()): ?>class="editmode"<? endif ?>>
 <? if (!empty($section['properties'])): ?>
-        <aside>
-            <img class="portrait" src="<?=$portrait ?: '/assets/images/image_default.png'?>" />
+    <aside>
+        <img class="portrait" src="<?=$portrait ?: '/assets/images/image_default.png'?>" />
 <? foreach ($section['properties'] as $prop): ?>
-            <?=$this->decorate($prop, 'property')?>
+        <?=$this->decorate($prop, 'property')?>
 <? endforeach ?>
-        </aside>
+    </aside>
 <? endif ?>
-        <section>
+    <section>
 <? foreach ($section['texts'] as $prop): ?>
-            <h3><?=$prop['title']?></h3>
-            <article><?=$this->decorate($prop, 'text')?></article>
+        <h3><?=$prop['title']?></h3>
+        <article><?=$this->decorate($prop, 'text')?></article>
 <? endforeach ?>
-        </section>
-    </div>
-<? endforeach ?>
+    </section>
 </div>
+<? endforeach ?>
 <? if (static::EDIT_MODE_ENABLED === $this->getEditMode()): ?>
 <button id="edit"></button>
 <? elseif (static::EDIT_MODE_REQUESTED === $this->getEditMode()): ?>

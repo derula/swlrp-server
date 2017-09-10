@@ -95,7 +95,7 @@ $(() => {
             .fail(() => {$('#pwChangeFailed').dialog('open')});
     });
     $('#pwChanged, #pwChangeFailed, #openLink').dialog({autoOpen: false, modal: true, buttons: {OK}});
-    $('.tabs').tabs();
+    $('.tabs').parent().tabs();
     $('button.link').button().click((e) => document.location = $(e.target).data('href'));
     $('input[type=submit]').button();
     $('input[type=checkbox]').checkboxradio();
