@@ -114,4 +114,22 @@ $(() => {
         dialog.dialog('open');
         input.val(href).select().focus();
     });
+    const current = (new RegExp('[\?&]clientVer=([^&#]*)').exec(window.location.href) || [])[1];
+    if (current) {
+        $.getJSON('https://api.github.com/repos/samera999/SWLRP-Flash/releases?per_page=1').then(data => {
+            const latest = data[0] ? data[0].tag_name : null;
+            if (latest && latest != current) {
+                const elem =
+                    $('<aside>').text('Your SWLRP add-on is out of date.')
+                    .append('Your version: ' + current + ', available:' + latest).append('<br>')
+                    .append('Please consider downloading and installing the latest version.')
+                $('body').prepend(elem);
+                elem.css('top')
+                elem.css({top: 0}).on('click focusout', () => {
+                    elem.css({top:''});
+                });
+                setTimeout(() => {elem.trigger('click')}, 5000);
+            }
+        });
+    }
 });
