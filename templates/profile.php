@@ -25,10 +25,8 @@
     </div>
 <? endforeach ?>
 </div>
-<div id="editbuttons">
 <? if (static::EDIT_MODE_ENABLED === $this->getEditMode()): ?>
-    <button id="edit"></button>
+<button id="edit"></button>
 <? elseif (static::EDIT_MODE_REQUESTED === $this->getEditMode()): ?>
-    <button class="link" data-href="/front/<?=htmlspecialchars($this->getRequestString())?>">Log in</a>
+<button class="link" data-href="/front/<?=htmlspecialchars($this->getRequestString())?>">Log in</a>
 <? endif ?>
-</div>

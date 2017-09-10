@@ -69,9 +69,7 @@ a:hover { color: #ffffff }
 
 /* Edit Mode */
 
-#editbuttons {
-	float: left;
-	clear: both;
+#edit {
 	margin: 5px 0 0 25px;
 }
 
