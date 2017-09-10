@@ -84,7 +84,7 @@ a:hover { color: #ffffff }
 .ui-widget-content { background: none; border: none; }
 .ui-button { font-size: 0.95em; }
 
-.ui-dialog-titlebar-close { display:none; }
+dialog, .ui-dialog-titlebar-close { display: none; }
 
 /* Tabs */
 .ui-tabs { border: none !important; }
@@ -190,5 +190,5 @@ code {
 
 #tab-ooc_notes .sceditor-container iframe, #tab-ooc_notes .sceditor-container textarea {
 	width: 720px !important;
-	height: 130px !important;
+	height: 138px !important;
 }
