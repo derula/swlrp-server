@@ -1,4 +1,5 @@
 $(() => {
+    $.fn.roundify = function () { return $(this).addClass('ui-widget-content ui-corner-all')};
     const defaultPortrait = '/assets/images/image_default.png';
     const wrap = (button) => {
         $('main').wrapInner('<form method="POST">');
@@ -6,10 +7,9 @@ $(() => {
             const prop = $(e).data('prop'), isText = $(e).is('.text');
             const field = $(isText ? '<textarea>' : '<input>').attr({
                 id: 'property-' + prop.name,
-                class: 'ui-widget-content ui-corner-all',
                 name: prop.name,
                 maxlength: isText ? 50000 : 40,
-            });
+            }).roundify();
             let val = $(e).html();
             if (!isText) {
                 field.attr({type: prop.constraint || 'text'});
@@ -97,8 +97,8 @@ $(() => {
     $('#pwChanged, #pwChangeFailed, #openLink').dialog({autoOpen: false, modal: true, buttons: {OK}});
     $('.tabs').parent().tabs();
     $('button.link').button().click((e) => document.location = $(e.target).data('href'));
+    $('input').not('[type=submit]').roundify();
     $('input[type=submit]').button();
-    $('input[type=checkbox]').checkboxradio();
     $('input[type=password]').on('input', (e) => {
         const t = $(e.target), o = t.closest(':not(label, input)').find('[name=' + t.attr('name') + ']');
         if (o.length > 1) {

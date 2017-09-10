@@ -6,8 +6,8 @@
             You can leave this empty, but it is not recommended.<br />
             If you decide not to enter a password, anyone can edit your profile!
         </p>
-        <label>Password: <input name="password" type="password" class="ui-widget-content ui-corner-all" /></label><br />
-        <label>Repeat password: <input name="password" type="password" class="ui-widget-content ui-corner-all" /></label><br />
+        <label>Password: <input name="password" type="password" /></label><br />
+        <label>Repeat password: <input name="password" type="password" /></label><br />
 <? foreach ($names as $key => $value): ?>
         <input type="hidden" name="<?=$key?>" value="<?=$value?>" />
 <? endforeach ?>

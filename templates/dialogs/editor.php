@@ -2,9 +2,9 @@
     <form>
         Enter the fields below to change the password for <?=$name?>.<br />
         <input name="name" type="hidden" value="<?=$name?>" /><br />
-        <label>Old password: <input name="password" type="password" class="ui-widget-content ui-corner-all" /></label><br />
-        <label>New password: <input name="pwnew" type="password" class="ui-widget-content ui-corner-all" /></label><br />
-        <label>Repeat new password: <input name="pwnew" type="password" class="ui-widget-content ui-corner-all" /></label>
+        <label>Old password: <input name="password" type="password" /></label><br />
+        <label>New password: <input name="pwnew" type="password" /></label><br />
+        <label>Repeat new password: <input name="pwnew" type="password" /></label>
     </form>
 </dialog>
 <dialog id="pwChanged" title="Success">
@@ -19,6 +19,6 @@
     <label>
         Please enter the URL for your character portrait. Recommended size: 200x200.
         Images larger than this will be resized to fit.<br />
-        <input type="text" maxlength="255" class="ui-widget-content ui-corner-all" />
+        <input type="text" maxlength="255" />
     </label>
 </dialog>
