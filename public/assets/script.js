@@ -33,7 +33,7 @@ $(() => {
         });
         const portrait = $('.portrait');
         portrait.wrap(
-            $('<a>', {href: '#'}).click((e) => {
+            $('<a>', {href: '#', class: 'changePortrait'}).click((e) => {
                 let oldVal = portrait.attr('src');
                 if (oldVal === defaultPortrait) {
                     oldVal = '';

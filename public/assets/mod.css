@@ -125,6 +125,26 @@ div#tabs-ooc_notes .column_two { display:none; }
 	max-height: 200px;
 }
 
+.changePortrait {
+	position: relative;
+	display: inline-block;
+	border-radius: 6px;
+	line-height: 0;
+	min-width: 120px;
+	min-height: 1.5em;
+	overflow: hidden;
+}
+
+.changePortrait:before {
+	content: 'change portrait';
+	line-height: 1.5em;
+	background: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	display: table-cell;
+	width: 100%;
+	bottom: 0;
+}
+
 /* Tabs */
 
 #tabs {
@@ -240,7 +260,7 @@ input[type="password"], dialog input[type="text"] {
 	font-size: 0.8em;
 }
 
-.ui-widget-content, .ui-widget.ui-widget-content {
+.ui-widget-content, .ui-widget.ui-widget-content, .changePortrait {
 	border:1px solid #999;
 }
 
