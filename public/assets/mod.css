@@ -63,7 +63,7 @@ div { display: block; }
 
 .ui-widget-content a:not(.ui-tabs-anchor) { color: #26b3f7 }
 .ui-widget-content a:not(.ui-tabs-anchor):visited { color: #da6dc8 }
-.ui-widget-content a:not(.ui-tabs-anchor):hover { color: #ffffff }   
+.ui-widget-content a:not(.ui-tabs-anchor):hover { color: #ffffff }
 
 
 /* Special Styling for OOC Notes Tab */
@@ -113,6 +113,26 @@ div#tabs-ooc_notes .column_two { display:none; }
 	max-height: 200px;
 }
 
+.changePortrait {
+	position: relative;
+	display: inline-block;
+	border-radius: 6px;
+	line-height: 0;
+	min-width: 120px;
+	min-height: 1.5em;
+	overflow: hidden;
+}
+
+.changePortrait:before {
+	content: 'change portrait';
+	line-height: 1.5em;
+	background: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	display: table-cell;
+	width: 100%;
+	bottom: 0;
+}
+
 /* Tabs */
 
 #tabs {
@@ -130,7 +150,7 @@ button.ui-dialog-titlebar-close { display:none; }
 
 .ui-tabs, .ui-tabs .ui-tabs-nav { padding:0px; }
 
-.ui-tabs .ui-tabs-panel {     
+.ui-tabs .ui-tabs-panel {
 	display: block;
 	border-width: 0;
 	padding: 1em 0em 1.4em 1em;
@@ -168,7 +188,7 @@ li.ui-state-default.ui-state-active  > a, li.ui-state-default.ui-state-active > 
 	border-style: none !important;
 }
 
-.ui-dialog .ui-dialog-buttonpane button, .ui-dialog .ui-dialog-buttonpane button:active { 
+.ui-dialog .ui-dialog-buttonpane button, .ui-dialog .ui-dialog-buttonpane button:active {
 	font-family: Arial, sans-serif;
 	font-size: 1em;
 }
@@ -228,7 +248,7 @@ input[type="password"], dialog input[type="text"] {
 	font-size: 0.8em;
 }
 
-.ui-widget-content, .ui-widget.ui-widget-content {
+.ui-widget-content, .ui-widget.ui-widget-content, .changePortrait {
 	border:1px solid #999;
 }
 
