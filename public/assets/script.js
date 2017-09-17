@@ -80,7 +80,7 @@ $(() => {
     };
     const Close = function() { $(this).dialog('close'); };
     const OK = Close;
-    $('#edit').button({label: 'Change profile'}).click((e) => {
+    $('#edit').not('.link').button({label: 'Change profile'}).click((e) => {
         e.preventDefault();
         ($('main').children().is('form') ? unwrap : wrap)($(e.target));
     });
