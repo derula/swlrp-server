@@ -1,15 +1,15 @@
 $(() => {
+    $.fn.roundify = function () { return $(this).addClass('ui-widget-content ui-corner-all')};
     const defaultPortrait = '/assets/images/image_default.png';
     const wrap = (button) => {
-        $('#main').wrapInner('<form method="POST">');
+        $('main').wrapInner('<form method="POST">');
         $('.editable').each((i, e) => {
-            const prop = $(e).data('prop'), isText = $(e).is('._text');
+            const prop = $(e).data('prop'), isText = $(e).is('.text');
             const field = $(isText ? '<textarea>' : '<input>').attr({
                 id: 'property-' + prop.name,
-                class: 'ui-widget-content ui-corner-all',
                 name: prop.name,
                 maxlength: isText ? 50000 : 40,
-            });
+            }).roundify();
             let val = $(e).html();
             if (!isText) {
                 field.attr({type: prop.constraint || 'text'});
@@ -21,7 +21,7 @@ $(() => {
             field.val(val);
             $(e).html(field);
         });
-        $('textarea', '.editable._text').sceditor({
+        $('.editable.text').toggleClass('text _text').find('textarea').sceditor({
             style: '/assets/sceditor.min.css',
             emoticonsRoot: '/assets/images/',
             width: '100%',
@@ -49,18 +49,18 @@ $(() => {
     };
     const unwrap = (button) => {
         $('.portrait').siblings().remove().addBack().unwrap();
-        $('form', '#main').children().unwrap();
+        $('form', 'main').children().unwrap();
         $('> textarea', '.editable._text').each((i, e) => {
             const instance = $(e).sceditor('instance');
             instance.val($('<div>').html($.parseHTML(instance.val().substr(0, 50000))).html());
             instance.updateOriginal();
             instance.destroy();
-        });
+        }).parent().toggleClass('text _text');
         $('.editable').each((i, e) => {
             const prop = $(e).data('prop');
             const field = $('input, textarea', e);
             let val = field.val();
-            if (!$(e).is('._text')) {
+            if (!$(e).is('.text')) {
                 val = $('<div>').text(val).html();
             }
             field.replaceWith(val);
@@ -82,7 +82,7 @@ $(() => {
     const OK = Close;
     $('#edit').button({label: 'Change profile'}).click((e) => {
         e.preventDefault();
-        ($('#main').children().is('form') ? unwrap : wrap)($(e.target));
+        ($('main').children().is('form') ? unwrap : wrap)($(e.target));
     });
     $('#changePortrait').dialog({autoOpen: false, modal: true, buttons: {Apply, Close}});
     $('#changePW').dialog({
@@ -95,10 +95,10 @@ $(() => {
             .fail(() => {$('#pwChangeFailed').dialog('open')});
     });
     $('#pwChanged, #pwChangeFailed, #openLink').dialog({autoOpen: false, modal: true, buttons: {OK}});
-    $('.tabs').tabs();
+    $('.tabs').parent().tabs();
     $('button.link').button().click((e) => document.location = $(e.target).data('href'));
+    $('input').not('[type=submit]').roundify();
     $('input[type=submit]').button();
-    $('input[type=checkbox]').checkboxradio();
     $('input[type=password]').on('input', (e) => {
         const t = $(e.target), o = t.closest(':not(label, input)').find('[name=' + t.attr('name') + ']');
         if (o.length > 1) {
@@ -120,7 +120,7 @@ $(() => {
             const latest = data[0] ? data[0].tag_name : null;
             if (latest && latest != current) {
                 const elem =
-                    $('<aside>').text('Your SWLRP add-on is out of date.')
+                    $('<aside>').addClass('toast').text('Your SWLRP add-on is out of date.')
                     .append('Your version: ' + current + ', available:' + latest).append('<br>')
                     .append('Please consider downloading and installing the latest version.')
                 $('body').prepend(elem);

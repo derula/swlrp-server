@@ -77,7 +77,15 @@ abstract class Profile extends LayoutView {
             $prop['value'] = $value;
         }
     }
-    protected function decorate(array $prop, string $type) {
-        return $prop['value'];
+    protected function decorate(array $prop, string $type): string {
+        return $this->doDecorate($prop, $type);
+    }
+    protected function doDecorate(array $prop, string $class, array $attributes=[]): string {
+        $attributes += ['class' => $class, 'title' => $prop['title']];
+        foreach ($attributes as $key => &$value) {
+            $value = $key . '="' . htmlspecialchars($value) . '"';
+        }
+        $attributes = implode(' ', $attributes);
+        return "<div $attributes>$prop[value]</div>";
     }
 }
