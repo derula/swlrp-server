@@ -51,7 +51,7 @@ e.g. using ModRewrite (Apache) or try_files (nginx).
   RewriteEngine On
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(.*)? /index.php?$1 [L,NC]
+  RewriteRule ^(.*)? /index.php/$1 [L,NC]
   ```
   Also make sure to enable the rewrite mod and restart Apache:
   ```
