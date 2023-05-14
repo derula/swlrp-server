@@ -85,10 +85,11 @@ In order for the page to work inside the in-game browser, you need to be aware t
 This means:
 
 - You need to use conservative / compatible HTTPS settings (even if it's not the most secure... better than no HTTPS at all?)
-- The JavaScript needs to be transpiled into something the game understands:
-  - Install a recent version of [V8Js](https://github.com/talyssonoc/react-laravel/blob/master/install_v8js.md).
-  - Install composer dev dependencies to get php-babel-transpiler.
-  - Run the ```transpile_js``` script.
+- The JavaScript needs to be transpiled into something the game understands.
+  - Previously, [talyssonoc/php-babel-transpiler](https://github.com/talyssonoc/php-babel-transpiler) was used for this purpose.
+    However, this package seems abandoned, and was removed from ```composer.json```. Transpiled assets are now available in
+    ```public/assets/*.compat.js```. If you need to change the JavaScript, note that you will need to transpile and commit these
+    files manually.
 
 ## Legal note
 
