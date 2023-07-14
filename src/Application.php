@@ -19,8 +19,9 @@ class Application {
     private $root = '', $route = '';
     public function __construct(string $root, array $server=[], array $get=[], array $post=[]) {
         $this->root = $root;
-        if (isset($_SERVER['REQUEST_URI'])) {
-            $uri = parse_url(urldecode($_SERVER['REQUEST_URI']));
+        if (isset($get['uri'])) {
+            $uri = parse_url(urldecode($get['uri']));
+            unset($get['uri']);
             $uriParts = array_filter(explode('/', substr($uri['path'] ?? '/', 1)));
             $this->route = array_shift($uriParts) ?: '';
             $get = $uriParts + $get;
